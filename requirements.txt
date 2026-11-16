@@ -1,0 +1,12 @@
+Flask
+python-dotenv
+Flask-SQLAlchemy
+twilio
+resend
+Authlib
+messagebird-sdk
+Flask-SocketIO
+stripe
+requests
+simple-websocket
+gunicorn

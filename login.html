@@ -1,0 +1,3518 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Huella - Iniciar sesión
+    </title>
+
+
+    <!-- =====================================================
+         ICONOS
+    ====================================================== -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FUENTES
+    ====================================================== -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        * {
+
+            box-sizing:
+                border-box;
+
+            margin:
+                0;
+
+            padding:
+                0;
+
+        }
+
+
+        :root {
+
+            --primary:
+                #00343d;
+
+            --primary-dark:
+                #00252c;
+
+            --gold:
+                #a36d20;
+
+            --background:
+                #f5fafc;
+
+            --surface:
+                #ffffff;
+
+            --input:
+                #eef3f5;
+
+            --text:
+                #151a1c;
+
+            --muted:
+                #758085;
+
+            --green:
+                #1c7a5a;
+
+            --green-bg:
+                #c8f3e1;
+
+            --red:
+                #ba1a1a;
+
+            --border:
+                #dce5e8;
+
+        }
+
+
+        body {
+
+            min-height:
+                100vh;
+
+            font-family:
+                "Plus Jakarta Sans",
+                sans-serif;
+
+            background:
+                var(--background);
+
+            color:
+                var(--text);
+
+        }
+
+
+        button,
+        input {
+
+            font-family:
+                inherit;
+
+        }
+
+
+        button {
+
+            cursor:
+                pointer;
+
+        }
+
+
+        /* =====================================================
+           PÁGINA
+        ====================================================== */
+
+        .page {
+
+            min-height:
+                100vh;
+
+            width:
+                100%;
+
+            display:
+                flex;
+
+            align-items:
+                flex-start;
+
+            justify-content:
+                center;
+
+            padding:
+                28px 16px 50px;
+
+        }
+
+
+        .container {
+
+            width:
+                100%;
+
+            max-width:
+                480px;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        .header {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                24px;
+
+        }
+
+
+        .logo {
+
+            width:
+                76px;
+
+            height:
+                76px;
+
+            margin:
+                0 auto;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--primary);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            color:
+                #ffd99e;
+
+            box-shadow:
+                0 12px 35px
+                rgba(
+                    0,
+                    52,
+                    61,
+                    .18
+                );
+
+            text-decoration:
+                none;
+
+        }
+
+
+        .logo .material-symbols-outlined {
+
+            font-size:
+                39px;
+
+            font-variation-settings:
+                "FILL" 1;
+
+        }
+
+
+        .header h1 {
+
+            margin-top:
+                10px;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                35px;
+
+            line-height:
+                1;
+
+            color:
+                var(--primary);
+
+        }
+
+
+        .header p {
+
+            margin-top:
+                7px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
+        }
+
+
+        .secure-badge {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                5px;
+
+            margin-top:
+                11px;
+
+            padding:
+                7px 13px;
+
+            border-radius:
+                999px;
+
+            background:
+                var(--green-bg);
+
+            color:
+                var(--green);
+
+            font-size:
+                11px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .secure-badge span {
+
+            font-size:
+                16px;
+
+        }
+
+
+        /* =====================================================
+           TARJETA
+        ====================================================== */
+
+        .card {
+
+            background:
+                var(--surface);
+
+            border-radius:
+                21px;
+
+            padding:
+                27px;
+
+            box-shadow:
+                0 13px 42px
+                rgba(
+                    0,
+                    52,
+                    61,
+                    .08
+                );
+
+        }
+
+
+        .card-title {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                27px;
+
+            color:
+                var(--primary);
+
+            margin-bottom:
+                5px;
+
+        }
+
+
+        .card-description {
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
+            line-height:
+                1.6;
+
+            margin-bottom:
+                22px;
+
+        }
+
+
+        /* =====================================================
+           MENSAJE
+        ====================================================== */
+
+        .message {
+
+            display:
+                none;
+
+            padding:
+                11px 13px;
+
+            border-radius:
+                11px;
+
+            margin-bottom:
+                16px;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.5;
+
+        }
+
+
+        .message.show {
+
+            display:
+                block;
+
+        }
+
+
+        .message.error {
+
+            background:
+                #ffeded;
+
+            color:
+                #991b1b;
+
+            border:
+                1px solid #ffd0d0;
+
+        }
+
+
+        .message.success {
+
+            background:
+                #e5f8ef;
+
+            color:
+                #166a4b;
+
+            border:
+                1px solid #bdebd6;
+
+        }
+
+
+        .message.info {
+
+            background:
+                #eef6fa;
+
+            color:
+                #27576a;
+
+            border:
+                1px solid #d2e6ee;
+
+        }
+
+
+        /* =====================================================
+           FORMULARIO
+        ====================================================== */
+
+        .form-group {
+
+            margin-bottom:
+                17px;
+
+        }
+
+
+        label {
+
+            display:
+                block;
+
+            margin-bottom:
+                7px;
+
+            font-size:
+                13px;
+
+            font-weight:
+                600;
+
+            color:
+                #171c1e;
+
+        }
+
+
+        .input-box {
+
+            position:
+                relative;
+
+        }
+
+
+        .input-box input {
+
+            width:
+                100%;
+
+            height:
+                48px;
+
+            border:
+                2px solid transparent;
+
+            outline:
+                none;
+
+            border-radius:
+                11px;
+
+            background:
+                var(--input);
+
+            padding:
+                0 48px;
+
+            font-size:
+                13px;
+
+            color:
+                var(--primary);
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .input-box input:focus {
+
+            background:
+                #ffffff;
+
+            border-color:
+                #93bed0;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    147,
+                    190,
+                    208,
+                    .13
+                );
+
+        }
+
+
+        .input-box input::placeholder {
+
+            color:
+                #899397;
+
+        }
+
+
+        .left-icon {
+
+            position:
+                absolute;
+
+            left:
+                14px;
+
+            top:
+                50%;
+
+            transform:
+                translateY(-50%);
+
+            color:
+                #7c8a8e;
+
+            font-size:
+                20px;
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .eye-button {
+
+            position:
+                absolute;
+
+            right:
+                12px;
+
+            top:
+                50%;
+
+            transform:
+                translateY(-50%);
+
+            border:
+                none;
+
+            background:
+                transparent;
+
+            color:
+                #4c6066;
+
+            width:
+                32px;
+
+            height:
+                32px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+        }
+
+
+        .eye-button span {
+
+            font-size:
+                20px;
+
+        }
+
+
+        .password-help {
+
+            margin-top:
+                7px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                10px;
+
+        }
+
+
+        /* =====================================================
+           OLVIDÉ CONTRASEÑA
+        ====================================================== */
+
+        .forgot {
+
+            display:
+                flex;
+
+            justify-content:
+                flex-end;
+
+            margin:
+                -3px 0 16px;
+
+        }
+
+
+        .forgot button {
+
+            background:
+                transparent;
+
+            border:
+                none;
+
+            color:
+                var(--gold);
+
+            font-size:
+                11px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .forgot button:hover {
+
+            text-decoration:
+                underline;
+
+        }
+
+
+        /* =====================================================
+           BOTÓN PRINCIPAL
+        ====================================================== */
+
+        .main-button {
+
+            width:
+                100%;
+
+            min-height:
+                48px;
+
+            border:
+                none;
+
+            border-radius:
+                11px;
+
+            background:
+                var(--primary);
+
+            color:
+                white;
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+            transition:
+                .2s;
+
+        }
+
+
+        .main-button:hover {
+
+            background:
+                var(--primary-dark);
+
+            transform:
+                translateY(-1px);
+
+        }
+
+
+        .main-button:disabled {
+
+            opacity:
+                .65;
+
+            cursor:
+                wait;
+
+            transform:
+                none;
+
+        }
+
+
+        /* =====================================================
+           DIVISOR
+        ====================================================== */
+
+        .divider {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+
+            color:
+                #99a2a5;
+
+            font-size:
+                10px;
+
+            margin:
+                18px 0;
+
+        }
+
+
+        .divider::before,
+        .divider::after {
+
+            content:
+                "";
+
+            height:
+                1px;
+
+            background:
+                #d9e0e2;
+
+            flex:
+                1;
+
+        }
+
+
+        /* =====================================================
+           GOOGLE APPLE
+        ====================================================== */
+
+        .social-buttons {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                10px;
+
+        }
+
+
+        .social {
+
+            min-height:
+                45px;
+
+            border:
+                1px solid
+                #d7dfe2;
+
+            border-radius:
+                11px;
+
+            background:
+                white;
+
+            color:
+                #111;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                7px;
+
+        }
+
+
+        .social:hover {
+
+            background:
+                #f7f9fa;
+
+        }
+
+
+        .apple {
+
+            background:
+                #000;
+
+            border-color:
+                #000;
+
+            color:
+                white;
+
+        }
+
+
+        .apple:hover {
+
+            background:
+                #1d1d1d;
+
+        }
+
+
+        /* =====================================================
+           CREAR CUENTA
+        ====================================================== */
+
+        .register {
+
+            text-align:
+                center;
+
+            margin-top:
+                21px;
+
+            color:
+                #8a9497;
+
+            font-size:
+                11px;
+
+        }
+
+
+        .register a {
+
+            color:
+                var(--primary);
+
+            font-weight:
+                700;
+
+            text-decoration:
+                underline;
+
+        }
+
+
+        /* =====================================================
+           VOLVER
+        ====================================================== */
+
+        .back-home {
+
+            margin-top:
+                16px;
+
+            text-align:
+                center;
+
+        }
+
+
+        .back-home a {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                5px;
+
+            font-size:
+                11px;
+
+            color:
+                var(--muted);
+
+            text-decoration:
+                none;
+
+        }
+
+
+        .back-home a:hover {
+
+            color:
+                var(--primary);
+
+        }
+
+
+        .back-home span {
+
+            font-size:
+                16px;
+
+        }
+
+
+        /* =====================================================
+           MODAL
+        ====================================================== */
+
+        .modal {
+
+            display:
+                none;
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            background:
+                rgba(
+                    0,
+                    36,
+                    43,
+                    .58
+                );
+
+            backdrop-filter:
+                blur(
+                    5px
+                );
+
+            z-index:
+                9999;
+
+            padding:
+                20px;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            overflow-y:
+                auto;
+
+        }
+
+
+        .modal.open {
+
+            display:
+                flex;
+
+        }
+
+
+        .modal-content {
+
+            width:
+                100%;
+
+            max-width:
+                455px;
+
+            background:
+                white;
+
+            border-radius:
+                22px;
+
+            padding:
+                26px;
+
+            box-shadow:
+                0 25px 70px
+                rgba(
+                    0,
+                    35,
+                    42,
+                    .28
+                );
+
+            position:
+                relative;
+
+        }
+
+
+        .close-modal {
+
+            position:
+                absolute;
+
+            top:
+                14px;
+
+            right:
+                14px;
+
+            width:
+                34px;
+
+            height:
+                34px;
+
+            border:
+                none;
+
+            border-radius:
+                50%;
+
+            background:
+                #f0f4f5;
+
+            color:
+                #536267;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+        }
+
+
+        .close-modal span {
+
+            font-size:
+                19px;
+
+        }
+
+
+        .modal-header {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                20px;
+
+            padding-top:
+                2px;
+
+        }
+
+
+        .modal-icon {
+
+            width:
+                57px;
+
+            height:
+                57px;
+
+            border-radius:
+                50%;
+
+            margin:
+                0 auto 11px;
+
+            background:
+                #c7ecff;
+
+            color:
+                var(--primary);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+        }
+
+
+        .modal-icon span {
+
+            font-size:
+                27px;
+
+        }
+
+
+        .modal-header h2 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                23px;
+
+            color:
+                var(--primary);
+
+        }
+
+
+        .modal-header p {
+
+            color:
+                var(--muted);
+
+            font-size:
+                11px;
+
+            margin-top:
+                5px;
+
+        }
+
+
+        /* =====================================================
+           MÉTODOS RECUPERACIÓN
+        ====================================================== */
+
+        .methods {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+            gap:
+                8px;
+
+            margin-bottom:
+                18px;
+
+        }
+
+
+        .method {
+
+            border:
+                1px solid
+                transparent;
+
+            background:
+                #f1f4f5;
+
+            color:
+                #5c686c;
+
+            border-radius:
+                11px;
+
+            min-height:
+                69px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                5px;
+
+            font-size:
+                10px;
+
+        }
+
+
+        .method span {
+
+            font-size:
+                20px;
+
+        }
+
+
+        .method.selected {
+
+            background:
+                #c9ecff;
+
+            border-color:
+                #1a6178;
+
+            color:
+                #173f4b;
+
+        }
+
+
+        /* =====================================================
+           RECUPERACIÓN
+        ====================================================== */
+
+        .recovery-group {
+
+            margin-bottom:
+                15px;
+
+        }
+
+
+        .recovery-group label {
+
+            font-size:
+                11px;
+
+        }
+
+
+        .recovery-input-box {
+
+            position:
+                relative;
+
+        }
+
+
+        .recovery-input-box input {
+
+            width:
+                100%;
+
+            min-height:
+                45px;
+
+            border:
+                2px solid transparent;
+
+            background:
+                #eef3f5;
+
+            border-radius:
+                10px;
+
+            outline:
+                none;
+
+            padding:
+                0 14px 0 43px;
+
+            font-size:
+                12px;
+
+        }
+
+
+        .recovery-input-box input:focus {
+
+            border-color:
+                #96c5d9;
+
+            background:
+                white;
+
+        }
+
+
+        .recovery-input-box span {
+
+            position:
+                absolute;
+
+            left:
+                13px;
+
+            top:
+                50%;
+
+            transform:
+                translateY(-50%);
+
+            color:
+                #768589;
+
+            font-size:
+                19px;
+
+        }
+
+
+        .recovery-button {
+
+            width:
+                100%;
+
+            min-height:
+                45px;
+
+            border:
+                none;
+
+            border-radius:
+                10px;
+
+            background:
+                var(--primary);
+
+            color:
+                white;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .recovery-button:disabled {
+
+            opacity:
+                .6;
+
+            cursor:
+                wait;
+
+        }
+
+
+        .recovery-message {
+
+            display:
+                none;
+
+            margin-top:
+                12px;
+
+            padding:
+                10px 12px;
+
+            border-radius:
+                10px;
+
+            font-size:
+                11px;
+
+            line-height:
+                1.45;
+
+            text-align:
+                center;
+
+        }
+
+
+        .recovery-message.show {
+
+            display:
+                block;
+
+        }
+
+
+        .recovery-message.success {
+
+            color:
+                #176547;
+
+            background:
+                #e7f8f0;
+
+        }
+
+
+        .recovery-message.error {
+
+            color:
+                #a22626;
+
+            background:
+                #ffeded;
+
+        }
+
+
+        .verification-section {
+
+            display:
+                none;
+
+            margin-top:
+                18px;
+
+            padding-top:
+                17px;
+
+            border-top:
+                1px solid #e4eaec;
+
+        }
+
+
+        .verification-section.show {
+
+            display:
+                block;
+
+        }
+
+
+        .sent-card {
+
+            background:
+                #fff2d5;
+
+            color:
+                #805a13;
+
+            border:
+                1px solid #f4dda4;
+
+            border-radius:
+                10px;
+
+            padding:
+                11px;
+
+            font-size:
+                10px;
+
+            text-align:
+                center;
+
+            margin-bottom:
+                14px;
+
+        }
+
+
+        .sent-card strong {
+
+            display:
+                block;
+
+            margin-bottom:
+                4px;
+
+        }
+
+
+        .code-input {
+
+            text-align:
+                center;
+
+            letter-spacing:
+                10px;
+
+            font-size:
+                18px !important;
+
+            font-weight:
+                700;
+
+            padding-left:
+                20px !important;
+
+            padding-right:
+                10px !important;
+
+        }
+
+
+        .new-password-wrapper {
+
+            position:
+                relative;
+
+        }
+
+
+        .new-password-wrapper input {
+
+            padding-right:
+                45px;
+
+        }
+
+
+        .new-password-eye {
+
+            position:
+                absolute;
+
+            right:
+                10px;
+
+            top:
+                50%;
+
+            transform:
+                translateY(-50%);
+
+            border:
+                none;
+
+            background:
+                none;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            color:
+                #627075;
+
+        }
+
+
+        .cancel-button {
+
+            width:
+                100%;
+
+            min-height:
+                42px;
+
+            border:
+                none;
+
+            border-radius:
+                10px;
+
+            background:
+                #edf1f2;
+
+            color:
+                #5e676a;
+
+            font-size:
+                11px;
+
+            font-weight:
+                600;
+
+            margin-top:
+                13px;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media(
+            max-width:
+            450px
+        ) {
+
+            .page {
+
+                padding:
+                    20px 13px 35px;
+
+            }
+
+
+            .card {
+
+                padding:
+                    22px;
+
+            }
+
+
+            .social-buttons {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .modal-content {
+
+                padding:
+                    22px 18px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <div class="container">
+
+
+        <!-- =================================================
+             LOGO
+        ================================================== -->
+
+        <div class="header">
+
+
+            <a
+                href="/"
+                class="logo"
+                aria-label="Volver a Huella"
+            >
+
+                <span class="material-symbols-outlined">
+                    pets
+                </span>
+
+            </a>
+
+
+            <h1>
+                Huella
+            </h1>
+
+
+            <p>
+                Tu compañero digital para el cuidado de tus mascotas
+            </p>
+
+
+            <div class="secure-badge">
+
+                <span class="material-symbols-outlined">
+                    verified_user
+                </span>
+
+                Acceso seguro
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LOGIN
+        ================================================== -->
+
+        <div class="card">
+
+
+            <h2 class="card-title">
+                Iniciar sesión
+            </h2>
+
+
+            <p class="card-description">
+
+                Ingresa a tu cuenta para consultar tus mascotas,
+                citas, vacunas, ubicación y servicios de Huella.
+
+            </p>
+
+
+            <div
+                id="loginMessage"
+                class="message"
+            ></div>
+
+
+
+            <form id="loginForm">
+
+
+                <!-- =========================================
+                     CORREO
+                ========================================== -->
+
+                <div class="form-group">
+
+
+                    <label for="email">
+
+                        Correo electrónico
+
+                    </label>
+
+
+                    <div class="input-box">
+
+
+                        <span class="material-symbols-outlined left-icon">
+                            mail
+                        </span>
+
+
+                        <input
+                            id="email"
+                            type="email"
+                            placeholder="ejemplo@correo.com"
+                            autocomplete="email"
+                            required
+                        >
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     CONTRASEÑA
+                ========================================== -->
+
+                <div class="form-group">
+
+
+                    <label for="password">
+
+                        Contraseña
+
+                    </label>
+
+
+                    <div class="input-box">
+
+
+                        <span class="material-symbols-outlined left-icon">
+                            lock
+                        </span>
+
+
+                        <input
+                            id="password"
+                            type="password"
+                            placeholder="Ingresa tu contraseña"
+                            autocomplete="current-password"
+                            minlength="8"
+                            required
+                        >
+
+
+                        <button
+                            id="togglePassword"
+                            class="eye-button"
+                            type="button"
+                            aria-label="Mostrar contraseña"
+                        >
+
+                            <span
+                                id="eyeIcon"
+                                class="material-symbols-outlined"
+                            >
+                                visibility
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+
+                    <div class="password-help">
+
+                        Mínimo 8 caracteres,
+                        incluyendo letras y números.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     OLVIDÉ
+                ========================================== -->
+
+                <div class="forgot">
+
+                    <button
+                        id="forgotPassword"
+                        type="button"
+                    >
+
+                        ¿Olvidaste tu contraseña?
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     BOTÓN LOGIN
+                ========================================== -->
+
+                <button
+                    id="loginButton"
+                    class="main-button"
+                    type="submit"
+                >
+
+                    Iniciar sesión
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- =============================================
+                 DIVISOR
+            ============================================== -->
+
+            <div class="divider">
+
+                O continúa con
+
+            </div>
+
+
+
+            <!-- =============================================
+                 GOOGLE / APPLE
+            ============================================== -->
+
+            <div class="social-buttons">
+
+
+                <button
+                    id="googleLogin"
+                    class="social"
+                    type="button"
+                >
+
+                    <strong>
+                        G
+                    </strong>
+
+                    Google
+
+                </button>
+
+
+                <button
+                    id="appleLogin"
+                    class="social apple"
+                    type="button"
+                >
+
+                    ● Apple
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =============================================
+                 REGISTRO
+            ============================================== -->
+
+            <div class="register">
+
+                ¿No tienes una cuenta?
+
+                <a href="/registro">
+                    Crear cuenta
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="back-home">
+
+            <a href="/">
+
+                <span class="material-symbols-outlined">
+                    arrow_back
+                </span>
+
+                Volver a la página principal
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL RECUPERAR CONTRASEÑA
+========================================================= -->
+
+<div
+    id="recoveryModal"
+    class="modal"
+>
+
+
+    <div class="modal-content">
+
+
+        <!-- CERRAR -->
+
+        <button
+            id="closeRecovery"
+            type="button"
+            class="close-modal"
+            aria-label="Cerrar"
+        >
+
+            <span class="material-symbols-outlined">
+                close
+            </span>
+
+        </button>
+
+
+
+        <!-- HEADER -->
+
+        <div class="modal-header">
+
+
+            <div class="modal-icon">
+
+                <span class="material-symbols-outlined">
+                    lock_reset
+                </span>
+
+            </div>
+
+
+            <h2>
+
+                Recuperar contraseña
+
+            </h2>
+
+
+            <p>
+
+                Selecciona cómo quieres recibir
+                tu código de verificación.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MÉTODOS
+        ================================================== -->
+
+        <div class="methods">
+
+
+            <button
+                type="button"
+                class="method"
+                data-method="sms"
+            >
+
+                <span class="material-symbols-outlined">
+                    sms
+                </span>
+
+                SMS
+
+            </button>
+
+
+
+            <button
+                type="button"
+                class="method"
+                data-method="whatsapp"
+            >
+
+                <span class="material-symbols-outlined">
+                    chat
+                </span>
+
+                WhatsApp
+
+            </button>
+
+
+
+            <button
+                type="button"
+                class="method selected"
+                data-method="correo"
+            >
+
+                <span class="material-symbols-outlined">
+                    mail
+                </span>
+
+                Correo
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             CONTACTO
+        ================================================== -->
+
+        <div class="recovery-group">
+
+
+            <label id="contactLabel">
+
+                Correo electrónico
+
+            </label>
+
+
+            <div class="recovery-input-box">
+
+
+                <span
+                    id="contactIcon"
+                    class="material-symbols-outlined"
+                >
+                    mail
+                </span>
+
+
+                <input
+                    id="recoveryContact"
+                    type="email"
+                    placeholder="ejemplo@correo.com"
+                    autocomplete="email"
+                >
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ENVIAR CÓDIGO
+        ================================================== -->
+
+        <button
+            id="sendCodeButton"
+            class="recovery-button"
+            type="button"
+        >
+
+            Enviar código
+
+        </button>
+
+
+
+        <div
+            id="recoveryMessage"
+            class="recovery-message"
+        ></div>
+
+
+
+        <!-- =================================================
+             VERIFICAR Y CAMBIAR CONTRASEÑA
+        ================================================== -->
+
+        <div
+            id="verificationSection"
+            class="verification-section"
+        >
+
+
+            <div class="sent-card">
+
+                <strong id="sentTitle">
+
+                    Código enviado
+
+                </strong>
+
+
+                <span id="sentDescription">
+
+                    Ingresa el código de 6 dígitos
+                    que recibiste para continuar.
+
+                </span>
+
+            </div>
+
+
+
+            <!-- CÓDIGO -->
+
+            <div class="recovery-group">
+
+
+                <label for="verificationCode">
+
+                    Código de 6 dígitos
+
+                </label>
+
+
+                <div class="recovery-input-box">
+
+
+                    <span class="material-symbols-outlined">
+                        password
+                    </span>
+
+
+                    <input
+                        id="verificationCode"
+                        class="code-input"
+                        type="text"
+                        inputmode="numeric"
+                        maxlength="6"
+                        placeholder="000000"
+                        autocomplete="one-time-code"
+                    >
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- NUEVA CONTRASEÑA -->
+
+            <div class="recovery-group">
+
+
+                <label for="newPassword">
+
+                    Nueva contraseña
+
+                </label>
+
+
+                <div class="recovery-input-box new-password-wrapper">
+
+
+                    <span class="material-symbols-outlined">
+                        lock
+                    </span>
+
+
+                    <input
+                        id="newPassword"
+                        type="password"
+                        minlength="8"
+                        placeholder="Nueva contraseña"
+                        autocomplete="new-password"
+                    >
+
+
+                    <button
+                        id="toggleNewPassword"
+                        class="new-password-eye"
+                        type="button"
+                    >
+
+                        <span
+                            id="newPasswordIcon"
+                            class="material-symbols-outlined"
+                        >
+                            visibility
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+                <div class="password-help">
+
+                    Mínimo 8 caracteres,
+                    con al menos una letra y un número.
+
+                </div>
+
+            </div>
+
+
+
+            <button
+                id="changePasswordButton"
+                class="recovery-button"
+                type="button"
+            >
+
+                Cambiar contraseña
+
+            </button>
+
+
+        </div>
+
+
+
+        <button
+            id="cancelRecovery"
+            class="cancel-button"
+            type="button"
+        >
+
+            Cancelar
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+    /* =========================================================
+       ELEMENTOS LOGIN
+    ========================================================= */
+
+    const loginForm =
+        document.getElementById(
+            "loginForm"
+        );
+
+    const loginButton =
+        document.getElementById(
+            "loginButton"
+        );
+
+    const loginMessage =
+        document.getElementById(
+            "loginMessage"
+        );
+
+    const emailInput =
+        document.getElementById(
+            "email"
+        );
+
+    const passwordInput =
+        document.getElementById(
+            "password"
+        );
+
+
+    /* =========================================================
+       MOSTRAR / OCULTAR CONTRASEÑA
+    ========================================================= */
+
+    document
+        .getElementById(
+            "togglePassword"
+        )
+        .addEventListener(
+            "click",
+            function () {
+
+                const icon =
+                    document.getElementById(
+                        "eyeIcon"
+                    );
+
+
+                if (
+                    passwordInput.type
+                    ===
+                    "password"
+                ) {
+
+                    passwordInput.type =
+                        "text";
+
+                    icon.textContent =
+                        "visibility_off";
+
+                }
+                else {
+
+                    passwordInput.type =
+                        "password";
+
+                    icon.textContent =
+                        "visibility";
+
+                }
+
+            }
+        );
+
+
+    /* =========================================================
+       MOSTRAR MENSAJE LOGIN
+    ========================================================= */
+
+    function showLoginMessage(
+        text,
+        type
+    ) {
+
+        loginMessage.textContent =
+            text;
+
+        loginMessage.className =
+            "message show "
+            +
+            type;
+
+    }
+
+
+    function hideLoginMessage() {
+
+        loginMessage.textContent =
+            "";
+
+        loginMessage.className =
+            "message";
+
+    }
+
+
+    /* =========================================================
+       INICIAR SESIÓN REAL
+    ========================================================= */
+
+    loginForm.addEventListener(
+
+        "submit",
+
+        async function (
+            event
+        ) {
+
+            event.preventDefault();
+
+            hideLoginMessage();
+
+
+            const correo =
+                emailInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            const password =
+                passwordInput.value;
+
+
+            if (
+                !correo
+            ) {
+
+                showLoginMessage(
+                    "Ingresa tu correo electrónico.",
+                    "error"
+                );
+
+                emailInput.focus();
+
+                return;
+
+            }
+
+
+            if (
+                !password
+            ) {
+
+                showLoginMessage(
+                    "Ingresa tu contraseña.",
+                    "error"
+                );
+
+                passwordInput.focus();
+
+                return;
+
+            }
+
+
+            loginButton.disabled =
+                true;
+
+            loginButton.textContent =
+                "Iniciando sesión...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/login",
+                        {
+
+                            method:
+                                "POST",
+
+                            credentials:
+                                "same-origin",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body:
+                                JSON.stringify({
+
+                                    correo:
+                                        correo,
+
+                                    password:
+                                        password
+
+                                })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (
+                    !response.ok
+                    ||
+                    !data.ok
+                ) {
+
+                    throw new Error(
+
+                        data.mensaje
+                        ||
+                        "No fue posible iniciar sesión"
+
+                    );
+
+                }
+
+
+                showLoginMessage(
+                    data.mensaje
+                    ||
+                    "Inicio de sesión correcto.",
+                    "success"
+                );
+
+
+                const rol =
+                    String(
+                        data.rol
+                        ||
+                        data.usuario?.rol
+                        ||
+                        ""
+                    )
+                    .trim()
+                    .toLowerCase();
+
+
+                const destinos = {
+
+                    dueno:
+                        "/perfiles/dueno.html",
+
+                    dueño:
+                        "/perfiles/dueno.html",
+
+                    veterinario:
+                        "/perfiles/veterinario.html",
+
+                    proveedor:
+                        "/perfiles/proveedor.html",
+
+                    administrador:
+                        "/perfiles/administrador.html"
+
+                };
+
+
+                const destino =
+                    destinos[
+                        rol
+                    ];
+
+
+                if (
+                    !destino
+                ) {
+
+                    throw new Error(
+                        "El usuario inició sesión, pero su tipo de perfil no es válido."
+                    );
+
+                }
+
+
+                setTimeout(
+
+                    function () {
+
+                        window.location.href =
+                            destino;
+
+                    },
+
+                    350
+
+                );
+
+            }
+            catch (
+                error
+            ) {
+
+                showLoginMessage(
+                    error.message
+                    ||
+                    "No fue posible iniciar sesión.",
+                    "error"
+                );
+
+            }
+            finally {
+
+                loginButton.disabled =
+                    false;
+
+                loginButton.textContent =
+                    "Iniciar sesión";
+
+            }
+
+        }
+
+    );
+
+
+    /* =========================================================
+       GOOGLE
+    ========================================================= */
+
+    document
+        .getElementById(
+            "googleLogin"
+        )
+        .addEventListener(
+            "click",
+            function () {
+
+                window.location.href =
+                    "/auth/google";
+
+            }
+        );
+
+
+    /* =========================================================
+       APPLE
+       EL BACKEND ACTUAL NO TIENE UNA RUTA APPLE
+    ========================================================= */
+
+    document
+        .getElementById(
+            "appleLogin"
+        )
+        .addEventListener(
+            "click",
+            function () {
+
+                showLoginMessage(
+                    "El inicio de sesión con Apple todavía no está configurado en el servidor.",
+                    "info"
+                );
+
+            }
+        );
+
+
+    /* =========================================================
+       RECUPERACIÓN
+    ========================================================= */
+
+    const recoveryModal =
+        document.getElementById(
+            "recoveryModal"
+        );
+
+    const forgotPassword =
+        document.getElementById(
+            "forgotPassword"
+        );
+
+    const closeRecovery =
+        document.getElementById(
+            "closeRecovery"
+        );
+
+    const cancelRecovery =
+        document.getElementById(
+            "cancelRecovery"
+        );
+
+    const recoveryContact =
+        document.getElementById(
+            "recoveryContact"
+        );
+
+    const contactLabel =
+        document.getElementById(
+            "contactLabel"
+        );
+
+    const contactIcon =
+        document.getElementById(
+            "contactIcon"
+        );
+
+    const sendCodeButton =
+        document.getElementById(
+            "sendCodeButton"
+        );
+
+    const recoveryMessage =
+        document.getElementById(
+            "recoveryMessage"
+        );
+
+    const verificationSection =
+        document.getElementById(
+            "verificationSection"
+        );
+
+    const verificationCode =
+        document.getElementById(
+            "verificationCode"
+        );
+
+    const newPassword =
+        document.getElementById(
+            "newPassword"
+        );
+
+    const changePasswordButton =
+        document.getElementById(
+            "changePasswordButton"
+        );
+
+    const sentTitle =
+        document.getElementById(
+            "sentTitle"
+        );
+
+    const sentDescription =
+        document.getElementById(
+            "sentDescription"
+        );
+
+
+    let recoveryMethod =
+        "correo";
+
+
+    /* =========================================================
+       ABRIR
+    ========================================================= */
+
+    forgotPassword.addEventListener(
+
+        "click",
+
+        function () {
+
+            recoveryModal
+                .classList
+                .add(
+                    "open"
+                );
+
+
+            const loginEmail =
+                emailInput.value
+                    .trim();
+
+
+            if (
+                loginEmail
+            ) {
+
+                recoveryContact.value =
+                    loginEmail;
+
+            }
+
+        }
+
+    );
+
+
+    /* =========================================================
+       CERRAR
+    ========================================================= */
+
+    function closeRecoveryModal() {
+
+        recoveryModal
+            .classList
+            .remove(
+                "open"
+            );
+
+    }
+
+
+    closeRecovery.addEventListener(
+        "click",
+        closeRecoveryModal
+    );
+
+
+    cancelRecovery.addEventListener(
+        "click",
+        closeRecoveryModal
+    );
+
+
+    recoveryModal.addEventListener(
+
+        "click",
+
+        function (
+            event
+        ) {
+
+            if (
+                event.target
+                ===
+                recoveryModal
+            ) {
+
+                closeRecoveryModal();
+
+            }
+
+        }
+
+    );
+
+
+    /* =========================================================
+       MENSAJE RECUPERACIÓN
+    ========================================================= */
+
+    function showRecoveryMessage(
+        text,
+        type
+    ) {
+
+        recoveryMessage.textContent =
+            text;
+
+        recoveryMessage.className =
+            "recovery-message show "
+            +
+            type;
+
+    }
+
+
+    function clearRecoveryMessage() {
+
+        recoveryMessage.textContent =
+            "";
+
+        recoveryMessage.className =
+            "recovery-message";
+
+    }
+
+
+    /* =========================================================
+       CAMBIAR MÉTODO
+    ========================================================= */
+
+    document
+        .querySelectorAll(
+            ".method"
+        )
+        .forEach(
+
+            function (
+                button
+            ) {
+
+                button.addEventListener(
+
+                    "click",
+
+                    function () {
+
+                        document
+                            .querySelectorAll(
+                                ".method"
+                            )
+                            .forEach(
+                                function (
+                                    item
+                                ) {
+
+                                    item
+                                        .classList
+                                        .remove(
+                                            "selected"
+                                        );
+
+                                }
+                            );
+
+
+                        this
+                            .classList
+                            .add(
+                                "selected"
+                            );
+
+
+                        recoveryMethod =
+                            this.dataset.method;
+
+
+                        verificationSection
+                            .classList
+                            .remove(
+                                "show"
+                            );
+
+
+                        clearRecoveryMessage();
+
+
+                        if (
+                            recoveryMethod
+                            ===
+                            "correo"
+                        ) {
+
+                            contactLabel.textContent =
+                                "Correo electrónico";
+
+                            contactIcon.textContent =
+                                "mail";
+
+                            recoveryContact.type =
+                                "email";
+
+                            recoveryContact.placeholder =
+                                "ejemplo@correo.com";
+
+                            recoveryContact.autocomplete =
+                                "email";
+
+                        }
+                        else {
+
+                            contactLabel.textContent =
+                                "Número de teléfono";
+
+                            contactIcon.textContent =
+                                "call";
+
+                            recoveryContact.type =
+                                "tel";
+
+                            recoveryContact.placeholder =
+                                "55 1234 5678";
+
+                            recoveryContact.autocomplete =
+                                "tel";
+
+                        }
+
+                    }
+
+                );
+
+            }
+
+        );
+
+
+    /* =========================================================
+       ENVIAR CÓDIGO
+    ========================================================= */
+
+    sendCodeButton.addEventListener(
+
+        "click",
+
+        async function () {
+
+            clearRecoveryMessage();
+
+
+            const contacto =
+                recoveryContact.value
+                    .trim();
+
+
+            if (
+                !contacto
+            ) {
+
+                showRecoveryMessage(
+
+                    recoveryMethod
+                    ===
+                    "correo"
+
+                        ?
+                        "Ingresa tu correo electrónico."
+
+                        :
+                        "Ingresa tu número de teléfono.",
+
+                    "error"
+
+                );
+
+                recoveryContact.focus();
+
+                return;
+
+            }
+
+
+            sendCodeButton.disabled =
+                true;
+
+            sendCodeButton.textContent =
+                "Enviando código...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+
+                        "/api/recuperacion/enviar-codigo",
+
+                        {
+
+                            method:
+                                "POST",
+
+                            credentials:
+                                "same-origin",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body:
+                                JSON.stringify({
+
+                                    metodo:
+                                        recoveryMethod,
+
+                                    contacto:
+                                        contacto
+
+                                })
+
+                        }
+
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (
+                    !response.ok
+                    ||
+                    !data.ok
+                ) {
+
+                    throw new Error(
+
+                        data.mensaje
+                        ||
+                        "No fue posible enviar el código."
+
+                    );
+
+                }
+
+
+                showRecoveryMessage(
+                    data.mensaje
+                    ||
+                    "Código enviado correctamente.",
+                    "success"
+                );
+
+
+                verificationSection
+                    .classList
+                    .add(
+                        "show"
+                    );
+
+
+                let metodoTexto =
+                    "Correo";
+
+
+                if (
+                    recoveryMethod
+                    ===
+                    "sms"
+                ) {
+
+                    metodoTexto =
+                        "SMS";
+
+                }
+
+
+                if (
+                    recoveryMethod
+                    ===
+                    "whatsapp"
+                ) {
+
+                    metodoTexto =
+                        "WhatsApp";
+
+                }
+
+
+                sentTitle.textContent =
+                    "Código enviado por "
+                    +
+                    metodoTexto;
+
+
+                sentDescription.textContent =
+                    "Ingresa el código de 6 dígitos que recibiste para continuar.";
+
+
+                verificationCode.focus();
+
+            }
+            catch (
+                error
+            ) {
+
+                showRecoveryMessage(
+                    error.message
+                    ||
+                    "No fue posible enviar el código.",
+                    "error"
+                );
+
+            }
+            finally {
+
+                sendCodeButton.disabled =
+                    false;
+
+                sendCodeButton.textContent =
+                    "Enviar código";
+
+            }
+
+        }
+
+    );
+
+
+    /* =========================================================
+       SOLO NÚMEROS EN CÓDIGO
+    ========================================================= */
+
+    verificationCode.addEventListener(
+
+        "input",
+
+        function () {
+
+            this.value =
+                this.value
+                    .replace(
+                        /\D/g,
+                        ""
+                    )
+                    .slice(
+                        0,
+                        6
+                    );
+
+        }
+
+    );
+
+
+    /* =========================================================
+       MOSTRAR NUEVA CONTRASEÑA
+    ========================================================= */
+
+    document
+        .getElementById(
+            "toggleNewPassword"
+        )
+        .addEventListener(
+
+            "click",
+
+            function () {
+
+                const icon =
+                    document.getElementById(
+                        "newPasswordIcon"
+                    );
+
+
+                if (
+                    newPassword.type
+                    ===
+                    "password"
+                ) {
+
+                    newPassword.type =
+                        "text";
+
+                    icon.textContent =
+                        "visibility_off";
+
+                }
+                else {
+
+                    newPassword.type =
+                        "password";
+
+                    icon.textContent =
+                        "visibility";
+
+                }
+
+            }
+
+        );
+
+
+    /* =========================================================
+       CAMBIAR CONTRASEÑA
+    ========================================================= */
+
+    changePasswordButton.addEventListener(
+
+        "click",
+
+        async function () {
+
+            clearRecoveryMessage();
+
+
+            const contacto =
+                recoveryContact.value
+                    .trim();
+
+
+            const codigo =
+                verificationCode.value
+                    .trim();
+
+
+            const nuevaPassword =
+                newPassword.value;
+
+
+            if (
+                codigo.length
+                !==
+                6
+            ) {
+
+                showRecoveryMessage(
+                    "Ingresa el código de 6 dígitos.",
+                    "error"
+                );
+
+                verificationCode.focus();
+
+                return;
+
+            }
+
+
+            if (
+                nuevaPassword.length
+                <
+                8
+            ) {
+
+                showRecoveryMessage(
+                    "La contraseña debe tener mínimo 8 caracteres.",
+                    "error"
+                );
+
+                newPassword.focus();
+
+                return;
+
+            }
+
+
+            if (
+                !/[A-Za-z]/.test(
+                    nuevaPassword
+                )
+            ) {
+
+                showRecoveryMessage(
+                    "La contraseña debe contener al menos una letra.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (
+                !/\d/.test(
+                    nuevaPassword
+                )
+            ) {
+
+                showRecoveryMessage(
+                    "La contraseña debe contener al menos un número.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            changePasswordButton.disabled =
+                true;
+
+            changePasswordButton.textContent =
+                "Cambiando contraseña...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+
+                        "/api/recuperacion/cambiar-password",
+
+                        {
+
+                            method:
+                                "POST",
+
+                            credentials:
+                                "same-origin",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body:
+                                JSON.stringify({
+
+                                    metodo:
+                                        recoveryMethod,
+
+                                    contacto:
+                                        contacto,
+
+                                    codigo:
+                                        codigo,
+
+                                    nueva_password:
+                                        nuevaPassword
+
+                                })
+
+                        }
+
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (
+                    !response.ok
+                    ||
+                    !data.ok
+                ) {
+
+                    throw new Error(
+
+                        data.mensaje
+                        ||
+                        "No fue posible cambiar la contraseña."
+
+                    );
+
+                }
+
+
+                showRecoveryMessage(
+                    data.mensaje
+                    ||
+                    "Contraseña cambiada correctamente.",
+                    "success"
+                );
+
+
+                if (
+                    recoveryMethod
+                    ===
+                    "correo"
+                ) {
+
+                    emailInput.value =
+                        contacto;
+
+                }
+
+
+                passwordInput.value =
+                    "";
+
+
+                setTimeout(
+
+                    function () {
+
+                        closeRecoveryModal();
+
+                        passwordInput.focus();
+
+                    },
+
+                    1300
+
+                );
+
+            }
+            catch (
+                error
+            ) {
+
+                showRecoveryMessage(
+                    error.message
+                    ||
+                    "No fue posible cambiar la contraseña.",
+                    "error"
+                );
+
+            }
+            finally {
+
+                changePasswordButton.disabled =
+                    false;
+
+                changePasswordButton.textContent =
+                    "Cambiar contraseña";
+
+            }
+
+        }
+
+    );
+
+
+</script>
+
+
+</body>
+
+</html>

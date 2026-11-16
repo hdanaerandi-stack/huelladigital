@@ -1,0 +1,24 @@
+﻿.git/
+.github/
+.env
+.env.*
+!.env.example
+*.db
+*.sqlite
+*.sqlite3
+*.bak
+*.backup
+*.log
+.venv/
+venv/
+env/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+perfiles/
+uploads/
+backend/uploads/
+*.respaldo_*
+
+# Respaldos adicionales del backend
+backend/*.antes_*

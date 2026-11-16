@@ -1,0 +1,1759 @@
+/* ============================================================
+   HUELLA · TEMAS GLOBALES DEL DUEÑO
+   VERSIÓN 30
+============================================================ */
+
+
+/* ============================================================
+   VARIABLES NORMALES
+============================================================ */
+
+:root{
+
+    --huella-bg:#f4f8fa;
+    --huella-bg-image:none;
+
+    --huella-sidebar:#eef3f5;
+    --huella-topbar:#ffffff;
+
+    --huella-card:#ffffff;
+    --huella-card-soft:#f7fafb;
+
+    --huella-title:#00303c;
+    --huella-text:#172126;
+    --huella-muted:#687377;
+
+    --huella-border:#dfe7e9;
+
+    --huella-primary:#00303c;
+    --huella-primary-text:#ffffff;
+
+    --huella-accent:#b17b13;
+
+    --huella-shadow:
+        0 8px 28px
+        rgba(0,35,45,.07);
+
+}
+
+
+/* ============================================================
+   01 · DISEÑO NORMAL
+============================================================ */
+
+html[data-huella-theme="normal"]{
+
+    --huella-bg:#f4f8fa;
+
+    --huella-bg-image:
+        none;
+
+    --huella-sidebar:#eef3f5;
+
+    --huella-topbar:#ffffff;
+
+    --huella-card:#ffffff;
+
+    --huella-card-soft:#f7fafb;
+
+    --huella-title:#00303c;
+
+    --huella-text:#172126;
+
+    --huella-muted:#687377;
+
+    --huella-border:#dfe7e9;
+
+    --huella-primary:#00303c;
+
+    --huella-primary-text:#ffffff;
+
+    --huella-accent:#b17b13;
+
+}
+
+
+/* ============================================================
+   02 · NEGRO PROFUNDO
+============================================================ */
+
+html[data-huella-theme="negro-profundo"]{
+
+    --huella-bg:#030405;
+
+    --huella-bg-image:
+
+        radial-gradient(
+            circle at 82% 8%,
+            rgba(215,166,77,.14),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            145deg,
+            #020304,
+            #080b0d 55%,
+            #020304
+        );
+
+    --huella-sidebar:
+        rgba(6,8,9,.96);
+
+    --huella-topbar:
+        rgba(8,10,11,.94);
+
+    --huella-card:
+        rgba(16,19,21,.94);
+
+    --huella-card-soft:
+        rgba(23,27,30,.92);
+
+    --huella-title:#ffffff;
+
+    --huella-text:#f5f7f7;
+
+    --huella-muted:#b5c0c4;
+
+    --huella-border:
+        rgba(255,255,255,.12);
+
+    --huella-primary:#d3a14c;
+
+    --huella-primary-text:#090704;
+
+    --huella-accent:#f0bc62;
+
+    --huella-shadow:
+        0 14px 38px
+        rgba(0,0,0,.42);
+
+}
+
+
+/* ============================================================
+   03 · AZUL PROFUNDO
+============================================================ */
+
+html[data-huella-theme="futurista"]{
+
+    --huella-bg:#020c1e;
+
+    --huella-bg-image:
+
+        linear-gradient(
+            rgba(0,10,35,.48),
+            rgba(0,12,38,.74)
+        ),
+
+        url("./tema-azul-profundo.png");
+
+    --huella-sidebar:
+        rgba(4,16,37,.91);
+
+    --huella-topbar:
+        rgba(6,20,45,.88);
+
+    --huella-card:
+        rgba(9,29,60,.82);
+
+    --huella-card-soft:
+        rgba(14,42,81,.75);
+
+    --huella-title:#ffffff;
+
+    --huella-text:#eff7ff;
+
+    --huella-muted:#b5cce4;
+
+    --huella-border:
+        rgba(105,176,255,.27);
+
+    --huella-primary:#ddb34f;
+
+    --huella-primary-text:#061227;
+
+    --huella-accent:#ffd66f;
+
+    --huella-shadow:
+        0 15px 40px
+        rgba(0,10,40,.38);
+
+}
+
+
+/* ============================================================
+   04 · NEÓN BIOMÉTRICO
+============================================================ */
+
+html[data-huella-theme="futurista-neon"]{
+
+    --huella-bg:#030818;
+
+    --huella-bg-image:
+
+        linear-gradient(
+            rgba(1,8,30,.44),
+            rgba(1,9,32,.70)
+        ),
+
+        url("./tema-neon-biometrico.png");
+
+    --huella-sidebar:
+        rgba(3,10,29,.91);
+
+    --huella-topbar:
+        rgba(5,15,39,.87);
+
+    --huella-card:
+        rgba(8,24,61,.80);
+
+    --huella-card-soft:
+        rgba(10,37,80,.73);
+
+    --huella-title:#ffffff;
+
+    --huella-text:#effcff;
+
+    --huella-muted:#b9d9ea;
+
+    --huella-border:
+        rgba(50,218,255,.31);
+
+    --huella-primary:#27d8ff;
+
+    --huella-primary-text:#001219;
+
+    --huella-accent:#6ceaff;
+
+    --huella-shadow:
+        0 15px 42px
+        rgba(0,184,255,.15);
+
+}
+
+
+/* ============================================================
+   05 · DORADO NOCTURNO
+============================================================ */
+
+html[data-huella-theme="futurista-dorado"]{
+
+    --huella-bg:#080603;
+
+    --huella-bg-image:
+
+        linear-gradient(
+            rgba(10,7,3,.48),
+            rgba(12,8,3,.73)
+        ),
+
+        url("./tema-dorado-nocturno.png");
+
+    --huella-sidebar:
+        rgba(14,10,5,.94);
+
+    --huella-topbar:
+        rgba(16,11,6,.90);
+
+    --huella-card:
+        rgba(27,20,11,.87);
+
+    --huella-card-soft:
+        rgba(40,30,15,.82);
+
+    --huella-title:#fff7e8;
+
+    --huella-text:#fff9ed;
+
+    --huella-muted:#dacbac;
+
+    --huella-border:
+        rgba(228,180,88,.25);
+
+    --huella-primary:#daa64d;
+
+    --huella-primary-text:#150e03;
+
+    --huella-accent:#ffc969;
+
+    --huella-shadow:
+        0 16px 42px
+        rgba(0,0,0,.42);
+
+}
+
+
+/* ============================================================
+   06 · MINIMAL PASTEL
+============================================================ */
+
+html[data-huella-theme="minimal-pastel"]{
+
+    --huella-bg:#eaf3fa;
+
+    --huella-bg-image:
+
+        radial-gradient(
+            circle at 80% 8%,
+            rgba(197,153,224,.25),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            145deg,
+            #e4f6fb,
+            #eef0ff 47%,
+            #f4eafa
+        );
+
+    --huella-sidebar:
+        rgba(237,247,251,.96);
+
+    --huella-topbar:
+        rgba(249,250,255,.95);
+
+    --huella-card:
+        rgba(255,255,255,.88);
+
+    --huella-card-soft:
+        rgba(239,243,253,.91);
+
+    --huella-title:#344864;
+
+    --huella-text:#30384e;
+
+    --huella-muted:#747d94;
+
+    --huella-border:#d9dfeb;
+
+    --huella-primary:#7788ba;
+
+    --huella-primary-text:#ffffff;
+
+    --huella-accent:#a574aa;
+
+    --huella-shadow:
+        0 10px 28px
+        rgba(100,110,160,.12);
+
+}
+
+
+/* ============================================================
+   07 · OCÉANO TURQUESA
+============================================================ */
+
+html[data-huella-theme="oceano-turquesa"]{
+
+    --huella-bg:#dff7f6;
+
+    --huella-bg-image:
+
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(255,255,255,.68),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            145deg,
+            #bceeed 0%,
+            #52cbd0 42%,
+            #087c8b 100%
+        );
+
+    --huella-sidebar:
+        rgba(220,248,247,.94);
+
+    --huella-topbar:
+        rgba(245,255,255,.93);
+
+    --huella-card:
+        rgba(255,255,255,.84);
+
+    --huella-card-soft:
+        rgba(225,249,248,.90);
+
+    --huella-title:#034b55;
+
+    --huella-text:#123d43;
+
+    --huella-muted:#4c747a;
+
+    --huella-border:#b9dcdd;
+
+    --huella-primary:#057c83;
+
+    --huella-primary-text:#ffffff;
+
+    --huella-accent:#14a0a6;
+
+    --huella-shadow:
+        0 10px 30px
+        rgba(0,104,113,.12);
+
+}
+
+
+/* ============================================================
+   08 · COSTA NATURAL
+============================================================ */
+
+html[data-huella-theme="costa-natural"]{
+
+    --huella-bg:#eff1e8;
+
+    --huella-bg-image:
+
+        linear-gradient(
+            135deg,
+            #dcecf0 0%,
+            #f1ede1 48%,
+            #e3e8db 100%
+        );
+
+    --huella-sidebar:
+        rgba(232,240,237,.96);
+
+    --huella-topbar:
+        rgba(251,250,245,.95);
+
+    --huella-card:
+        rgba(255,255,250,.89);
+
+    --huella-card-soft:#f2f5ed;
+
+    --huella-title:#29483c;
+
+    --huella-text:#35443c;
+
+    --huella-muted:#6e7b73;
+
+    --huella-border:#dbe2d8;
+
+    --huella-primary:#496b5d;
+
+    --huella-primary-text:#ffffff;
+
+    --huella-accent:#9a7b48;
+
+    --huella-shadow:
+        0 10px 28px
+        rgba(64,90,75,.10);
+
+}
+
+
+/* ============================================================
+   09 · BOSQUE VERDE
+============================================================ */
+
+html[data-huella-theme="bosque-verde"]{
+
+    --huella-bg:#07150f;
+
+    --huella-bg-image:
+
+        radial-gradient(
+            circle at 78% 10%,
+            rgba(92,170,107,.19),
+            transparent 32%
+        ),
+
+        linear-gradient(
+            145deg,
+            #06130d,
+            #12301e 52%,
+            #0b1f15
+        );
+
+    --huella-sidebar:
+        rgba(7,25,17,.95);
+
+    --huella-topbar:
+        rgba(9,30,20,.91);
+
+    --huella-card:
+        rgba(15,42,28,.87);
+
+    --huella-card-soft:
+        rgba(23,57,39,.83);
+
+    --huella-title:#ffffff;
+
+    --huella-text:#eff9f2;
+
+    --huella-muted:#b9d1c1;
+
+    --huella-border:
+        rgba(129,194,149,.21);
+
+    --huella-primary:#78bd8c;
+
+    --huella-primary-text:#071e10;
+
+    --huella-accent:#afd591;
+
+    --huella-shadow:
+        0 14px 35px
+        rgba(0,0,0,.30);
+
+}
+
+
+/* ============================================================
+   10 · BROTE OLIVA
+============================================================ */
+
+html[data-huella-theme="brote-oliva"]{
+
+    --huella-bg:#eff0e4;
+
+    --huella-bg-image:
+
+        radial-gradient(
+            circle at 80% 5%,
+            rgba(211,187,102,.28),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            145deg,
+            #f2f0df,
+            #dce2c2 55%,
+            #c7cf9f
+        );
+
+    --huella-sidebar:
+        rgba(237,239,222,.96);
+
+    --huella-topbar:
+        rgba(250,249,239,.95);
+
+    --huella-card:
+        rgba(255,255,248,.90);
+
+    --huella-card-soft:#f0f1e1;
+
+    --huella-title:#4d5935;
+
+    --huella-text:#404832;
+
+    --huella-muted:#727a63;
+
+    --huella-border:#daddc8;
+
+    --huella-primary:#677844;
+
+    --huella-primary-text:#ffffff;
+
+    --huella-accent:#a49455;
+
+    --huella-shadow:
+        0 10px 28px
+        rgba(80,90,60,.10);
+
+}
+
+
+/* ============================================================
+   11 · MI DISEÑO
+============================================================ */
+
+html[data-huella-theme="personalizado"]{
+
+    --huella-bg:
+        var(
+            --huella-custom-bg,
+            #02060a
+        );
+
+    --huella-bg-image:
+
+        linear-gradient(
+            rgba(0,0,0,.45),
+            rgba(0,0,0,.62)
+        ),
+
+        var(
+            --huella-custom-image,
+            none
+        );
+
+    --huella-sidebar:
+        color-mix(
+            in srgb,
+            var(
+                --huella-custom-panel,
+                #091016
+            )
+            93%,
+            transparent
+        );
+
+    --huella-topbar:
+        color-mix(
+            in srgb,
+            var(
+                --huella-custom-panel,
+                #091016
+            )
+            89%,
+            transparent
+        );
+
+    --huella-card:
+        color-mix(
+            in srgb,
+            var(
+                --huella-custom-panel,
+                #091016
+            )
+            91%,
+            transparent
+        );
+
+    --huella-card-soft:
+        color-mix(
+            in srgb,
+            var(
+                --huella-custom-panel,
+                #091016
+            )
+            80%,
+            white 5%
+        );
+
+    --huella-title:
+        var(
+            --huella-custom-text,
+            #ffffff
+        );
+
+    --huella-text:
+        var(
+            --huella-custom-text,
+            #f7fbff
+        );
+
+    --huella-muted:#c5ced4;
+
+    --huella-border:
+        rgba(255,255,255,.17);
+
+    --huella-primary:
+        var(
+            --huella-custom-accent,
+            #61d8ff
+        );
+
+    --huella-primary-text:#021118;
+
+    --huella-accent:
+        var(
+            --huella-custom-accent,
+            #61d8ff
+        );
+
+}
+
+
+/* ============================================================
+   FONDO GLOBAL
+============================================================ */
+
+html{
+
+    min-height:100%;
+
+    background:
+        var(
+            --huella-bg
+        ) !important;
+
+}
+
+
+body{
+
+    min-height:100vh !important;
+
+    background-color:
+        var(
+            --huella-bg
+        ) !important;
+
+    background-image:
+        var(
+            --huella-bg-image
+        ) !important;
+
+    background-size:
+        cover !important;
+
+    background-position:
+        center !important;
+
+    background-repeat:
+        no-repeat !important;
+
+    background-attachment:
+        fixed !important;
+
+    color:
+        var(
+            --huella-text
+        ) !important;
+
+}
+
+
+/* ============================================================
+   LETRAS MÁS GRANDES
+============================================================ */
+
+html{
+
+    font-size:
+        16px !important;
+
+}
+
+
+body{
+
+    font-size:
+        15px !important;
+
+    line-height:
+        1.5 !important;
+
+}
+
+
+/* SIDEBAR */
+
+.sidebar a,
+.sidebar button,
+.sidebar .menu a,
+.sidebar .menu button{
+
+    font-size:
+        14px !important;
+
+    line-height:
+        1.35 !important;
+
+    font-weight:
+        600 !important;
+
+}
+
+
+.sidebar a div,
+.sidebar button div{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.menu-title{
+
+    font-size:
+        11px !important;
+
+    letter-spacing:
+        .8px !important;
+
+}
+
+
+.role{
+
+    font-size:
+        12px !important;
+
+}
+
+
+/* TEXTO NORMAL */
+
+.subtitle,
+.panel-description,
+.section-description,
+.hero p,
+.card p,
+.pet-body p,
+.service p,
+.notice p,
+.alert p,
+.consultation p{
+
+    font-size:
+        13.5px !important;
+
+    line-height:
+        1.55 !important;
+
+}
+
+
+/* TEXTOS PEQUEÑOS */
+
+.card small,
+.status small,
+.stat small,
+.info-box small,
+.detail small,
+.data-card small{
+
+    font-size:
+        11px !important;
+
+}
+
+
+/* BOTONES */
+
+button,
+.primary,
+.secondary,
+.btn-primary,
+.btn-secondary,
+.edit,
+.request-button{
+
+    font-size:
+        13px !important;
+
+}
+
+
+/* FORMULARIOS */
+
+input,
+select,
+textarea{
+
+    font-size:
+        14px !important;
+
+}
+
+
+/* TABLAS */
+
+table th{
+
+    font-size:
+        12px !important;
+
+}
+
+
+table td{
+
+    font-size:
+        13px !important;
+
+}
+
+
+/* ============================================================
+   SIDEBAR GLOBAL
+============================================================ */
+
+.sidebar{
+
+    background:
+        var(
+            --huella-sidebar
+        ) !important;
+
+    border-color:
+        var(
+            --huella-border
+        ) !important;
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+}
+
+
+.sidebar h1,
+.sidebar h2,
+.sidebar h3,
+.sidebar .brand h2{
+
+    color:
+        var(
+            --huella-title
+        ) !important;
+
+}
+
+
+.sidebar small,
+.sidebar .brand small{
+
+    color:
+        var(
+            --huella-accent
+        ) !important;
+
+}
+
+
+.sidebar a,
+.sidebar button{
+
+    color:
+        var(
+            --huella-muted
+        ) !important;
+
+}
+
+
+.sidebar a:hover,
+.sidebar button:hover,
+.sidebar a.active,
+.sidebar button.active{
+
+    background:
+        var(
+            --huella-card
+        ) !important;
+
+    color:
+        var(
+            --huella-title
+        ) !important;
+
+    box-shadow:
+        0 6px 20px
+        rgba(0,0,0,.08) !important;
+
+}
+
+
+/* ============================================================
+   TOPBAR
+============================================================ */
+
+.topbar{
+
+    background:
+        var(
+            --huella-topbar
+        ) !important;
+
+    border-color:
+        var(
+            --huella-border
+        ) !important;
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+}
+
+
+/* ============================================================
+   CONTENIDO
+============================================================ */
+
+.app,
+.main,
+.content,
+.section{
+
+    background:
+        transparent !important;
+
+    color:
+        var(
+            --huella-text
+        ) !important;
+
+}
+
+
+/* ============================================================
+   TÍTULOS
+============================================================ */
+
+h1,
+h2,
+h3,
+h4,
+.title,
+.panel-title,
+.section-title,
+.pet-body h3,
+.pet-info h2,
+.card h2,
+.service h3,
+.modal-content h2,
+.modal-box h2{
+
+    color:
+        var(
+            --huella-title
+        ) !important;
+
+}
+
+
+/* ============================================================
+   TEXTOS
+============================================================ */
+
+p,
+.subtitle,
+.panel-description,
+.section-description{
+
+    color:
+        var(
+            --huella-muted
+        );
+
+}
+
+
+/* ============================================================
+   TARJETAS
+============================================================ */
+
+.panel,
+.card,
+.profile-card,
+.pet,
+.service,
+.status,
+.stat,
+.data-card,
+.consultation,
+.appointment,
+.study-card,
+.vaccine-card,
+.recipe-card,
+.membership-card,
+.gps-card,
+.info-box,
+.detail-box,
+.row,
+.theme-choice,
+.custom-box,
+.manual-pet-photo,
+.modal-content,
+.modal-box{
+
+    background:
+        var(
+            --huella-card
+        ) !important;
+
+    color:
+        var(
+            --huella-text
+        ) !important;
+
+    border-color:
+        var(
+            --huella-border
+        ) !important;
+
+    box-shadow:
+        var(
+            --huella-shadow
+        ) !important;
+
+}
+
+
+/* ============================================================
+   ZONAS SUAVES
+============================================================ */
+
+.pet-top,
+.search input,
+.search-box,
+.consultation-details,
+.form-box,
+.detail,
+.custom-fields,
+.clinical-form{
+
+    background:
+        var(
+            --huella-card-soft
+        ) !important;
+
+    border-color:
+        var(
+            --huella-border
+        ) !important;
+
+}
+
+
+/* ============================================================
+   FORMULARIOS
+============================================================ */
+
+input,
+select,
+textarea{
+
+    background:
+        var(
+            --huella-card-soft
+        ) !important;
+
+    color:
+        var(
+            --huella-text
+        ) !important;
+
+    border-color:
+        var(
+            --huella-border
+        ) !important;
+
+}
+
+
+input::placeholder,
+textarea::placeholder{
+
+    color:
+        var(
+            --huella-muted
+        ) !important;
+
+}
+
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    border-color:
+        var(
+            --huella-accent
+        ) !important;
+
+    outline:none !important;
+
+}
+
+
+/* ============================================================
+   BOTONES PRINCIPALES
+============================================================ */
+
+.primary,
+.btn-primary,
+.edit,
+.request-button,
+button.primary{
+
+    background:
+        var(
+            --huella-primary
+        ) !important;
+
+    color:
+        var(
+            --huella-primary-text
+        ) !important;
+
+    border-color:
+        transparent !important;
+
+}
+
+
+/* ============================================================
+   BOTONES SECUNDARIOS
+============================================================ */
+
+.secondary,
+.btn-secondary,
+.back,
+.icon,
+.photo-button,
+.btn-cancel{
+
+    background:
+        var(
+            --huella-card-soft
+        ) !important;
+
+    color:
+        var(
+            --huella-title
+        ) !important;
+
+    border-color:
+        var(
+            --huella-border
+        ) !important;
+
+}
+
+
+/* ============================================================
+   BADGES
+============================================================ */
+
+.badge,
+.eyebrow{
+
+    background:
+        var(
+            --huella-primary
+        ) !important;
+
+    color:
+        var(
+            --huella-primary-text
+        ) !important;
+
+}
+
+
+/* ============================================================
+   TABLAS
+============================================================ */
+
+table{
+
+    color:
+        var(
+            --huella-text
+        ) !important;
+
+}
+
+
+table thead,
+table th{
+
+    background:
+        var(
+            --huella-card-soft
+        ) !important;
+
+    color:
+        var(
+            --huella-title
+        ) !important;
+
+}
+
+
+table td{
+
+    color:
+        var(
+            --huella-text
+        ) !important;
+
+    border-color:
+        var(
+            --huella-border
+        ) !important;
+
+}
+
+
+/* ============================================================
+   MODALES
+============================================================ */
+
+.modal{
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+}
+
+
+.close-button,
+.modal-close{
+
+    background:
+        var(
+            --huella-card-soft
+        ) !important;
+
+    color:
+        var(
+            --huella-title
+        ) !important;
+
+}
+
+
+/* ============================================================
+   MATERIAL ICONS
+============================================================ */
+
+.material-symbols-outlined{
+
+    font-variation-settings:
+        "FILL" 0,
+        "wght" 400,
+        "GRAD" 0,
+        "opsz" 24;
+
+}
+
+
+/* ============================================================
+   AJUSTES · DISEÑO NORMAL
+============================================================ */
+
+.preview.normal{
+
+    background:
+        #f4f8fa !important;
+
+}
+
+
+.preview.normal::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+    bottom:0;
+
+    width:29%;
+
+    background:#eaf1f3;
+
+}
+
+
+.preview.normal::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:36%;
+    right:8%;
+
+    top:18px;
+
+    height:24px;
+
+    border-radius:8px;
+
+    background:#ffffff;
+
+    box-shadow:
+        0 36px 0 #ffffff;
+
+}
+
+
+/* ============================================================
+   AJUSTES · NEGRO PROFUNDO
+============================================================ */
+
+.preview.ref-black,
+.preview.negro-profundo{
+
+    background:
+
+        radial-gradient(
+            circle at 83% 15%,
+            rgba(218,169,79,.23),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            145deg,
+            #020304,
+            #111518
+        ) !important;
+
+}
+
+
+/* ============================================================
+   AJUSTES · AZUL PROFUNDO
+============================================================ */
+
+.preview.ref-blue{
+
+    background-image:
+
+        linear-gradient(
+            rgba(0,18,48,.05),
+            rgba(0,18,48,.05)
+        ),
+
+        url("./tema-azul-profundo.png") !important;
+
+    background-size:
+        cover !important;
+
+    background-position:
+        center !important;
+
+}
+
+
+/* ============================================================
+   AJUSTES · NEÓN BIOMÉTRICO
+============================================================ */
+
+.preview.ref-neon{
+
+    background-image:
+
+        linear-gradient(
+            rgba(0,8,30,.03),
+            rgba(0,8,30,.03)
+        ),
+
+        url("./tema-neon-biometrico.png") !important;
+
+    background-size:
+        cover !important;
+
+    background-position:
+        center !important;
+
+}
+
+
+/* ============================================================
+   AJUSTES · DORADO NOCTURNO
+============================================================ */
+
+.preview.ref-gold{
+
+    background-image:
+
+        linear-gradient(
+            rgba(10,7,4,.03),
+            rgba(10,7,4,.03)
+        ),
+
+        url("./tema-dorado-nocturno.png") !important;
+
+    background-size:
+        cover !important;
+
+    background-position:
+        center !important;
+
+}
+
+
+/* ============================================================
+   AJUSTES · MINIMAL PASTEL
+============================================================ */
+
+.preview.minimal-pastel,
+.preview.ref-minimal{
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #8bd8ed 0 22%,
+            #c2a2df 22% 44%,
+            #9c7bce 44% 56%,
+            #3f4158 56% 100%
+        ) !important;
+
+}
+
+
+/* ============================================================
+   AJUSTES · OCÉANO TURQUESA
+============================================================ */
+
+.preview.oceano-turquesa,
+.preview.ref-oceano{
+
+    background:
+
+        radial-gradient(
+            circle at 35% 25%,
+            rgba(255,255,255,.65),
+            transparent 20%
+        ),
+
+        linear-gradient(
+            145deg,
+            #8fe8e8,
+            #2ac3cb 45%,
+            #047185
+        ) !important;
+
+}
+
+
+/* ============================================================
+   AJUSTES · COSTA NATURAL
+============================================================ */
+
+.preview.costa-natural,
+.preview.ref-costa{
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #89c5df 0 30%,
+            #d6ddd1 30% 58%,
+            #b8a47b 58% 75%,
+            #5d5c43 75% 100%
+        ) !important;
+
+}
+
+
+/* ============================================================
+   AJUSTES · BOSQUE VERDE
+============================================================ */
+
+.preview.bosque-verde,
+.preview.ref-bosque{
+
+    background:
+
+        radial-gradient(
+            circle at 30% 30%,
+            #558e50,
+            transparent 28%
+        ),
+
+        linear-gradient(
+            145deg,
+            #163b22,
+            #477743,
+            #0d2919
+        ) !important;
+
+}
+
+
+/* ============================================================
+   AJUSTES · BROTE OLIVA
+============================================================ */
+
+.preview.brote-oliva,
+.preview.ref-oliva{
+
+    background:
+
+        radial-gradient(
+            circle at 35% 32%,
+            #c1c949,
+            transparent 20%
+        ),
+
+        linear-gradient(
+            145deg,
+            #4f5518,
+            #9ba540 48%,
+            #d5ba71
+        ) !important;
+
+}
+
+
+/* ============================================================
+   AJUSTES · TARJETAS
+============================================================ */
+
+.theme-choice{
+
+    border:
+        2px solid
+        var(
+            --huella-border
+        ) !important;
+
+}
+
+
+.theme-choice.selected{
+
+    border-color:
+        var(
+            --huella-primary
+        ) !important;
+
+    box-shadow:
+        0 0 0 4px
+        color-mix(
+            in srgb,
+            var(
+                --huella-primary
+            )
+            15%,
+            transparent
+        ) !important;
+
+}
+
+
+.theme-choice strong{
+
+    color:
+        var(
+            --huella-title
+        ) !important;
+
+    font-size:
+        15px !important;
+
+}
+
+
+.theme-choice small{
+
+    color:
+        var(
+            --huella-muted
+        ) !important;
+
+    font-size:
+        12px !important;
+
+    line-height:
+        1.4 !important;
+
+}
+
+
+/* ============================================================
+   TELEMEDICINA
+============================================================ */
+
+.video-room,
+.huella-call,
+.call-stage{
+
+    color:#ffffff;
+
+}
+
+
+video{
+
+    background:#071f25;
+
+}
+
+
+/* ============================================================
+   ANIMACIONES
+============================================================ */
+
+html[data-huella-motion="on"]
+.card,
+
+html[data-huella-motion="on"]
+.panel,
+
+html[data-huella-motion="on"]
+.service,
+
+html[data-huella-motion="on"]
+.pet,
+
+html[data-huella-motion="on"]
+button{
+
+    transition:
+
+        background .22s ease,
+
+        color .22s ease,
+
+        border-color .22s ease,
+
+        box-shadow .22s ease,
+
+        transform .22s ease;
+
+}
+
+
+html[data-huella-motion="off"] *,
+html[data-huella-motion="off"] *::before,
+html[data-huella-motion="off"] *::after{
+
+    animation:
+        none !important;
+
+    transition:
+        none !important;
+
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media(
+    max-width:700px
+){
+
+    body{
+
+        font-size:
+            14px !important;
+
+    }
+
+
+    .sidebar a,
+    .sidebar button{
+
+        font-size:
+            13px !important;
+
+    }
+
+
+    .title{
+
+        font-size:
+            clamp(
+                30px,
+                8vw,
+                38px
+            ) !important;
+
+    }
+
+}

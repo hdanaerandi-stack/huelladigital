@@ -1,0 +1,172 @@
+/* HUELLA V17 · Tema garantizado para módulos del Dueño/Tutor */
+
+html[data-huella-role="dueno"][data-huella-theme="futurista"]{
+  --dm-bg:#071426;--dm-bg2:#0c2744;--dm-side:#061426;--dm-top:#0b2036;
+  --dm-panel:#102b48;--dm-panel2:#183c61;--dm-text:#eef7ff;--dm-muted:#adc3d7;
+  --dm-accent:#5db8ff;--dm-accent2:#e8c989;--dm-line:rgba(102,190,255,.25);--dm-link:#8bd5ff;--dm-btntext:#06131e;
+}
+html[data-huella-role="dueno"][data-huella-theme="futurista-neon"]{
+  --dm-bg:#03101e;--dm-bg2:#082842;--dm-side:#03111f;--dm-top:#05243b;
+  --dm-panel:#082944;--dm-panel2:#0d4168;--dm-text:#effbff;--dm-muted:#afd4e3;
+  --dm-accent:#2dd6ff;--dm-accent2:#75ebff;--dm-line:rgba(55,216,255,.28);--dm-link:#86efff;--dm-btntext:#03121b;
+}
+html[data-huella-role="dueno"][data-huella-theme="futurista-dorado"]{
+  --dm-bg:#130f0a;--dm-bg2:#281e14;--dm-side:#15100c;--dm-top:#221a13;
+  --dm-panel:#282018;--dm-panel2:#3c3024;--dm-text:#faf2e5;--dm-muted:#d7c6ad;
+  --dm-accent:#c99349;--dm-accent2:#f0cf86;--dm-line:rgba(224,180,102,.25);--dm-link:#f2cf86;--dm-btntext:#171006;
+}
+html[data-huella-role="dueno"][data-huella-theme="minimal-pastel"]{
+  --dm-bg:#494d60;--dm-bg2:#585d72;--dm-side:#3e4253;--dm-top:#53586c;
+  --dm-panel:#5b6076;--dm-panel2:#666b82;--dm-text:#fcfbff;--dm-muted:#dedbf0;
+  --dm-accent:#8fd1e8;--dm-accent2:#cfafe9;--dm-line:rgba(238,232,255,.25);--dm-link:#bcecff;--dm-btntext:#303342;
+}
+html[data-huella-role="dueno"][data-huella-theme="oceano-turquesa"]{
+  --dm-bg:#03192b;--dm-bg2:#06374b;--dm-side:#021624;--dm-top:#052d40;
+  --dm-panel:#074058;--dm-panel2:#075a70;--dm-text:#f1fbfc;--dm-muted:#b5dae0;
+  --dm-accent:#0fb0c5;--dm-accent2:#74d2dc;--dm-line:rgba(105,211,221,.27);--dm-link:#8eeaf1;--dm-btntext:#03222c;
+}
+html[data-huella-role="dueno"][data-huella-theme="costa-natural"]{
+  --dm-bg:#e9eef0;--dm-bg2:#f4f3ee;--dm-side:#dce7eb;--dm-top:#f7f7f3;
+  --dm-panel:#ffffff;--dm-panel2:#eef2ef;--dm-text:#302715;--dm-muted:#6d665a;
+  --dm-accent:#6599bf;--dm-accent2:#879500;--dm-line:rgba(89,119,146,.25);--dm-link:#557e9d;--dm-btntext:#fff;
+}
+html[data-huella-role="dueno"][data-huella-theme="bosque-verde"]{
+  --dm-bg:#dbe7e3;--dm-bg2:#edf3ef;--dm-side:#1b301a;--dm-top:#f6faf6;
+  --dm-panel:#f8fbf8;--dm-panel2:#edf5ee;--dm-text:#1b3019;--dm-muted:#55705d;
+  --dm-accent:#47713a;--dm-accent2:#9ab563;--dm-line:rgba(52,84,42,.25);--dm-link:#3e6834;--dm-btntext:#fff;
+}
+html[data-huella-role="dueno"][data-huella-theme="brote-oliva"]{
+  --dm-bg:#041323;--dm-bg2:#0b2136;--dm-side:#03111f;--dm-top:#081b2d;
+  --dm-panel:#0a2037;--dm-panel2:#102b47;--dm-text:#f1f5ed;--dm-muted:#c5ccba;
+  --dm-accent:#97ad00;--dm-accent2:#d0d405;--dm-line:rgba(187,194,52,.24);--dm-link:#d9df89;--dm-btntext:#10180c;
+}
+html[data-huella-role="dueno"][data-huella-theme="negro-profundo"]{
+  --dm-bg:#020304;--dm-bg2:#07090b;--dm-side:#020507;--dm-top:#050709;
+  --dm-panel:#0c0f12;--dm-panel2:#14181c;--dm-text:#f4f7f9;--dm-muted:#9aa8b3;
+  --dm-accent:#d9dee2;--dm-accent2:#ffffff;--dm-line:rgba(120,140,155,.25);--dm-link:#c4d1da;--dm-btntext:#050607;
+}
+html[data-huella-role="dueno"][data-huella-theme="personalizado"]{
+  --dm-bg:var(--huella-custom-bg,#02060a);--dm-bg2:var(--huella-custom-panel,#070b10);--dm-side:var(--huella-custom-bg,#02060a);--dm-top:var(--huella-custom-panel,#070b10);
+  --dm-panel:color-mix(in srgb,var(--huella-custom-panel,#070b10) 88%,#fff 12%);--dm-panel2:var(--huella-custom-panel,#070b10);--dm-text:var(--huella-custom-text,#f7fbff);--dm-muted:#bed1d9;
+  --dm-accent:var(--huella-custom-accent,#61d8ff);--dm-accent2:#d6f8ff;--dm-line:rgba(255,255,255,.20);--dm-link:var(--huella-custom-accent,#61d8ff);--dm-btntext:#061014;
+}
+
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) body{
+  background:linear-gradient(145deg,var(--dm-bg),var(--dm-bg2)) fixed !important;color:var(--dm-text) !important;
+}
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) .sidebar{
+  background:var(--dm-side) !important;border-right:1px solid var(--dm-line) !important;color:var(--dm-text) !important;box-shadow:14px 0 36px rgba(0,0,0,.16) !important;
+}
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) .topbar{
+  background:var(--dm-top) !important;border-color:var(--dm-line) !important;color:var(--dm-text) !important;
+}
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) :where(.main,.content,.main-content,.page-content,.section,.view){background:transparent !important;color:var(--dm-text) !important}
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) :where(.brand h2,.brand b,h1,h2,h3,h4,.title,.card-title,.panel-title,strong,b){color:var(--dm-text) !important}
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) :where(.brand small,.menu-title){color:var(--dm-accent2) !important}
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) :where(p,small,label,.subtitle,.muted,.description,.meta,.info-row,.data){color:var(--dm-muted) !important}
+
+/* El menú que aparece en Perfil/Expediente/Vacunas/Citas/Telemedicina/Estudios/GPS */
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) .sidebar .menu a,
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) .sidebar .menu button,
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) .sidebar .huella-settings-trigger{
+  background:transparent !important;color:var(--dm-muted) !important;border:1px solid transparent !important;box-shadow:none !important;
+}
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) .sidebar .menu a :where(div,span),
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) .sidebar .menu button :where(div,span){color:inherit !important}
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) .sidebar .menu a:hover,
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) .sidebar .menu a.active,
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) .sidebar .menu button:hover,
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) .sidebar .menu button.active{
+  background:color-mix(in srgb,var(--dm-accent) 15%,transparent) !important;color:#fff !important;border-color:var(--dm-line) !important;box-shadow:inset 0 0 0 1px var(--dm-line) !important;
+}
+html[data-huella-role="dueno"][data-huella-theme="costa-natural"] .sidebar .menu a,
+html[data-huella-role="dueno"][data-huella-theme="costa-natural"] .sidebar .menu button{color:#536c79 !important}
+html[data-huella-role="dueno"][data-huella-theme="costa-natural"] .sidebar .menu a:is(:hover,.active){color:#2c2414 !important;background:#fff !important}
+html[data-huella-role="dueno"][data-huella-theme="bosque-verde"] .sidebar :where(.brand h2,.brand b){color:#f5fbf4 !important}
+html[data-huella-role="dueno"][data-huella-theme="bosque-verde"] .sidebar .menu a,
+html[data-huella-role="dueno"][data-huella-theme="bosque-verde"] .sidebar .menu button{color:#c8d9ca !important}
+
+/* Todos los bloques internos del módulo */
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) .content :where(
+  .card,.panel,.box,.stat,.module,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,.hero,.profile-card,.record,.widget,.metric,
+  [class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="health"],[class*="form-group"]
+){background:linear-gradient(145deg,var(--dm-panel),var(--dm-panel2)) !important;color:var(--dm-text) !important;border-color:var(--dm-line) !important;box-shadow:0 12px 30px rgba(0,0,0,.12) !important}
+
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) :where(input,select,textarea){background:var(--dm-panel2) !important;color:var(--dm-text) !important;border-color:var(--dm-line) !important}
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) :where(table,thead,tbody,tr,th,td){color:var(--dm-text) !important;border-color:var(--dm-line) !important}
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) :where(.primary,.add-button,.save,.request-button,.main-button,.btn.primary){background:linear-gradient(135deg,var(--dm-accent),var(--dm-accent2)) !important;color:var(--dm-btntext) !important;border-color:transparent !important}
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) a{color:var(--dm-link)}
+
+/* GPS mantiene legible Google Maps */
+html[data-huella-role="dueno"]:not([data-huella-theme="normal"]) :where(.map-panel,.google-map,iframe){border-color:var(--dm-line) !important;outline:1px solid var(--dm-line)}
+
+
+/* HUELLA V24 · Dueño/Tutor · Cósmico Cristal claro */
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"]{
+  --dm-bg:#edf3ff;--dm-bg2:#f7faff;--dm-side:rgba(255,255,255,.22);--dm-top:rgba(255,255,255,.20);
+  --dm-panel:rgba(255,255,255,.58);--dm-panel2:rgba(255,255,255,.34);--dm-text:#1f2937;--dm-muted:#59697d;
+  --dm-accent:#73cfff;--dm-accent2:#c8d5ff;--dm-line:rgba(255,255,255,.48);--dm-link:#2c6f9d;--dm-btntext:#10263a;
+}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] body{
+  background:linear-gradient(rgba(246,249,255,.24),rgba(241,246,255,.38)), url('fondo-cosmico-cristal.png') center/cover fixed no-repeat !important;
+  color:var(--dm-text) !important;
+}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] .sidebar{
+  background:rgba(255,255,255,.26) !important;backdrop-filter:blur(26px) saturate(115%);-webkit-backdrop-filter:blur(26px) saturate(115%);
+  border-right:1px solid rgba(255,255,255,.42) !important;color:var(--dm-text) !important;box-shadow:10px 0 28px rgba(31,41,55,.10) !important;
+}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] .topbar{
+  background:rgba(255,255,255,.22) !important;border-color:rgba(255,255,255,.42) !important;color:var(--dm-text) !important;
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] :where(.brand small,.menu-title){color:#7a89a0 !important}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] :where(p,small,label,.subtitle,.muted,.description,.meta,.info-row,.data){color:#5e6d7d !important}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] .sidebar .menu a,
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] .sidebar .menu button,
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] .sidebar .huella-settings-trigger{background:transparent !important;color:#49586a !important;border-color:transparent !important;box-shadow:none !important}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] .sidebar .menu a:is(:hover,.active),
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] .sidebar .menu button:is(:hover,.active){background:rgba(255,255,255,.46) !important;color:#1f2937 !important;border-color:rgba(255,255,255,.46) !important;box-shadow:none !important}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] .content :where(
+  .card,.panel,.box,.stat,.module,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,.hero,.profile-card,.record,.widget,.metric,
+  [class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="health"],[class*="form-group"],[class*="membership"],[class*="plan"],[class*="recipe"],[class*="upload"],[class*="file-box"],[class*="result-box"],[class*="date-box"],[class*="location-info"],[class*="side-panel"]
+){background:linear-gradient(145deg,rgba(255,255,255,.58),rgba(255,255,255,.34)) !important;color:#1f2937 !important;border-color:rgba(255,255,255,.50) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.88),0 14px 30px rgba(31,41,55,.10) !important;backdrop-filter:blur(24px) saturate(110%) !important;-webkit-backdrop-filter:blur(24px) saturate(110%) !important}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] :where(input,select,textarea){background:rgba(255,255,255,.54) !important;color:#1f2937 !important;border-color:rgba(255,255,255,.56) !important}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] :where(.primary,.add-button,.save,.request-button,.main-button,.btn.primary){background:linear-gradient(135deg,#92dbff,#cad5ff) !important;color:#102538 !important;border-color:transparent !important}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] a{color:#2a6e9c !important}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] :where(.map-panel,.google-map,iframe){border-color:rgba(255,255,255,.48) !important;outline:1px solid rgba(255,255,255,.46)}
+
+
+/* HUELLA V25 · Dueño/Tutor · Cósmico Cristal como la imagen */
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] body{
+  background:
+    linear-gradient(rgba(248,250,255,.34), rgba(242,246,255,.44)),
+    url('fondo-cosmico-cristal.png') center/cover fixed no-repeat !important;
+}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] .sidebar,
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] .topbar{
+  background:rgba(255,255,255,.18) !important;
+  backdrop-filter:blur(30px) saturate(112%) !important;
+  -webkit-backdrop-filter:blur(30px) saturate(112%) !important;
+  border-color:rgba(255,255,255,.32) !important;
+  box-shadow:0 10px 30px rgba(43,53,88,.08) !important;
+}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] .content :where(
+  .card,.panel,.box,.stat,.module,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,.hero,.profile-card,.record,.widget,.metric,
+  [class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="health"],[class*="form-group"],[class*="membership"],[class*="plan"],[class*="recipe"],[class*="upload"],[class*="file-box"],[class*="result-box"],[class*="date-box"],[class*="location-info"],[class*="side-panel"]
+){
+  background:linear-gradient(145deg, rgba(255,255,255,.46), rgba(255,255,255,.24)) !important;
+  border:1px solid rgba(255,255,255,.36) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.78), 0 14px 34px rgba(43,53,88,.10) !important;
+  backdrop-filter:blur(28px) saturate(108%) !important;
+  -webkit-backdrop-filter:blur(28px) saturate(108%) !important;
+  border-radius:22px !important;
+  color:#1f2937 !important;
+}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] :where(p,small,label,.subtitle,.muted,.description,.meta,.info-row,.data){color:#64748b !important}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] .sidebar .menu a:is(:hover,.active),
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] .sidebar .menu button:is(:hover,.active){
+  background:linear-gradient(145deg, rgba(255,255,255,.44), rgba(255,255,255,.22)) !important;
+  border:1px solid rgba(255,255,255,.32) !important;
+  color:#1f2937 !important;
+}
+html[data-huella-role="dueno"][data-huella-theme="cosmico-cristal"] :where(input,select,textarea){background:rgba(255,255,255,.44) !important;border-color:rgba(255,255,255,.38) !important;border-radius:14px !important;color:#1f2937 !important}

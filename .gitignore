@@ -1,0 +1,54 @@
+﻿# Variables y credenciales
+.env
+.env.*
+!.env.example
+
+# Bases de datos y respaldos
+*.db
+*.sqlite
+*.sqlite3
+*.db-*
+*.bak
+*.backup
+
+# Fotografias y archivos privados
+uploads/
+backend/uploads/
+
+# Entornos de Python
+.venv/
+venv/
+env/
+
+# Archivos temporales
+__pycache__/
+*.py[cod]
+*.log
+.pytest_cache/
+.mypy_cache/
+
+# Respaldos del codigo
+*.respaldo_*
+*.bak
+
+# Archivos privados de perfiles
+perfiles/
+
+# Respaldos adicionales del backend
+backend/*.antes_*
+
+# Documentacion historica de versiones anteriores
+LEEME_*.txt
+
+# Iniciador de la version web anterior
+INICIAR_HUELLA_ANTERIOR_5500.bat
+
+# Archivos auxiliares de pruebas
+prueba_sqlite.py
+__test_theme.html
+
+# Pruebas independientes de generacion de video
+backend/prueba_video_ia.py
+
+# Version anterior del dashboard
+dashboard_original.html

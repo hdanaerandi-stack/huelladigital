@@ -1,0 +1,5326 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Huella | Digital
+    </title>
+
+
+    <!-- =====================================================
+         FUENTES
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           VARIABLES
+        ====================================================== */
+
+        :root {
+
+            --primary:
+                #073d44;
+
+            --primary-dark:
+                #032f35;
+
+            --primary-light:
+                #0c5862;
+
+            --gold:
+                #a66c22;
+
+            --gold-light:
+                #f4cc8a;
+
+            --background:
+                #f5f8f7;
+
+            --surface:
+                #ffffff;
+
+            --surface-soft:
+                #f0f5f3;
+
+            --text:
+                #10363d;
+
+            --muted:
+                #73888f;
+
+            --border:
+                #dfe9e6;
+
+            --success:
+                #159c67;
+
+            --success-light:
+                #d9f5e9;
+
+            --shadow:
+                0 16px 38px
+                rgba(
+                    7,
+                    61,
+                    68,
+                    0.09
+                );
+
+        }
+
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+
+            box-sizing:
+                border-box;
+
+            margin:
+                0;
+
+            padding:
+                0;
+
+        }
+
+
+        html {
+
+            scroll-behavior:
+                smooth;
+
+        }
+
+
+        body {
+
+            background:
+                var(--background);
+
+            color:
+                var(--text);
+
+            font-family:
+                "Inter",
+                sans-serif;
+
+            line-height:
+                1.5;
+
+        }
+
+
+        a {
+
+            text-decoration:
+                none;
+
+            color:
+                inherit;
+
+        }
+
+
+        img {
+
+            display:
+                block;
+
+            width:
+                100%;
+
+        }
+
+
+        button {
+
+            font-family:
+                inherit;
+
+        }
+
+
+        .container {
+
+            width:
+                min(
+                    1320px,
+                    94%
+                );
+
+            margin:
+                0 auto;
+
+        }
+
+
+        /* =====================================================
+           HUELLA SVG
+        ====================================================== */
+
+        .paw-icon {
+
+            width:
+                29px;
+
+            height:
+                29px;
+
+            fill:
+                #f4cc8a;
+
+            display:
+                block;
+
+        }
+
+
+        .paw-icon-small {
+
+            width:
+                24px;
+
+            height:
+                24px;
+
+        }
+
+
+        .paw-icon-large {
+
+            width:
+                43px;
+
+            height:
+                43px;
+
+        }
+
+
+        /* =====================================================
+           BARRA SUPERIOR
+        ====================================================== */
+
+        .topbar {
+
+            min-height:
+                34px;
+
+            padding:
+                8px 18px;
+
+            background:
+                var(--primary);
+
+            color:
+                #ffffff;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                10px;
+
+            text-align:
+                center;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .topbar-badge {
+
+            padding:
+                3px 10px;
+
+            border-radius:
+                999px;
+
+            background:
+                #c98127;
+
+            font-size:
+                9px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                .4px;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        header {
+
+            position:
+                sticky;
+
+            top:
+                0;
+
+            z-index:
+                1000;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .97
+                );
+
+            backdrop-filter:
+                blur(
+                    16px
+                );
+
+            border-bottom:
+                1px solid
+                #e7efed;
+
+        }
+
+
+        .navbar {
+
+            min-height:
+                88px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+
+        }
+
+
+        /* =====================================================
+           LOGO
+        ====================================================== */
+
+        .brand {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+
+            flex-shrink:
+                0;
+
+        }
+
+
+        .brand-logo {
+
+            width:
+                52px;
+
+            height:
+                52px;
+
+            border-radius:
+                50%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                #073d44;
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .brand-name {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                26px;
+
+            font-weight:
+                800;
+
+            line-height:
+                1;
+
+            color:
+                var(--primary);
+
+        }
+
+
+        .brand-subtitle {
+
+            margin-top:
+                3px;
+
+            font-size:
+                8px;
+
+            color:
+                #72878e;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                2.1px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        /* =====================================================
+           MENÚ
+        ====================================================== */
+
+        .nav-menu {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            padding:
+                6px;
+
+            border:
+                1px solid
+                #dfe8e6;
+
+            border-radius:
+                999px;
+
+            background:
+                #f4f7f6;
+
+        }
+
+
+        .nav-menu a {
+
+            padding:
+                10px 15px;
+
+            border-radius:
+                999px;
+
+            color:
+                #536b72;
+
+            font-size:
+                13px;
+
+            font-weight:
+                600;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .nav-menu a:hover {
+
+            color:
+                var(--primary);
+
+            background:
+                #ffffff;
+
+        }
+
+
+        /* =====================================================
+           BOTONES SUPERIORES
+        ====================================================== */
+
+        .nav-actions {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            flex-shrink:
+                0;
+
+        }
+
+
+        .login-link {
+
+            color:
+                var(--primary);
+
+            font-weight:
+                700;
+
+            font-size:
+                13px;
+
+            padding:
+                10px;
+
+        }
+
+
+        .register-button {
+
+            min-height:
+                48px;
+
+            padding:
+                0 22px;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                999px;
+
+            color:
+                #ffffff;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #0a4d56,
+                    #04343a
+                );
+
+            box-shadow:
+                0 9px 20px
+                rgba(
+                    7,
+                    61,
+                    68,
+                    .17
+                );
+
+            font-weight:
+                700;
+
+            font-size:
+                13px;
+
+        }
+
+
+        .user-button {
+
+            width:
+                46px;
+
+            height:
+                46px;
+
+            border-radius:
+                50%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                var(--primary);
+
+            color:
+                #ffffff;
+
+            font-size:
+                19px;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .hero {
+
+            padding:
+                38px 0 22px;
+
+            background:
+                #f7faf9;
+
+        }
+
+
+        .hero-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                .88fr
+                1.12fr;
+
+            gap:
+                34px;
+
+            align-items:
+                center;
+
+        }
+
+
+        /* =====================================================
+           HERO TEXTO
+        ====================================================== */
+
+        .hero-copy {
+
+            padding:
+                24px 4px;
+
+        }
+
+
+        .hero-label {
+
+            width:
+                fit-content;
+
+            margin-bottom:
+                20px;
+
+            padding:
+                8px 14px;
+
+            border:
+                1px solid
+                #d9e5e2;
+
+            border-radius:
+                999px;
+
+            background:
+                #ffffff;
+
+            color:
+                var(--primary);
+
+            font-size:
+                11px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                .7px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .hero-copy h1 {
+
+            max-width:
+                650px;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(
+                    48px,
+                    5.1vw,
+                    79px
+                );
+
+            line-height:
+                .97;
+
+            letter-spacing:
+                -2px;
+
+            color:
+                var(--primary);
+
+        }
+
+
+        .hero-copy h1 span {
+
+            color:
+                var(--gold);
+
+            font-style:
+                italic;
+
+            font-weight:
+                600;
+
+        }
+
+
+        /* =====================================================
+           LEYENDA LARGA
+        ====================================================== */
+
+        .hero-legend {
+
+            max-width:
+                660px;
+
+            margin-top:
+                28px;
+
+            color:
+                #71878e;
+
+            font-size:
+                16px;
+
+            line-height:
+                1.85;
+
+            text-align:
+                justify;
+
+        }
+
+
+        .hero-buttons {
+
+            display:
+                flex;
+
+            gap:
+                14px;
+
+            flex-wrap:
+                wrap;
+
+            margin-top:
+                30px;
+
+        }
+
+
+        .button {
+
+            min-height:
+                52px;
+
+            padding:
+                0 24px;
+
+            border-radius:
+                999px;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                9px;
+
+            font-weight:
+                800;
+
+            font-size:
+                14px;
+
+            transition:
+                .2s ease;
+
+        }
+
+
+        .button-dark {
+
+            color:
+                #ffffff;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #0a4b54,
+                    #043238
+                );
+
+            box-shadow:
+                0 11px 22px
+                rgba(
+                    7,
+                    61,
+                    68,
+                    .16
+                );
+
+        }
+
+
+        .button-light {
+
+            color:
+                var(--primary);
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid
+                #d9e5e2;
+
+        }
+
+
+        .button:hover {
+
+            transform:
+                translateY(
+                    -2px
+                );
+
+        }
+
+
+        /* =====================================================
+           HERO ESTADÍSTICAS
+        ====================================================== */
+
+        .hero-stats {
+
+            margin-top:
+                48px;
+
+            padding-top:
+                28px;
+
+            border-top:
+                1px solid
+                #dfe8e6;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    1fr
+                );
+
+            gap:
+                22px;
+
+        }
+
+
+        .hero-stat strong {
+
+            display:
+                block;
+
+            color:
+                var(--primary);
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                28px;
+
+            line-height:
+                1;
+
+        }
+
+
+        .hero-stat span {
+
+            display:
+                block;
+
+            margin-top:
+                7px;
+
+            color:
+                #748990;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.4;
+
+        }
+
+
+        /* =====================================================
+           HERO VISUAL
+        ====================================================== */
+
+        .hero-visual {
+
+            min-height:
+                705px;
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            border:
+                1px solid
+                #e5eeeb;
+
+            border-radius:
+                34px;
+
+            background:
+                #eef4f1;
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .hero-dog {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+            object-position:
+                center;
+
+        }
+
+
+        .hero-shade {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(
+                        246,
+                        250,
+                        248,
+                        .78
+                    )
+                    0%,
+                    rgba(
+                        246,
+                        250,
+                        248,
+                        .18
+                    )
+                    40%,
+                    rgba(
+                        246,
+                        250,
+                        248,
+                        .02
+                    )
+                    72%
+                );
+
+        }
+
+
+        /* =====================================================
+           TARJETA PILONCILLO
+        ====================================================== */
+
+        .pet-card {
+
+            position:
+                absolute;
+
+            z-index:
+                4;
+
+            top:
+                54px;
+
+            right:
+                28px;
+
+            width:
+                285px;
+
+            padding:
+                16px;
+
+            border-radius:
+                23px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .95
+                );
+
+            backdrop-filter:
+                blur(
+                    12px
+                );
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .pet-card-row {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+
+        }
+
+
+        .pet-icon {
+
+            width:
+                50px;
+
+            height:
+                50px;
+
+            flex-shrink:
+                0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                #073d44;
+
+            box-shadow:
+                0 8px 18px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .10
+                );
+
+        }
+
+
+        .pet-details h3 {
+
+            color:
+                var(--primary);
+
+            font-size:
+                19px;
+
+        }
+
+
+        .nfc {
+
+            display:
+                inline-block;
+
+            margin:
+                4px 0;
+
+            padding:
+                4px 9px;
+
+            border-radius:
+                999px;
+
+            color:
+                #14845c;
+
+            background:
+                #d9f5e8;
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .pet-details p {
+
+            color:
+                #7a8f95;
+
+            font-size:
+                11px;
+
+        }
+
+
+        /* =====================================================
+           ECG
+        ====================================================== */
+
+        .ecg-card {
+
+            position:
+                absolute;
+
+            z-index:
+                4;
+
+            left:
+                22px;
+
+            bottom:
+                190px;
+
+            width:
+                49%;
+
+            padding:
+                20px;
+
+            border-radius:
+                23px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .96
+                );
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .ecg-header {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                10px;
+
+            margin-bottom:
+                11px;
+
+            color:
+                var(--primary);
+
+            font-size:
+                12px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .ecg-header span:last-child {
+
+            color:
+                var(--success);
+
+        }
+
+
+        .ecg-svg {
+
+            width:
+                100%;
+
+            height:
+                67px;
+
+        }
+
+
+        /* =====================================================
+           MÉTRICAS HERO
+        ====================================================== */
+
+        .metric-grid {
+
+            position:
+                absolute;
+
+            z-index:
+                4;
+
+            left:
+                22px;
+
+            bottom:
+                42px;
+
+            width:
+                49%;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    1fr
+                );
+
+            gap:
+                12px;
+
+        }
+
+
+        .metric {
+
+            min-height:
+                106px;
+
+            padding:
+                16px;
+
+            border-radius:
+                20px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .96
+                );
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .metric small {
+
+            display:
+                block;
+
+            color:
+                #748990;
+
+            font-size:
+                11px;
+
+        }
+
+
+        .metric strong {
+
+            display:
+                block;
+
+            margin-top:
+                8px;
+
+            color:
+                var(--primary);
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                26px;
+
+        }
+
+
+        .metric span {
+
+            display:
+                block;
+
+            margin-top:
+                3px;
+
+            color:
+                var(--success);
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        /* =====================================================
+           MINI FOTOS
+        ====================================================== */
+
+        .mini-pictures {
+
+            position:
+                absolute;
+
+            z-index:
+                4;
+
+            right:
+                16px;
+
+            bottom:
+                23px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                12px;
+
+        }
+
+
+        .mini-picture {
+
+            width:
+                125px;
+
+            padding:
+                8px;
+
+            border-radius:
+                17px;
+
+            background:
+                #ffffff;
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .mini-picture:first-child {
+
+            transform:
+                rotate(
+                    -7deg
+                );
+
+        }
+
+
+        .mini-picture:last-child {
+
+            transform:
+                rotate(
+                    6deg
+                );
+
+        }
+
+
+        .mini-picture img {
+
+            height:
+                108px;
+
+            object-fit:
+                cover;
+
+            border-radius:
+                12px;
+
+        }
+
+
+        .mini-picture p {
+
+            margin-top:
+                6px;
+
+            color:
+                #647a80;
+
+            text-align:
+                center;
+
+            font-size:
+                9px;
+
+            font-style:
+                italic;
+
+        }
+
+
+        /* =====================================================
+           SECCIONES GENERALES
+        ====================================================== */
+
+        section {
+
+            padding:
+                78px 0;
+
+        }
+
+
+        .section-heading {
+
+            max-width:
+                880px;
+
+            margin:
+                0 auto 38px;
+
+            text-align:
+                center;
+
+        }
+
+
+        .kicker {
+
+            margin-bottom:
+                12px;
+
+            color:
+                var(--gold);
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1.5px;
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .section-heading h2 {
+
+            color:
+                var(--primary);
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(
+                    37px,
+                    4vw,
+                    53px
+                );
+
+            line-height:
+                1.05;
+
+        }
+
+
+        .section-heading p {
+
+            margin-top:
+                15px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                15px;
+
+        }
+
+
+        /* =====================================================
+           SERVICIOS
+        ====================================================== */
+
+        #servicios {
+
+            background:
+                #f0f5f3;
+
+        }
+
+
+        .services-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    1fr
+                );
+
+            gap:
+                22px;
+
+        }
+
+
+        .service-card {
+
+            overflow:
+                hidden;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                26px;
+
+            background:
+                #ffffff;
+
+            box-shadow:
+                var(--shadow);
+
+            transition:
+                transform
+                .25s ease;
+
+        }
+
+
+        .service-card:hover {
+
+            transform:
+                translateY(
+                    -5px
+                );
+
+        }
+
+
+        .service-image {
+
+            height:
+                245px;
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+        }
+
+
+        .service-image img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+            transition:
+                transform
+                .35s ease;
+
+        }
+
+
+        .service-card:hover
+        .service-image img {
+
+            transform:
+                scale(
+                    1.04
+                );
+
+        }
+
+
+        .service-icon {
+
+            position:
+                absolute;
+
+            top:
+                18px;
+
+            left:
+                18px;
+
+            width:
+                48px;
+
+            height:
+                48px;
+
+            border-radius:
+                14px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                rgba(
+                    7,
+                    61,
+                    68,
+                    .96
+                );
+
+            color:
+                #ffffff;
+
+            font-size:
+                21px;
+
+            box-shadow:
+                0 8px 18px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .16
+                );
+
+        }
+
+
+        .service-content {
+
+            padding:
+                23px;
+
+        }
+
+
+        .service-content h3 {
+
+            color:
+                var(--primary);
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                28px;
+
+            line-height:
+                1.05;
+
+        }
+
+
+        .service-content p {
+
+            min-height:
+                70px;
+
+            margin-top:
+                11px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                14px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        .service-link {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            margin-top:
+                16px;
+
+            color:
+                var(--primary);
+
+            font-size:
+                13px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        /* =====================================================
+           FUNCIONES INTELIGENTES
+        ====================================================== */
+
+        #funciones {
+
+            background:
+                #ffffff;
+
+        }
+
+
+        .features-layout {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr
+                1fr;
+
+            gap:
+                42px;
+
+            align-items:
+                center;
+
+        }
+
+
+        .features-info h2 {
+
+            max-width:
+                620px;
+
+            color:
+                var(--primary);
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(
+                    42px,
+                    4.2vw,
+                    59px
+                );
+
+            line-height:
+                1.02;
+
+        }
+
+
+        .features-info > p {
+
+            max-width:
+                620px;
+
+            margin-top:
+                18px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                15px;
+
+            line-height:
+                1.7;
+
+        }
+
+
+        .feature-list {
+
+            margin-top:
+                30px;
+
+            display:
+                grid;
+
+            gap:
+                20px;
+
+        }
+
+
+        .feature {
+
+            display:
+                flex;
+
+            align-items:
+                flex-start;
+
+            gap:
+                14px;
+
+        }
+
+
+        .feature-icon {
+
+            width:
+                46px;
+
+            height:
+                46px;
+
+            flex-shrink:
+                0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                #edf4f2;
+
+            color:
+                var(--primary);
+
+        }
+
+
+        .feature h4 {
+
+            color:
+                var(--primary);
+
+            font-size:
+                15px;
+
+        }
+
+
+        .feature p {
+
+            margin-top:
+                4px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
+        }
+
+
+        /* =====================================================
+           EXPEDIENTE CONECTADO
+        ====================================================== */
+
+        .connected-card {
+
+            padding:
+                31px;
+
+            border-radius:
+                31px;
+
+            color:
+                #ffffff;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #0b4e57,
+                    #073d44
+                );
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .connected-card .kicker {
+
+            color:
+                #ffd28a;
+
+        }
+
+
+        .connected-card h3 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                39px;
+
+            line-height:
+                1;
+
+        }
+
+
+        .module-grid {
+
+            margin-top:
+                28px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    1fr
+                );
+
+            gap:
+                14px;
+
+        }
+
+
+        .module {
+
+            min-height:
+                120px;
+
+            padding:
+                19px;
+
+            border-radius:
+                19px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .10
+                );
+
+        }
+
+
+        .module-icon {
+
+            font-size:
+                20px;
+
+        }
+
+
+        .module strong {
+
+            display:
+                block;
+
+            margin-top:
+                12px;
+
+            font-size:
+                14px;
+
+        }
+
+
+        .module span {
+
+            display:
+                block;
+
+            margin-top:
+                4px;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .67
+                );
+
+            font-size:
+                11px;
+
+        }
+
+
+        /* =====================================================
+           TELEMEDICINA
+        ====================================================== */
+
+        #telemedicina {
+
+            background:
+                #f0f5f3;
+
+        }
+
+
+        .telemedicine {
+
+            overflow:
+                hidden;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr
+                1fr;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                33px;
+
+            background:
+                #ffffff;
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .tele-info {
+
+            padding:
+                45px;
+
+        }
+
+
+        .tele-info h2 {
+
+            color:
+                var(--primary);
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(
+                    43px,
+                    4.4vw,
+                    62px
+                );
+
+            line-height:
+                .97;
+
+        }
+
+
+        .tele-info h2 span {
+
+            display:
+                block;
+
+            color:
+                var(--gold);
+
+            font-style:
+                italic;
+
+        }
+
+
+        .tele-info > p {
+
+            max-width:
+                550px;
+
+            margin-top:
+                20px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                15px;
+
+            line-height:
+                1.7;
+
+        }
+
+
+        .tele-features {
+
+            margin-top:
+                28px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    1fr
+                );
+
+            gap:
+                13px;
+
+        }
+
+
+        .tele-feature {
+
+            min-height:
+                116px;
+
+            padding:
+                16px;
+
+            border:
+                1px solid
+                #e3ecea;
+
+            border-radius:
+                18px;
+
+            background:
+                #f5f9f8;
+
+        }
+
+
+        .tele-feature-icon {
+
+            font-size:
+                21px;
+
+        }
+
+
+        .tele-feature strong {
+
+            display:
+                block;
+
+            margin-top:
+                9px;
+
+            color:
+                var(--primary);
+
+            font-size:
+                13px;
+
+        }
+
+
+        .tele-feature p {
+
+            margin-top:
+                4px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                11px;
+
+        }
+
+
+        .tele-actions {
+
+            margin-top:
+                27px;
+
+            display:
+                flex;
+
+            gap:
+                12px;
+
+            flex-wrap:
+                wrap;
+
+        }
+
+
+        /* =====================================================
+           TELEMEDICINA VISUAL
+        ====================================================== */
+
+        .tele-visual {
+
+            padding:
+                38px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #0c5059,
+                    #073d44
+                );
+
+        }
+
+
+        .video-box {
+
+            width:
+                100%;
+
+            max-width:
+                520px;
+
+            padding:
+                17px;
+
+            border-radius:
+                27px;
+
+            background:
+                rgba(
+                    1,
+                    28,
+                    32,
+                    .55
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .08
+                );
+
+        }
+
+
+        .video-header {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                10px;
+
+            color:
+                #ffffff;
+
+            margin-bottom:
+                14px;
+
+        }
+
+
+        .doctor {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+        }
+
+
+        .doctor-icon {
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                #ffffff;
+
+            color:
+                var(--primary);
+
+        }
+
+
+        .doctor strong {
+
+            display:
+                block;
+
+            font-size:
+                12px;
+
+        }
+
+
+        .doctor span {
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .60
+                );
+
+            font-size:
+                9px;
+
+        }
+
+
+        .online {
+
+            padding:
+                4px 9px;
+
+            border-radius:
+                999px;
+
+            color:
+                #d4ffeb;
+
+            background:
+                #0d8d5d;
+
+            font-size:
+                8px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .video-screen {
+
+            min-height:
+                300px;
+
+            position:
+                relative;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                22px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #115c65,
+                    #0a4249
+                );
+
+        }
+
+
+        .video-logo {
+
+            text-align:
+                center;
+
+            color:
+                #ffffff;
+
+        }
+
+
+        .video-paw {
+
+            width:
+                95px;
+
+            height:
+                95px;
+
+            margin:
+                0 auto 13px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .10
+                );
+
+        }
+
+
+        .video-logo h3 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                27px;
+
+        }
+
+
+        .video-logo p {
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .68
+                );
+
+            font-size:
+                10px;
+
+        }
+
+
+        .video-user {
+
+            position:
+                absolute;
+
+            right:
+                15px;
+
+            bottom:
+                15px;
+
+            width:
+                84px;
+
+            height:
+                84px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                18px;
+
+            background:
+                #ffffff;
+
+            color:
+                var(--primary);
+
+            font-size:
+                29px;
+
+        }
+
+
+        .video-controls {
+
+            margin-top:
+                14px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                12px;
+
+        }
+
+
+        .video-control {
+
+            width:
+                44px;
+
+            height:
+                44px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .12
+                );
+
+        }
+
+
+        .video-control.end {
+
+            background:
+                #ec4b4b;
+
+        }
+
+
+        .video-note {
+
+            margin-top:
+                15px;
+
+            padding:
+                13px;
+
+            border-radius:
+                15px;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .72
+                );
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .07
+                );
+
+            font-size:
+                10px;
+
+        }
+
+
+        /* =====================================================
+           RESPALDO CLÍNICO
+        ====================================================== */
+
+        #respaldo {
+
+            background:
+                #ffffff;
+
+        }
+
+
+        .clinical-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+            gap:
+                21px;
+
+        }
+
+
+        .clinical-card {
+
+            min-height:
+                210px;
+
+            padding:
+                27px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                24px;
+
+            background:
+                #f8faf9;
+
+        }
+
+
+        .clinical-icon {
+
+            color:
+                var(--primary);
+
+            font-size:
+                25px;
+
+        }
+
+
+        .clinical-card h3 {
+
+            margin-top:
+                17px;
+
+            color:
+                var(--primary);
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                25px;
+
+        }
+
+
+        .clinical-card p {
+
+            margin-top:
+                11px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           CTA
+        ====================================================== */
+
+        .cta {
+
+            padding:
+                34px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                24px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                27px;
+
+            background:
+                #f4f8f6;
+
+        }
+
+
+        .cta h3 {
+
+            color:
+                var(--primary);
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                33px;
+
+        }
+
+
+        .cta p {
+
+            margin-top:
+                8px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+
+            padding:
+                50px 0 22px;
+
+            color:
+                #ffffff;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #073d44,
+                    #052f35
+                );
+
+        }
+
+
+        .footer-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1.3fr
+                1fr
+                1fr
+                1fr;
+
+            gap:
+                34px;
+
+        }
+
+
+        .footer-brand {
+
+            display:
+                flex;
+
+            gap:
+                13px;
+
+            align-items:
+                flex-start;
+
+        }
+
+
+        .footer-logo {
+
+            width:
+                45px;
+
+            height:
+                45px;
+
+            flex-shrink:
+                0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .1
+                );
+
+        }
+
+
+        .footer-brand h3 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                25px;
+
+        }
+
+
+        .footer-brand p {
+
+            max-width:
+                280px;
+
+            margin-top:
+                8px;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .67
+                );
+
+            font-size:
+                11px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        .footer-column h4 {
+
+            margin-bottom:
+                14px;
+
+            font-size:
+                12px;
+
+        }
+
+
+        .footer-column a {
+
+            display:
+                block;
+
+            margin-bottom:
+                9px;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .68
+                );
+
+            font-size:
+                11px;
+
+        }
+
+
+        .footer-column a:hover {
+
+            color:
+                #ffffff;
+
+        }
+
+
+        .footer-bottom {
+
+            margin-top:
+                34px;
+
+            padding-top:
+                18px;
+
+            border-top:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .1
+                );
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+
+            flex-wrap:
+                wrap;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .55
+                );
+
+            font-size:
+                10px;
+
+        }
+
+
+        .status {
+
+            color:
+                #75dfae;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media(
+            max-width:
+            1150px
+        ) {
+
+            .navbar {
+
+                flex-wrap:
+                    wrap;
+
+                padding:
+                    15px 0;
+
+            }
+
+
+            .nav-menu {
+
+                order:
+                    3;
+
+                width:
+                    100%;
+
+            }
+
+
+            .hero-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .hero-visual {
+
+                min-height:
+                    680px;
+
+            }
+
+
+            .features-layout {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .telemedicine {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .footer-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
+
+            }
+
+        }
+
+
+        @media(
+            max-width:
+            800px
+        ) {
+
+            .navbar {
+
+                justify-content:
+                    center;
+
+            }
+
+
+            .brand {
+
+                width:
+                    100%;
+
+                justify-content:
+                    center;
+
+            }
+
+
+            .nav-actions {
+
+                width:
+                    100%;
+
+                justify-content:
+                    center;
+
+            }
+
+
+            .nav-menu a {
+
+                padding:
+                    8px 10px;
+
+                font-size:
+                    11px;
+
+            }
+
+
+            .hero-copy {
+
+                text-align:
+                    center;
+
+            }
+
+
+            .hero-label {
+
+                margin-left:
+                    auto;
+
+                margin-right:
+                    auto;
+
+            }
+
+
+            .hero-copy h1 {
+
+                margin:
+                    0 auto;
+
+            }
+
+
+            .hero-legend {
+
+                margin-left:
+                    auto;
+
+                margin-right:
+                    auto;
+
+                text-align:
+                    left;
+
+            }
+
+
+            .hero-buttons {
+
+                justify-content:
+                    center;
+
+            }
+
+
+            .hero-stats {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
+
+            }
+
+
+            .services-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .hero-visual {
+
+                min-height:
+                    650px;
+
+            }
+
+
+            .mini-pictures {
+
+                display:
+                    none;
+
+            }
+
+
+            .ecg-card {
+
+                left:
+                    16px;
+
+                width:
+                    calc(
+                        100% - 32px
+                    );
+
+            }
+
+
+            .metric-grid {
+
+                left:
+                    16px;
+
+                width:
+                    calc(
+                        100% - 32px
+                    );
+
+            }
+
+
+            .pet-card {
+
+                right:
+                    16px;
+
+            }
+
+
+            .clinical-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .cta {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+
+            }
+
+
+            .footer-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+
+        @media(
+            max-width:
+            520px
+        ) {
+
+            .login-link {
+
+                display:
+                    none;
+
+            }
+
+
+            .register-button {
+
+                min-height:
+                    42px;
+
+                padding:
+                    0 17px;
+
+            }
+
+
+            .hero {
+
+                padding-top:
+                    20px;
+
+            }
+
+
+            .hero-copy h1 {
+
+                font-size:
+                    44px;
+
+            }
+
+
+            .hero-legend {
+
+                font-size:
+                    14px;
+
+                line-height:
+                    1.7;
+
+            }
+
+
+            .hero-stats {
+
+                gap:
+                    15px;
+
+            }
+
+
+            .hero-visual {
+
+                min-height:
+                    610px;
+
+            }
+
+
+            .pet-card {
+
+                width:
+                    225px;
+
+            }
+
+
+            .service-image {
+
+                height:
+                    205px;
+
+            }
+
+
+            .tele-info,
+            .tele-visual {
+
+                padding:
+                    25px;
+
+            }
+
+
+            .tele-features {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .module-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     AVISO SUPERIOR
+========================================================= -->
+
+<div class="topbar">
+
+    <span class="topbar-badge">
+        Nuevo
+    </span>
+
+    <span>
+        Lanzamiento de Telemetría v3.0 con IA biométrica y diagnóstico predictivo en tiempo real
+    </span>
+
+    <span>
+        →
+    </span>
+
+</div>
+
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+    <div class="container navbar">
+
+
+        <!-- LOGO -->
+
+        <a
+            href="/"
+            class="brand"
+        >
+
+            <div class="brand-logo">
+
+                <svg
+                    class="paw-icon"
+                    viewBox="0 0 64 64"
+                    aria-hidden="true"
+                >
+
+                    <ellipse
+                        cx="16"
+                        cy="19"
+                        rx="6"
+                        ry="9"
+                        transform="rotate(-25 16 19)"
+                    />
+
+                    <ellipse
+                        cx="28"
+                        cy="13"
+                        rx="6"
+                        ry="9"
+                        transform="rotate(-8 28 13)"
+                    />
+
+                    <ellipse
+                        cx="40"
+                        cy="13"
+                        rx="6"
+                        ry="9"
+                        transform="rotate(8 40 13)"
+                    />
+
+                    <ellipse
+                        cx="51"
+                        cy="20"
+                        rx="6"
+                        ry="9"
+                        transform="rotate(25 51 20)"
+                    />
+
+                    <path
+                        d="
+                            M32 27
+                            C21 27 13 37 13 46
+                            C13 54 20 59 27 56
+                            C30 55 34 55 37 56
+                            C44 59 52 54 52 46
+                            C52 37 43 27 32 27
+                            Z
+                        "
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div>
+
+                <div class="brand-name">
+                    Huella
+                </div>
+
+                <div class="brand-subtitle">
+                    Digital
+                </div>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- MENÚ -->
+
+        <nav class="nav-menu">
+
+            <a href="/">
+                Inicio
+            </a>
+
+            <a href="#servicios">
+                Servicios
+            </a>
+
+            <a href="#funciones">
+                Funciones Inteligentes
+            </a>
+
+            <a href="#telemedicina">
+                Telemedicina
+            </a>
+
+            <a href="#respaldo">
+                Respaldo Clínico
+            </a>
+
+        </nav>
+
+
+
+        <!-- CUENTA -->
+
+        <div class="nav-actions">
+
+            <a
+                href="/login"
+                class="login-link"
+            >
+                Iniciar sesión
+            </a>
+
+            <a
+                href="/registro"
+                class="register-button"
+            >
+                Registrarse gratis
+            </a>
+
+            <a
+                href="/login"
+                class="user-button"
+                title="Mi cuenta"
+            >
+                👤
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div class="container hero-grid">
+
+
+        <!-- TEXTO -->
+
+        <div class="hero-copy">
+
+
+            <div class="hero-label">
+
+                🩺 Medicina preventiva & telemetría avanzada
+
+            </div>
+
+
+            <h1>
+
+                Una vida más sana
+                y feliz para tu
+
+                <span>
+                    Compañero.
+                </span>
+
+            </h1>
+
+
+            <p class="hero-legend">
+
+                En Huella creemos que cada mascota merece una vida protegida,
+                saludable y llena de bienestar. Por ello integramos tecnología,
+                atención veterinaria, telemedicina, seguimiento clínico,
+                geolocalización, prevención y herramientas inteligentes dentro
+                de una sola plataforma. El objetivo es crear una conexión más
+                cercana entre propietarios, veterinarios y sus compañeros de
+                vida, facilitando el acceso a información relevante, servicios
+                de cuidado, recordatorios, monitoreo y seguimiento de cada
+                mascota durante las diferentes etapas de su vida.
+
+            </p>
+
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#servicios"
+                    class="button button-dark"
+                >
+
+                    Explorar Servicios
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#telemedicina"
+                    class="button button-light"
+                >
+
+                    Agendar Valoración
+
+                </a>
+
+            </div>
+
+
+
+            <!-- ESTADÍSTICAS -->
+
+            <div class="hero-stats">
+
+
+                <div class="hero-stat">
+
+                    <strong>
+                        24/7
+                    </strong>
+
+                    <span>
+                        Telemetría<br>
+                        Biométrica Activa
+                    </span>
+
+                </div>
+
+
+                <div class="hero-stat">
+
+                    <strong>
+                        99.8%
+                    </strong>
+
+                    <span>
+                        Precisión<br>
+                        Diagnóstica
+                    </span>
+
+                </div>
+
+
+                <div class="hero-stat">
+
+                    <strong>
+                        +12k
+                    </strong>
+
+                    <span>
+                        Pacientes<br>
+                        Satisfechos
+                    </span>
+
+                </div>
+
+
+                <div class="hero-stat">
+
+                    <strong>
+                        100%
+                    </strong>
+
+                    <span>
+                        Enfoque Empático<br>
+                        & Ético
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             IMAGEN PRINCIPAL
+        ================================================== -->
+
+        <div class="hero-visual">
+
+
+            <img
+                class="hero-dog"
+                src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1500&q=90"
+                alt="Golden Retriever Huella"
+            >
+
+
+            <div class="hero-shade"></div>
+
+
+
+            <!-- PILONCILLO -->
+
+            <div class="pet-card">
+
+
+                <div class="pet-card-row">
+
+
+                    <div class="pet-icon">
+
+                        <svg
+                            class="paw-icon paw-icon-small"
+                            viewBox="0 0 64 64"
+                            aria-hidden="true"
+                        >
+
+                            <ellipse
+                                cx="16"
+                                cy="19"
+                                rx="6"
+                                ry="9"
+                                transform="rotate(-25 16 19)"
+                            />
+
+                            <ellipse
+                                cx="28"
+                                cy="13"
+                                rx="6"
+                                ry="9"
+                                transform="rotate(-8 28 13)"
+                            />
+
+                            <ellipse
+                                cx="40"
+                                cy="13"
+                                rx="6"
+                                ry="9"
+                                transform="rotate(8 40 13)"
+                            />
+
+                            <ellipse
+                                cx="51"
+                                cy="20"
+                                rx="6"
+                                ry="9"
+                                transform="rotate(25 51 20)"
+                            />
+
+                            <path
+                                d="
+                                    M32 27
+                                    C21 27 13 37 13 46
+                                    C13 54 20 59 27 56
+                                    C30 55 34 55 37 56
+                                    C44 59 52 54 52 46
+                                    C52 37 43 27 32 27
+                                    Z
+                                "
+                            />
+
+                        </svg>
+
+                    </div>
+
+
+
+                    <div class="pet-details">
+
+                        <h3>
+                            Piloncillo
+                        </h3>
+
+
+                        <span class="nfc">
+                            ● NFC Activo
+                        </span>
+
+
+                        <p>
+                            Golden Retriever • 3 Años
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ECG -->
+
+            <div class="ecg-card">
+
+
+                <div class="ecg-header">
+
+                    <span>
+                        🩺 ECG en Tiempo Real
+                    </span>
+
+                    <span>
+                        78 BPM (Normal)
+                    </span>
+
+                </div>
+
+
+                <svg
+                    class="ecg-svg"
+                    viewBox="0 0 500 90"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+
+                    <path
+                        d="
+                            M0 50
+                            H55
+                            L75 50
+                            L96 21
+                            L116 75
+                            L135 49
+                            H180
+                            L200 25
+                            L220 72
+                            L241 49
+                            H285
+                            L307 33
+                            L329 60
+                            L351 49
+                            H500
+                        "
+                        stroke="#17A86F"
+                        stroke-width="5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+
+                </svg>
+
+            </div>
+
+
+
+            <!-- MÉTRICAS -->
+
+            <div class="metric-grid">
+
+
+                <div class="metric">
+
+                    <small>
+                        🌡️ Temperatura Corporal
+                    </small>
+
+                    <strong>
+                        38.4 °C
+                    </strong>
+
+                    <span>
+                        Óptimo clínico
+                    </span>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <small>
+                        📈 Actividad Diaria
+                    </small>
+
+                    <strong>
+                        12.4 km
+                    </strong>
+
+                    <span>
+                        Meta cumplida
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- MINI FOTOS -->
+
+            <div class="mini-pictures">
+
+
+                <div class="mini-picture">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=500&q=85"
+                        alt="Perro jugando"
+                    >
+
+                    <p>
+                        Más momentos juntos ♡
+                    </p>
+
+                </div>
+
+
+                <div class="mini-picture">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=500&q=85"
+                        alt="Bienestar animal"
+                    >
+
+                    <p>
+                        Su bienestar en buenas manos ♡
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SERVICIOS
+========================================================= -->
+
+<section id="servicios">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="kicker">
+                Servicios Huella
+            </div>
+
+
+            <h2>
+
+                Una plataforma para acompañar
+                el cuidado de tus mascotas
+
+            </h2>
+
+
+            <p>
+
+                Herramientas conectadas para propietarios,
+                veterinarios, proveedores y administración.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="services-grid">
+
+
+            <!-- EXPEDIENTE -->
+
+            <article class="service-card">
+
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=1000&q=85"
+                        alt="Expediente clínico de mascotas"
+                    >
+
+                    <div class="service-icon">
+                        📋
+                    </div>
+
+                </div>
+
+
+                <div class="service-content">
+
+                    <h3>
+                        Expediente Clínico
+                    </h3>
+
+                    <p>
+
+                        Consultas, vacunas, estudios, recetas,
+                        citas y tratamientos organizados por mascota.
+
+                    </p>
+
+
+                    <a
+                        href="/login"
+                        class="service-link"
+                    >
+
+                        Acceder
+                        →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- GPS -->
+
+            <article class="service-card">
+
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=1000&q=85"
+                        alt="GPS y geocercas para mascotas"
+                    >
+
+                    <div class="service-icon">
+                        📍
+                    </div>
+
+                </div>
+
+
+                <div class="service-content">
+
+                    <h3>
+                        GPS y Geocercas
+                    </h3>
+
+                    <p>
+
+                        Seguimiento de ubicación, zonas seguras
+                        y alertas para dispositivos compatibles.
+
+                    </p>
+
+
+                    <a
+                        href="/login"
+                        class="service-link"
+                    >
+
+                        Acceder
+                        →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- TELEMEDICINA -->
+
+            <article class="service-card">
+
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=1000&q=85"
+                        alt="Telemedicina veterinaria"
+                    >
+
+                    <div class="service-icon">
+                        📹
+                    </div>
+
+                </div>
+
+
+                <div class="service-content">
+
+                    <h3>
+                        Telemedicina
+                    </h3>
+
+                    <p>
+
+                        Solicitudes, consultas remotas, citas
+                        y seguimiento entre propietario y veterinario.
+
+                    </p>
+
+
+                    <a
+                        href="#telemedicina"
+                        class="service-link"
+                    >
+
+                        Conocer más
+                        →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- TIENDA -->
+
+            <article class="service-card">
+
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=1000&q=85"
+                        alt="Tienda Huella para mascotas"
+                    >
+
+                    <div class="service-icon">
+                        🛍️
+                    </div>
+
+                </div>
+
+
+                <div class="service-content">
+
+                    <h3>
+                        Tienda Huella
+                    </h3>
+
+                    <p>
+
+                        Productos, accesorios, alimentos,
+                        inventario, compras y pedidos.
+
+                    </p>
+
+
+                    <a
+                        href="/login"
+                        class="service-link"
+                    >
+
+                        Acceder
+                        →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FUNCIONES INTELIGENTES
+========================================================= -->
+
+<section id="funciones">
+
+    <div class="container features-layout">
+
+
+        <div class="features-info">
+
+
+            <div class="kicker">
+                Funciones Inteligentes
+            </div>
+
+
+            <h2>
+
+                Información conectada entre
+                los perfiles de Huella
+
+            </h2>
+
+
+            <p>
+
+                Cada mascota mantiene su propio expediente.
+                La información puede compartirse entre propietario
+                y veterinario cuando existe una vinculación autorizada.
+
+            </p>
+
+
+
+            <div class="feature-list">
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🔁
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Sincronización clínica
+                        </h4>
+
+                        <p>
+
+                            Consultas, vacunas, citas, estudios,
+                            recetas y tratamientos relacionados
+                            con cada paciente.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🛡️
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Acceso autorizado
+                        </h4>
+
+                        <p>
+
+                            El propietario decide qué veterinario
+                            puede acceder a la información
+                            de su mascota.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🔔
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Recordatorios y alertas
+                        </h4>
+
+                        <p>
+
+                            Organización de citas,
+                            vacunas, consultas y seguimiento.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- EXPEDIENTE CONECTADO -->
+
+        <div class="connected-card">
+
+
+            <div class="kicker">
+                Huella
+            </div>
+
+
+            <h3>
+                Expediente conectado
+            </h3>
+
+
+
+            <div class="module-grid">
+
+
+                <div class="module">
+
+                    <div class="module-icon">
+                        💉
+                    </div>
+
+                    <strong>
+                        Vacunas
+                    </strong>
+
+                    <span>
+                        Historial preventivo sincronizado.
+                    </span>
+
+                </div>
+
+
+
+                <div class="module">
+
+                    <div class="module-icon">
+                        🩺
+                    </div>
+
+                    <strong>
+                        Consultas
+                    </strong>
+
+                    <span>
+                        Seguimiento de atención clínica.
+                    </span>
+
+                </div>
+
+
+
+                <div class="module">
+
+                    <div class="module-icon">
+                        🧾
+                    </div>
+
+                    <strong>
+                        Recetas
+                    </strong>
+
+                    <span>
+                        Indicaciones y prescripciones.
+                    </span>
+
+                </div>
+
+
+
+                <div class="module">
+
+                    <div class="module-icon">
+                        🧪
+                    </div>
+
+                    <strong>
+                        Estudios
+                    </strong>
+
+                    <span>
+                        Resultados clínicos centralizados.
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <a
+                href="/login"
+                class="button button-light"
+                style="
+                    margin-top:25px;
+                    width:100%;
+                "
+            >
+
+                Entrar a Huella
+                →
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TELEMEDICINA
+========================================================= -->
+
+<section id="telemedicina">
+
+    <div class="container">
+
+
+        <div class="telemedicine">
+
+
+            <div class="tele-info">
+
+
+                <div class="kicker">
+                    Atención Veterinaria Digital
+                </div>
+
+
+                <h2>
+
+                    Telemedicina
+
+                    <span>
+                        Veterinaria
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    Conecta al propietario y al veterinario mediante
+                    consultas remotas, solicitudes, citas y seguimiento
+                    clínico relacionado con el expediente de la mascota.
+
+                </p>
+
+
+
+                <div class="tele-features">
+
+
+                    <div class="tele-feature">
+
+                        <div class="tele-feature-icon">
+                            📹
+                        </div>
+
+                        <strong>
+                            Videoconsultas
+                        </strong>
+
+                        <p>
+                            Atención remota entre propietario y veterinario.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="tele-feature">
+
+                        <div class="tele-feature-icon">
+                            📅
+                        </div>
+
+                        <strong>
+                            Citas
+                        </strong>
+
+                        <p>
+                            Fecha, hora y modalidad organizadas.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="tele-feature">
+
+                        <div class="tele-feature-icon">
+                            📋
+                        </div>
+
+                        <strong>
+                            Expediente
+                        </strong>
+
+                        <p>
+                            Información clínica del paciente vinculada.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="tele-feature">
+
+                        <div class="tele-feature-icon">
+                            📈
+                        </div>
+
+                        <strong>
+                            Seguimiento
+                        </strong>
+
+                        <p>
+                            Historial y control de solicitudes.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="tele-actions">
+
+
+                    <a
+                        href="/login"
+                        class="button button-dark"
+                    >
+
+                        📹
+                        Acceder a Telemedicina
+
+                    </a>
+
+
+                    <a
+                        href="/registro"
+                        class="button button-light"
+                    >
+
+                        Crear una cuenta
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- VIDEOLLAMADA -->
+
+            <div class="tele-visual">
+
+
+                <div class="video-box">
+
+
+                    <div class="video-header">
+
+
+                        <div class="doctor">
+
+                            <div class="doctor-icon">
+                                🩺
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Consulta veterinaria
+                                </strong>
+
+                                <span>
+                                    Huella Telemedicina
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="online">
+                            ● EN LÍNEA
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="video-screen">
+
+
+                        <div class="video-logo">
+
+                            <div class="video-paw">
+
+                                <svg
+                                    class="paw-icon paw-icon-large"
+                                    viewBox="0 0 64 64"
+                                    aria-hidden="true"
+                                >
+
+                                    <ellipse
+                                        cx="16"
+                                        cy="19"
+                                        rx="6"
+                                        ry="9"
+                                        transform="rotate(-25 16 19)"
+                                    />
+
+                                    <ellipse
+                                        cx="28"
+                                        cy="13"
+                                        rx="6"
+                                        ry="9"
+                                        transform="rotate(-8 28 13)"
+                                    />
+
+                                    <ellipse
+                                        cx="40"
+                                        cy="13"
+                                        rx="6"
+                                        ry="9"
+                                        transform="rotate(8 40 13)"
+                                    />
+
+                                    <ellipse
+                                        cx="51"
+                                        cy="20"
+                                        rx="6"
+                                        ry="9"
+                                        transform="rotate(25 51 20)"
+                                    />
+
+                                    <path
+                                        d="
+                                            M32 27
+                                            C21 27 13 37 13 46
+                                            C13 54 20 59 27 56
+                                            C30 55 34 55 37 56
+                                            C44 59 52 54 52 46
+                                            C52 37 43 27 32 27
+                                            Z
+                                        "
+                                    />
+
+                                </svg>
+
+                            </div>
+
+                            <h3>
+                                Huella
+                            </h3>
+
+                            <p>
+                                Atención veterinaria conectada
+                            </p>
+
+                        </div>
+
+
+
+                        <div class="video-user">
+                            👤
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="video-controls">
+
+
+                        <div class="video-control">
+                            🎤
+                        </div>
+
+                        <div class="video-control">
+                            📹
+                        </div>
+
+                        <div class="video-control end">
+                            ☎
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="video-note">
+
+                        🔒 Consulta vinculada al expediente.
+                        Para acceder es necesario iniciar sesión en Huella.
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     RESPALDO CLÍNICO
+========================================================= -->
+
+<section id="respaldo">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="kicker">
+                Plataforma Integral
+            </div>
+
+
+            <h2>
+                Gestión Clínica Conectada
+            </h2>
+
+
+            <p>
+
+                Huella mantiene la información correspondiente
+                a cada mascota organizada en su propio expediente.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="clinical-grid">
+
+
+            <div class="clinical-card">
+
+                <div class="clinical-icon">
+                    📑
+                </div>
+
+                <h3>
+                    Expediente individual
+                </h3>
+
+                <p>
+
+                    Cada mascota conserva sus propios registros,
+                    consultas, vacunas, estudios y tratamientos.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="clinical-card">
+
+                <div class="clinical-icon">
+                    🔁
+                </div>
+
+                <h3>
+                    Información sincronizada
+                </h3>
+
+                <p>
+
+                    Propietarios y veterinarios vinculados
+                    pueden consultar información correspondiente
+                    al mismo paciente.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="clinical-card">
+
+                <div class="clinical-icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    Acceso controlado
+                </h3>
+
+                <p>
+
+                    El acceso depende del usuario,
+                    el rol y las vinculaciones autorizadas
+                    dentro de Huella.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CTA FINAL
+========================================================= -->
+
+<section
+    style="
+        padding-top:0;
+        background:#ffffff;
+    "
+>
+
+    <div class="container">
+
+
+        <div class="cta">
+
+
+            <div>
+
+                <div class="kicker">
+                    Huella Digital
+                </div>
+
+
+                <h3>
+
+                    Gestiona el cuidado de tus mascotas
+                    desde un solo lugar.
+
+                </h3>
+
+
+                <p>
+
+                    Consulta los servicios disponibles dentro
+                    de la plataforma y accede a las herramientas
+                    diseñadas para acompañar el bienestar,
+                    seguimiento y atención de tus mascotas.
+
+                </p>
+
+            </div>
+
+
+            <a
+                href="#servicios"
+                class="button button-dark"
+            >
+
+                Ver servicios
+                →
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="container">
+
+
+        <div class="footer-grid">
+
+
+            <!-- HUELLA -->
+
+            <div class="footer-brand">
+
+
+                <div class="footer-logo">
+
+                    <svg
+                        class="paw-icon paw-icon-small"
+                        viewBox="0 0 64 64"
+                        aria-hidden="true"
+                    >
+
+                        <ellipse
+                            cx="16"
+                            cy="19"
+                            rx="6"
+                            ry="9"
+                            transform="rotate(-25 16 19)"
+                        />
+
+                        <ellipse
+                            cx="28"
+                            cy="13"
+                            rx="6"
+                            ry="9"
+                            transform="rotate(-8 28 13)"
+                        />
+
+                        <ellipse
+                            cx="40"
+                            cy="13"
+                            rx="6"
+                            ry="9"
+                            transform="rotate(8 40 13)"
+                        />
+
+                        <ellipse
+                            cx="51"
+                            cy="20"
+                            rx="6"
+                            ry="9"
+                            transform="rotate(25 51 20)"
+                        />
+
+                        <path
+                            d="
+                                M32 27
+                                C21 27 13 37 13 46
+                                C13 54 20 59 27 56
+                                C30 55 34 55 37 56
+                                C44 59 52 54 52 46
+                                C52 37 43 27 32 27
+                                Z
+                            "
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Huella
+                    </h3>
+
+                    <p>
+
+                        Plataforma integral para gestión,
+                        atención veterinaria, seguimiento
+                        y cuidado de mascotas.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PLATAFORMA -->
+
+            <div class="footer-column">
+
+                <h4>
+                    Plataforma
+                </h4>
+
+                <a href="#servicios">
+                    Servicios
+                </a>
+
+                <a href="#telemedicina">
+                    Telemedicina
+                </a>
+
+                <a href="#funciones">
+                    Funciones Inteligentes
+                </a>
+
+                <a href="#respaldo">
+                    Respaldo Clínico
+                </a>
+
+            </div>
+
+
+
+            <!-- SERVICIOS -->
+
+            <div class="footer-column">
+
+                <h4>
+                    Servicios
+                </h4>
+
+                <a href="/login">
+                    Expediente
+                </a>
+
+                <a href="/login">
+                    GPS y Geocercas
+                </a>
+
+                <a href="#telemedicina">
+                    Atención remota
+                </a>
+
+                <a href="/login">
+                    Tienda Huella
+                </a>
+
+            </div>
+
+
+
+            <!-- CUENTA -->
+
+            <div class="footer-column">
+
+                <h4>
+                    Cuenta
+                </h4>
+
+                <a href="/login">
+                    Iniciar sesión
+                </a>
+
+                <a href="/registro">
+                    Crear cuenta
+                </a>
+
+                <a href="/login">
+                    Recuperar contraseña
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <span>
+
+                © 2026 Huella Digital.
+                Todos los derechos reservados.
+
+            </span>
+
+
+            <span class="status">
+
+                ● Plataforma activa
+
+            </span>
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* =========================================================
+       NAVEGACIÓN SUAVE
+    ========================================================= */
+
+    document
+        .querySelectorAll(
+            'a[href^="#"]'
+        )
+        .forEach(
+
+            function (
+                enlace
+            ) {
+
+                enlace.addEventListener(
+
+                    "click",
+
+                    function (
+                        event
+                    ) {
+
+                        const destino =
+                            this.getAttribute(
+                                "href"
+                            );
+
+
+                        if (
+                            destino
+                            ===
+                            "#"
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const elemento =
+                            document
+                                .querySelector(
+                                    destino
+                                );
+
+
+                        if (
+                            elemento
+                        ) {
+
+                            event
+                                .preventDefault();
+
+
+                            elemento
+                                .scrollIntoView({
+
+                                    behavior:
+                                        "smooth",
+
+                                    block:
+                                        "start"
+
+                                });
+
+                        }
+
+                    }
+
+                );
+
+            }
+
+        );
+
+</script>
+
+
+</body>
+
+</html>

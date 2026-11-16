@@ -1,0 +1,2203 @@
+/* =========================================================
+   HUELLA · Apariencia global
+   - Normal (diseño original)
+   - Futurista (azul noche + dorado)
+   - Movimiento activable/desactivable
+   ========================================================= */
+
+/* Botón de Ajustes añadido al menú */
+.huella-settings-trigger{
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#59666a;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    border-radius:10px;
+    font:inherit;
+    font-weight:600;
+    text-align:left;
+    cursor:pointer;
+    margin-top:5px;
+}
+.huella-settings-trigger:hover{
+    background:#fff;
+    color:#00303c;
+    box-shadow:0 4px 15px rgba(0,40,50,.05);
+}
+.huella-settings-trigger .material-symbols-outlined{font-size:21px}
+
+/* Modal de ajustes */
+.huella-settings-overlay{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:22px;
+    background:rgba(0,18,28,.58);
+    backdrop-filter:blur(8px);
+}
+.huella-settings-dialog{
+    width:min(560px,100%);
+    border-radius:24px;
+    background:#fff;
+    border:1px solid #dfe7e9;
+    box-shadow:0 28px 80px rgba(0,31,42,.28);
+    overflow:hidden;
+    color:#172126;
+}
+.huella-settings-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:22px 24px;
+    border-bottom:1px solid #e7edef;
+}
+.huella-settings-title{display:flex;align-items:center;gap:12px}
+.huella-settings-icon{
+    width:42px;height:42px;border-radius:13px;
+    display:grid;place-items:center;
+    background:#073d49;color:#ffd27d;
+}
+.huella-settings-head h2{
+    margin:0;
+    font-family:"Playfair Display",serif;
+    color:#00303c;
+    font-size:25px;
+}
+.huella-settings-head p{margin:3px 0 0;color:#758085;font-size:12px}
+.huella-settings-close{
+    width:40px;height:40px;border:0;border-radius:50%;
+    display:grid;place-items:center;cursor:pointer;
+    background:#eef3f5;color:#00303c;
+}
+.huella-settings-body{padding:24px}
+.huella-setting-label{font-size:11px;font-weight:800;letter-spacing:.7px;color:#687377;text-transform:uppercase;margin-bottom:10px}
+.huella-theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
+.huella-theme-option{
+    border:2px solid #e2e9eb;
+    border-radius:17px;
+    padding:14px;
+    background:#fff;
+    cursor:pointer;
+    text-align:left;
+    transition:.2s ease;
+}
+.huella-theme-option:hover{border-color:#96aeb5;transform:translateY(-1px)}
+.huella-theme-option.is-selected{border-color:#07505e;box-shadow:0 0 0 3px rgba(7,80,94,.08)}
+.huella-theme-preview{
+    height:82px;border-radius:12px;margin-bottom:11px;overflow:hidden;position:relative;
+    border:1px solid rgba(0,0,0,.08)
+}
+.huella-theme-preview.normal{background:#f4f8fa}
+.huella-theme-preview.normal::before{content:"";position:absolute;left:0;top:0;bottom:0;width:28%;background:#eef3f5}
+.huella-theme-preview.normal::after{content:"";position:absolute;left:34%;right:7%;top:15px;height:20px;border-radius:8px;background:#fff;box-shadow:0 28px 0 #fff}
+.huella-theme-preview.future{background:radial-gradient(circle at 80% 25%,#2c5578 0,transparent 28%),linear-gradient(145deg,#06101d,#0b1d30 60%,#111724)}
+.huella-theme-preview.future::before{content:"";position:absolute;left:0;top:0;bottom:0;width:28%;background:rgba(5,12,23,.8);border-right:1px solid rgba(255,205,120,.18)}
+.huella-theme-preview.future::after{content:"";position:absolute;left:34%;right:7%;top:15px;height:20px;border-radius:8px;background:rgba(255,255,255,.09);box-shadow:0 28px 0 rgba(255,255,255,.07),0 0 22px rgba(76,150,255,.12)}
+.huella-theme-option strong{display:block;color:#00303c;font-size:14px;margin-bottom:3px}
+.huella-theme-option small{color:#758085;line-height:1.45}
+.huella-motion-row{
+    display:flex;align-items:center;justify-content:space-between;gap:18px;
+    padding:16px;border:1px solid #e1e8ea;border-radius:15px;background:#f8fafb;
+}
+.huella-motion-row strong{display:block;color:#00303c;font-size:14px}
+.huella-motion-row small{display:block;color:#758085;font-size:11px;margin-top:4px;line-height:1.4}
+.huella-switch{position:relative;width:52px;height:30px;flex:0 0 auto}
+.huella-switch input{opacity:0;width:0;height:0}
+.huella-switch-slider{position:absolute;inset:0;border-radius:99px;background:#cbd5d9;cursor:pointer;transition:.2s}
+.huella-switch-slider::before{content:"";position:absolute;width:22px;height:22px;left:4px;top:4px;border-radius:50%;background:#fff;box-shadow:0 2px 7px rgba(0,0,0,.18);transition:.2s}
+.huella-switch input:checked + .huella-switch-slider{background:#07505e}
+.huella-switch input:checked + .huella-switch-slider::before{transform:translateX(22px)}
+.huella-settings-note{margin-top:15px;padding:12px 14px;border-radius:12px;background:#f0f6f7;color:#536166;font-size:11px;line-height:1.5}
+.huella-settings-actions{display:flex;justify-content:flex-end;gap:10px;padding:0 24px 24px}
+.huella-settings-actions button{border:0;border-radius:10px;padding:10px 15px;font:inherit;font-weight:700;cursor:pointer}
+.huella-reset{background:#eef3f5;color:#00303c}
+.huella-done{background:#073d49;color:white}
+
+/* ================= FUTURISTA ================= */
+html[data-huella-theme="futurista"]{
+    color-scheme:dark;
+    --huella-f-bg:#050b14;
+    --huella-f-bg2:#0a1524;
+    --huella-f-panel:rgba(12,26,43,.82);
+    --huella-f-panel2:rgba(18,34,53,.88);
+    --huella-f-line:rgba(173,198,221,.16);
+    --huella-f-text:#eef5fb;
+    --huella-f-muted:#9fb0bf;
+    --huella-f-gold:#e9c783;
+    --huella-f-blue:#7ab7ff;
+    --huella-f-teal:#78d4cf;
+}
+html[data-huella-theme="futurista"] body{
+    background:
+      radial-gradient(circle at 78% 10%,rgba(53,107,164,.21),transparent 28%),
+      radial-gradient(circle at 30% 100%,rgba(171,123,59,.10),transparent 27%),
+      linear-gradient(145deg,var(--huella-f-bg),#07111d 52%,#0b1522) !important;
+    color:var(--huella-f-text) !important;
+    min-height:100vh;
+}
+html[data-huella-theme="futurista"] .app,
+html[data-huella-theme="futurista"] .main,
+html[data-huella-theme="futurista"] .content,
+html[data-huella-theme="futurista"] .view,
+html[data-huella-theme="futurista"] .section{
+    background:transparent !important;
+}
+html[data-huella-theme="futurista"] .sidebar{
+    background:linear-gradient(180deg,rgba(6,14,26,.96),rgba(8,18,31,.94)) !important;
+    border-color:var(--huella-f-line) !important;
+    box-shadow:18px 0 45px rgba(0,0,0,.18);
+    backdrop-filter:blur(18px);
+}
+html[data-huella-theme="futurista"] .topbar{
+    background:rgba(7,15,27,.78) !important;
+    border-color:var(--huella-f-line) !important;
+    backdrop-filter:blur(18px) saturate(125%);
+    box-shadow:0 10px 30px rgba(0,0,0,.13);
+}
+html[data-huella-theme="futurista"] .brand h2,
+html[data-huella-theme="futurista"] .brand b,
+html[data-huella-theme="futurista"] .title,
+html[data-huella-theme="futurista"] h1,
+html[data-huella-theme="futurista"] h2,
+html[data-huella-theme="futurista"] h3,
+html[data-huella-theme="futurista"] .card-title,
+html[data-huella-theme="futurista"] .panel-title,
+html[data-huella-theme="futurista"] .section-title,
+html[data-huella-theme="futurista"] .top-title strong,
+html[data-huella-theme="futurista"] .admin-info strong,
+html[data-huella-theme="futurista"] .clinic strong{
+    color:var(--huella-f-text) !important;
+}
+html[data-huella-theme="futurista"] .title,
+html[data-huella-theme="futurista"] h1{
+    text-shadow:0 0 26px rgba(106,171,255,.08);
+}
+html[data-huella-theme="futurista"] .brand small,
+html[data-huella-theme="futurista"] .menu-title{
+    color:var(--huella-f-gold) !important;
+}
+html[data-huella-theme="futurista"] .brand-logo,
+html[data-huella-theme="futurista"] .avatar,
+html[data-huella-theme="futurista"] .hero-icon,
+html[data-huella-theme="futurista"] .module-icon,
+html[data-huella-theme="futurista"] .quick-icon,
+html[data-huella-theme="futurista"] .stat-icon,
+html[data-huella-theme="futurista"] .card-icon{
+    background:linear-gradient(145deg,#142a45,#0a1627) !important;
+    color:var(--huella-f-gold) !important;
+    border:1px solid rgba(233,199,131,.18) !important;
+    box-shadow:inset 0 0 18px rgba(122,183,255,.06),0 8px 22px rgba(0,0,0,.2);
+}
+html[data-huella-theme="futurista"] .role,
+html[data-huella-theme="futurista"] .eyebrow,
+html[data-huella-theme="futurista"] .badge{
+    background:rgba(122,183,255,.10) !important;
+    color:#d8eaff !important;
+    border:1px solid rgba(122,183,255,.20) !important;
+}
+html[data-huella-theme="futurista"] .menu a,
+html[data-huella-theme="futurista"] .menu button,
+html[data-huella-theme="futurista"] .huella-settings-trigger{
+    color:#aebdca !important;
+    background:transparent !important;
+}
+html[data-huella-theme="futurista"] .menu a:hover,
+html[data-huella-theme="futurista"] .menu a.active,
+html[data-huella-theme="futurista"] .menu button:hover,
+html[data-huella-theme="futurista"] .menu button.active,
+html[data-huella-theme="futurista"] .huella-settings-trigger:hover{
+    color:#fff !important;
+    background:linear-gradient(90deg,rgba(122,183,255,.13),rgba(233,199,131,.08)) !important;
+    border-color:rgba(122,183,255,.15) !important;
+    box-shadow:inset 0 0 0 1px rgba(122,183,255,.10),0 8px 26px rgba(0,0,0,.16) !important;
+}
+html[data-huella-theme="futurista"] .card,
+html[data-huella-theme="futurista"] .stat,
+html[data-huella-theme="futurista"] .panel,
+html[data-huella-theme="futurista"] .module,
+html[data-huella-theme="futurista"] .quick,
+html[data-huella-theme="futurista"] .quick-card,
+html[data-huella-theme="futurista"] .service,
+html[data-huella-theme="futurista"] .data-card,
+html[data-huella-theme="futurista"] .stat-card,
+html[data-huella-theme="futurista"] .summary-box,
+html[data-huella-theme="futurista"] .summary-item,
+html[data-huella-theme="futurista"] .info-box,
+html[data-huella-theme="futurista"] .info,
+html[data-huella-theme="futurista"] .setting,
+html[data-huella-theme="futurista"] .option,
+html[data-huella-theme="futurista"] .pet-banner,
+html[data-huella-theme="futurista"] .toolbar,
+html[data-huella-theme="futurista"] .filter,
+html[data-huella-theme="futurista"] .filters,
+html[data-huella-theme="futurista"] .search-box{
+    background:linear-gradient(145deg,var(--huella-f-panel2),var(--huella-f-panel)) !important;
+    border-color:var(--huella-f-line) !important;
+    color:var(--huella-f-text) !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 16px 42px rgba(0,0,0,.15) !important;
+}
+html[data-huella-theme="futurista"] .modal{
+    background:rgba(0,4,10,.72) !important;
+    backdrop-filter:blur(8px);
+}
+html[data-huella-theme="futurista"] .modal-box,
+html[data-huella-theme="futurista"] .modal-card{
+    background:#0d1b2d !important;
+    color:var(--huella-f-text) !important;
+    border-color:var(--huella-f-line) !important;
+}
+html[data-huella-theme="futurista"] p,
+html[data-huella-theme="futurista"] label,
+html[data-huella-theme="futurista"] .subtitle,
+html[data-huella-theme="futurista"] .muted,
+html[data-huella-theme="futurista"] small,
+html[data-huella-theme="futurista"] .panel-description,
+html[data-huella-theme="futurista"] .modal-description,
+html[data-huella-theme="futurista"] .data,
+html[data-huella-theme="futurista"] .info-row{
+    color:var(--huella-f-muted) !important;
+}
+html[data-huella-theme="futurista"] strong,
+html[data-huella-theme="futurista"] b,
+html[data-huella-theme="futurista"] td,
+html[data-huella-theme="futurista"] th{
+    color:var(--huella-f-text);
+}
+html[data-huella-theme="futurista"] table,
+html[data-huella-theme="futurista"] th,
+html[data-huella-theme="futurista"] td{
+    border-color:var(--huella-f-line) !important;
+}
+html[data-huella-theme="futurista"] input,
+html[data-huella-theme="futurista"] select,
+html[data-huella-theme="futurista"] textarea{
+    background:#091625 !important;
+    color:var(--huella-f-text) !important;
+    border-color:rgba(165,194,220,.18) !important;
+    outline-color:var(--huella-f-blue) !important;
+}
+html[data-huella-theme="futurista"] input::placeholder,
+html[data-huella-theme="futurista"] textarea::placeholder{color:#748596 !important}
+html[data-huella-theme="futurista"] .primary,
+html[data-huella-theme="futurista"] .save,
+html[data-huella-theme="futurista"] .new-button{
+    background:linear-gradient(135deg,#b98943,#e3bf79) !important;
+    color:#10151b !important;
+    border-color:rgba(255,222,163,.4) !important;
+    box-shadow:0 8px 22px rgba(188,139,64,.18);
+}
+html[data-huella-theme="futurista"] .secondary,
+html[data-huella-theme="futurista"] .back,
+html[data-huella-theme="futurista"] .back-button,
+html[data-huella-theme="futurista"] .edit-button,
+html[data-huella-theme="futurista"] .refresh,
+html[data-huella-theme="futurista"] .filter-button,
+html[data-huella-theme="futurista"] .icon-button,
+html[data-huella-theme="futurista"] .notification{
+    background:rgba(255,255,255,.055) !important;
+    color:#dbe9f5 !important;
+    border-color:var(--huella-f-line) !important;
+}
+html[data-huella-theme="futurista"] .location,
+html[data-huella-theme="futurista"] .search input{
+    background:rgba(255,255,255,.05) !important;
+    color:#dce8f3 !important;
+    border-color:var(--huella-f-line) !important;
+}
+html[data-huella-theme="futurista"] hr{border-color:var(--huella-f-line) !important}
+html[data-huella-theme="futurista"] a{color:#9ec7ff}
+html[data-huella-theme="futurista"] .logout{
+    background:rgba(190,67,67,.10) !important;
+    color:#ffb5b5 !important;
+    border:1px solid rgba(255,111,111,.12) !important;
+}
+
+/* Modal de ajustes también cambia al tema futurista */
+html[data-huella-theme="futurista"] .huella-settings-dialog{
+    background:linear-gradient(145deg,#0e1c2e,#091421);
+    border-color:var(--huella-f-line);
+    color:var(--huella-f-text);
+}
+html[data-huella-theme="futurista"] .huella-settings-head{border-color:var(--huella-f-line)}
+html[data-huella-theme="futurista"] .huella-settings-head h2,
+html[data-huella-theme="futurista"] .huella-theme-option strong,
+html[data-huella-theme="futurista"] .huella-motion-row strong{color:var(--huella-f-text) !important}
+html[data-huella-theme="futurista"] .huella-settings-head p,
+html[data-huella-theme="futurista"] .huella-theme-option small,
+html[data-huella-theme="futurista"] .huella-motion-row small,
+html[data-huella-theme="futurista"] .huella-setting-label{color:var(--huella-f-muted) !important}
+html[data-huella-theme="futurista"] .huella-settings-close,
+html[data-huella-theme="futurista"] .huella-reset{background:rgba(255,255,255,.07);color:#e8f1f8}
+html[data-huella-theme="futurista"] .huella-theme-option,
+html[data-huella-theme="futurista"] .huella-motion-row{background:rgba(255,255,255,.035);border-color:var(--huella-f-line)}
+html[data-huella-theme="futurista"] .huella-theme-option.is-selected{border-color:var(--huella-f-gold);box-shadow:0 0 0 3px rgba(233,199,131,.08)}
+html[data-huella-theme="futurista"] .huella-settings-note{background:rgba(122,183,255,.08);color:#aabaca}
+html[data-huella-theme="futurista"] .huella-done{background:linear-gradient(135deg,#b98943,#e3bf79);color:#11161d}
+
+/* Movimiento */
+@keyframes huellaEnter{
+    from{opacity:0;transform:translateY(10px) scale(.995)}
+    to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes huellaGlow{
+    0%,100%{box-shadow:0 10px 30px rgba(0,0,0,.16)}
+    50%{box-shadow:0 14px 38px rgba(67,139,218,.15)}
+}
+html[data-huella-theme="futurista"][data-huella-motion="on"] .card,
+html[data-huella-theme="futurista"][data-huella-motion="on"] .stat,
+html[data-huella-theme="futurista"][data-huella-motion="on"] .panel,
+html[data-huella-theme="futurista"][data-huella-motion="on"] .module,
+html[data-huella-theme="futurista"][data-huella-motion="on"] .quick-card,
+html[data-huella-theme="futurista"][data-huella-motion="on"] .service,
+html[data-huella-theme="futurista"][data-huella-motion="on"] .data-card,
+html[data-huella-theme="futurista"][data-huella-motion="on"] .stat-card{
+    animation:huellaEnter .42s ease both;
+    transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease !important;
+}
+html[data-huella-theme="futurista"][data-huella-motion="on"] .card:hover,
+html[data-huella-theme="futurista"][data-huella-motion="on"] .stat:hover,
+html[data-huella-theme="futurista"][data-huella-motion="on"] .module:hover,
+html[data-huella-theme="futurista"][data-huella-motion="on"] .quick-card:hover,
+html[data-huella-theme="futurista"][data-huella-motion="on"] .service:hover,
+html[data-huella-theme="futurista"][data-huella-motion="on"] .stat-card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(122,183,255,.24) !important;
+    box-shadow:0 18px 45px rgba(0,0,0,.23),0 0 22px rgba(80,151,225,.055) !important;
+}
+html[data-huella-motion="off"] *,
+html[data-huella-motion="off"] *::before,
+html[data-huella-motion="off"] *::after{
+    animation:none !important;
+    transition:none !important;
+    scroll-behavior:auto !important;
+}
+
+@media(max-width:680px){
+    .huella-theme-grid{grid-template-columns:1fr}
+    .huella-settings-dialog{max-height:92vh;overflow:auto}
+}
+
+/* Ajustes siempre visible dentro del menú lateral */
+.sidebar{
+    overflow-y:auto !important;
+}
+nav.menu .huella-settings-trigger{
+    display:flex !important;
+    flex:none;
+    min-height:44px;
+    margin:6px 0 18px;
+}
+
+/* Botón fijo y visible de Ajustes por perfil */
+.huella-floating-settings{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:99990;
+    border:0;
+    border-radius:999px;
+    padding:12px 17px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:#073d49;
+    color:#fff;
+    font:600 13px "Plus Jakarta Sans",sans-serif;
+    box-shadow:0 12px 34px rgba(0,48,60,.28);
+    cursor:pointer;
+    transition:.2s ease;
+}
+.huella-floating-settings:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(0,48,60,.34)}
+.huella-floating-settings .material-symbols-outlined{font-size:20px;color:#ffd27d}
+html[data-huella-theme="futurista"] .huella-floating-settings{
+    background:linear-gradient(135deg,#b98943,#e3bf79);
+    color:#11161d;
+    border:1px solid rgba(255,232,188,.35);
+    box-shadow:0 12px 38px rgba(185,137,67,.24),0 0 28px rgba(78,150,255,.12);
+}
+html[data-huella-theme="futurista"] .huella-floating-settings .material-symbols-outlined{color:#11161d}
+@media(max-width:720px){.huella-floating-settings{right:14px;bottom:14px;padding:11px 14px}.huella-floating-settings span:last-child{display:none}}
+
+/* =========================================================
+   HUELLA V5 · Diseños inspirados en las referencias del usuario
+   Se aplican a TODOS los módulos mediante data-huella-theme.
+   ========================================================= */
+
+/* Miniaturas reales de los tres diseños de referencia */
+.preview.ref-blue,
+.preview.ref-neon,
+.preview.ref-gold{
+    background-size:cover !important;
+    background-position:center !important;
+    border-color:rgba(255,255,255,.18) !important;
+}
+.preview.ref-blue{background-image:linear-gradient(rgba(0,18,48,.12),rgba(0,18,48,.12)),url('tema-azul-profundo.png') !important}
+.preview.ref-neon{background-image:linear-gradient(rgba(0,8,30,.08),rgba(0,8,30,.08)),url('tema-neon-biometrico.png') !important}
+.preview.ref-gold{background-image:linear-gradient(rgba(10,7,4,.05),rgba(10,7,4,.05)),url('tema-dorado-nocturno.png') !important}
+.preview.ref-blue::before,.preview.ref-blue::after,
+.preview.ref-neon::before,.preview.ref-neon::after,
+.preview.ref-gold::before,.preview.ref-gold::after{display:none !important}
+
+html[data-huella-theme^="futurista"]{
+    color-scheme:dark;
+    --hf-bg:#06101d;
+    --hf-bg2:#0b1b2d;
+    --hf-side:#071321;
+    --hf-panel:rgba(15,31,50,.88);
+    --hf-panel2:rgba(23,42,63,.86);
+    --hf-line:rgba(160,197,230,.16);
+    --hf-line-strong:rgba(160,197,230,.28);
+    --hf-text:#edf5fb;
+    --hf-muted:#9dafbf;
+    --hf-accent:#7ebaff;
+    --hf-accent2:#5fd2e6;
+    --hf-gold:#e5c27c;
+    --hf-shadow:rgba(0,0,0,.38);
+}
+
+html[data-huella-theme="futurista-neon"]{
+    --hf-bg:#031224;
+    --hf-bg2:#071f39;
+    --hf-side:#041729;
+    --hf-panel:rgba(8,31,54,.84);
+    --hf-panel2:rgba(16,46,74,.82);
+    --hf-line:rgba(83,203,255,.20);
+    --hf-line-strong:rgba(83,203,255,.42);
+    --hf-text:#effbff;
+    --hf-muted:#a3c4d0;
+    --hf-accent:#52d7ff;
+    --hf-accent2:#9cf7ff;
+    --hf-gold:#ead38e;
+}
+
+html[data-huella-theme="futurista-dorado"]{
+    --hf-bg:#090b0f;
+    --hf-bg2:#17140f;
+    --hf-side:#0c1015;
+    --hf-panel:rgba(29,28,26,.88);
+    --hf-panel2:rgba(45,39,31,.80);
+    --hf-line:rgba(231,191,125,.18);
+    --hf-line-strong:rgba(231,191,125,.36);
+    --hf-text:#f5f0e8;
+    --hf-muted:#b9b0a3;
+    --hf-accent:#dca95e;
+    --hf-accent2:#ffd99a;
+    --hf-gold:#efc67d;
+}
+
+html[data-huella-theme^="futurista"] body{
+    background:
+      radial-gradient(circle at 82% 8%,color-mix(in srgb,var(--hf-accent) 22%, transparent),transparent 25%),
+      radial-gradient(circle at 18% 90%,color-mix(in srgb,var(--hf-gold) 10%, transparent),transparent 28%),
+      linear-gradient(145deg,var(--hf-bg),var(--hf-bg2) 58%,var(--hf-bg)) !important;
+    color:var(--hf-text) !important;
+    min-height:100vh;
+    position:relative;
+}
+
+html[data-huella-theme^="futurista"] body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:.72;
+    background:
+      radial-gradient(circle at 91% 22%,color-mix(in srgb,var(--hf-accent) 18%, transparent) 0 2px,transparent 3px),
+      radial-gradient(circle at 76% 18%,color-mix(in srgb,var(--hf-accent2) 18%, transparent) 0 3px,transparent 4px),
+      radial-gradient(circle at 67% 66%,color-mix(in srgb,var(--hf-gold) 15%, transparent) 0 4px,transparent 5px),
+      radial-gradient(circle at 38% 10%,color-mix(in srgb,var(--hf-accent) 13%, transparent) 0 2px,transparent 3px);
+    background-size:210px 210px,260px 260px,320px 320px,170px 170px;
+    filter:blur(.2px);
+}
+
+html[data-huella-theme="futurista-neon"] body::after{
+    content:"";
+    position:fixed;
+    left:14%;right:4%;top:18%;height:170px;
+    pointer-events:none;z-index:0;opacity:.32;
+    background:linear-gradient(100deg,transparent 0%,rgba(88,220,255,.05) 12%,rgba(87,203,255,.34) 42%,rgba(116,235,255,.08) 70%,transparent 100%);
+    filter:blur(14px);
+    transform:skewY(-6deg);
+    border-radius:50%;
+}
+
+html[data-huella-theme="futurista-dorado"] body::before{
+    background:
+      radial-gradient(circle at 86% 14%,rgba(244,187,95,.22) 0 5px,transparent 10px),
+      radial-gradient(circle at 73% 33%,rgba(238,165,68,.12) 0 9px,transparent 18px),
+      radial-gradient(circle at 21% 76%,rgba(224,153,61,.12) 0 8px,transparent 18px),
+      radial-gradient(circle at 42% 17%,rgba(255,221,158,.10) 0 5px,transparent 12px);
+    background-size:250px 250px,340px 340px,300px 300px,190px 190px;
+    filter:blur(3px);
+}
+
+html[data-huella-theme^="futurista"] .app,
+html[data-huella-theme^="futurista"] .main,
+html[data-huella-theme^="futurista"] main,
+html[data-huella-theme^="futurista"] .content,
+html[data-huella-theme^="futurista"] .view,
+html[data-huella-theme^="futurista"] .section{
+    background:transparent !important;
+    position:relative;
+    z-index:1;
+}
+
+html[data-huella-theme^="futurista"] .sidebar{
+    background:linear-gradient(180deg,color-mix(in srgb,var(--hf-side) 96%, transparent),color-mix(in srgb,var(--hf-bg) 94%, transparent)) !important;
+    border-right:1px solid var(--hf-line) !important;
+    box-shadow:20px 0 48px rgba(0,0,0,.25) !important;
+    backdrop-filter:blur(22px) saturate(130%);
+    z-index:30;
+}
+html[data-huella-theme^="futurista"] .topbar{
+    background:linear-gradient(90deg,color-mix(in srgb,var(--hf-bg) 78%, transparent),color-mix(in srgb,var(--hf-panel) 72%, transparent)) !important;
+    border-color:var(--hf-line) !important;
+    box-shadow:0 12px 32px rgba(0,0,0,.18) !important;
+    backdrop-filter:blur(20px) saturate(130%);
+}
+
+html[data-huella-theme^="futurista"] .brand h2,
+html[data-huella-theme^="futurista"] .title,
+html[data-huella-theme^="futurista"] h1,
+html[data-huella-theme^="futurista"] h2,
+html[data-huella-theme^="futurista"] h3,
+html[data-huella-theme^="futurista"] h4,
+html[data-huella-theme^="futurista"] .card-title,
+html[data-huella-theme^="futurista"] .panel-title,
+html[data-huella-theme^="futurista"] .section-title{
+    color:var(--hf-text) !important;
+}
+html[data-huella-theme^="futurista"] h1,
+html[data-huella-theme^="futurista"] .title{
+    color:var(--hf-gold) !important;
+    text-shadow:0 0 24px color-mix(in srgb,var(--hf-accent) 15%, transparent);
+}
+html[data-huella-theme^="futurista"] .brand small,
+html[data-huella-theme^="futurista"] .menu-title,
+html[data-huella-theme^="futurista"] .eyebrow{
+    color:var(--hf-gold) !important;
+}
+
+html[data-huella-theme^="futurista"] .logo,
+html[data-huella-theme^="futurista"] .brand-logo,
+html[data-huella-theme^="futurista"] .avatar,
+html[data-huella-theme^="futurista"] .pet-avatar,
+html[data-huella-theme^="futurista"] .pet-icon,
+html[data-huella-theme^="futurista"] .hero-icon,
+html[data-huella-theme^="futurista"] .module-icon,
+html[data-huella-theme^="futurista"] .quick-icon,
+html[data-huella-theme^="futurista"] .stat-icon,
+html[data-huella-theme^="futurista"] .card-icon{
+    background:radial-gradient(circle at 35% 25%,color-mix(in srgb,var(--hf-accent) 24%, transparent),transparent 36%),linear-gradient(145deg,#12273f,#081321) !important;
+    color:var(--hf-gold) !important;
+    border:1px solid var(--hf-line-strong) !important;
+    box-shadow:inset 0 0 20px color-mix(in srgb,var(--hf-accent) 7%, transparent),0 9px 28px rgba(0,0,0,.28) !important;
+}
+
+html[data-huella-theme^="futurista"] .role,
+html[data-huella-theme^="futurista"] .eyebrow,
+html[data-huella-theme^="futurista"] .badge,
+html[data-huella-theme^="futurista"] .status,
+html[data-huella-theme^="futurista"] .online{
+    background:color-mix(in srgb,var(--hf-panel2) 88%, transparent) !important;
+    color:var(--hf-text) !important;
+    border:1px solid var(--hf-line) !important;
+}
+
+html[data-huella-theme^="futurista"] .menu a,
+html[data-huella-theme^="futurista"] .menu button,
+html[data-huella-theme^="futurista"] .huella-settings-trigger{
+    color:var(--hf-muted) !important;
+    background:transparent !important;
+    border:1px solid transparent !important;
+}
+html[data-huella-theme^="futurista"] .menu a:hover,
+html[data-huella-theme^="futurista"] .menu a.active,
+html[data-huella-theme^="futurista"] .menu button:hover,
+html[data-huella-theme^="futurista"] .menu button.active,
+html[data-huella-theme^="futurista"] .huella-settings-trigger:hover{
+    color:#fff !important;
+    background:linear-gradient(90deg,color-mix(in srgb,var(--hf-accent) 15%, transparent),color-mix(in srgb,var(--hf-gold) 9%, transparent)) !important;
+    border-color:var(--hf-line) !important;
+    box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--hf-accent) 5%, transparent),0 8px 28px rgba(0,0,0,.19) !important;
+}
+
+html[data-huella-theme^="futurista"] :is(
+.card,.stat,.panel,.module,.quick,.quick-card,.service,.data-card,.stat-card,
+.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,
+.filter,.filters,.search-box,.hero,.product,.patient-card,.appointment-card,.recipe,
+.metric,.overview-card,.product-card,.membership-card,.plan,.order-card,.table-wrap,
+.camera-box,.theme-choice,.row,.quick-links a,.commerce-card,.commerce-stat,.media-card
+){
+    background:linear-gradient(145deg,color-mix(in srgb,var(--hf-panel2) 92%, transparent),color-mix(in srgb,var(--hf-panel) 88%, transparent)) !important;
+    border-color:var(--hf-line) !important;
+    color:var(--hf-text) !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.03),0 16px 42px rgba(0,0,0,.18) !important;
+    backdrop-filter:blur(16px) saturate(125%);
+}
+
+html[data-huella-theme^="futurista"] :is(p,label,small,.subtitle,.muted,.panel-description,.modal-description,.data,.info-row,.description,.detail,.privacy,.media-help){
+    color:var(--hf-muted) !important;
+}
+html[data-huella-theme^="futurista"] :is(strong,b,td,th,.price,.number,.value){color:var(--hf-text) !important}
+html[data-huella-theme^="futurista"] table,
+html[data-huella-theme^="futurista"] th,
+html[data-huella-theme^="futurista"] td{border-color:var(--hf-line) !important}
+
+html[data-huella-theme^="futurista"] input,
+html[data-huella-theme^="futurista"] select,
+html[data-huella-theme^="futurista"] textarea{
+    background:rgba(4,14,25,.78) !important;
+    color:var(--hf-text) !important;
+    border-color:var(--hf-line-strong) !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.025) !important;
+}
+html[data-huella-theme^="futurista"] input::placeholder,
+html[data-huella-theme^="futurista"] textarea::placeholder{color:color-mix(in srgb,var(--hf-muted) 72%, transparent) !important}
+
+html[data-huella-theme^="futurista"] :is(.primary,.save,.new-button,.hero-primary,.add,.main-button){
+    background:linear-gradient(135deg,color-mix(in srgb,var(--hf-gold) 90%, #8a5b22),var(--hf-gold)) !important;
+    color:#111820 !important;
+    border-color:color-mix(in srgb,var(--hf-gold) 65%, transparent) !important;
+    box-shadow:0 8px 24px color-mix(in srgb,var(--hf-gold) 16%, transparent) !important;
+}
+html[data-huella-theme="futurista-neon"] :is(.primary,.save,.new-button,.hero-primary,.add,.main-button){
+    background:linear-gradient(135deg,#3bc1e8,#8cecff) !important;
+    color:#03101a !important;
+}
+html[data-huella-theme^="futurista"] :is(.secondary,.back,.back-button,.edit-button,.refresh,.filter-button,.icon-button,.notification,.cancel,.profile-button){
+    background:rgba(255,255,255,.055) !important;
+    color:var(--hf-text) !important;
+    border-color:var(--hf-line) !important;
+}
+
+html[data-huella-theme^="futurista"] .modal{background:rgba(0,4,10,.78) !important;backdrop-filter:blur(10px)}
+html[data-huella-theme^="futurista"] :is(.modal-box,.modal-card){
+    background:linear-gradient(145deg,var(--hf-panel2),var(--hf-panel)) !important;
+    color:var(--hf-text) !important;
+    border-color:var(--hf-line-strong) !important;
+    box-shadow:0 28px 80px rgba(0,0,0,.5) !important;
+}
+
+html[data-huella-theme^="futurista"] .product-image,
+html[data-huella-theme^="futurista"] .media-thumb{
+    background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.015)) !important;
+    border-color:var(--hf-line) !important;
+}
+html[data-huella-theme^="futurista"] .product-image img,
+html[data-huella-theme^="futurista"] .product-image video,
+html[data-huella-theme^="futurista"] .media-thumb img,
+html[data-huella-theme^="futurista"] .media-thumb video{
+    filter:saturate(1.05) contrast(1.03);
+}
+
+html[data-huella-theme^="futurista"] .huella-floating-settings{
+    background:linear-gradient(135deg,var(--hf-accent),var(--hf-accent2)) !important;
+    color:#06101a !important;
+    border:1px solid rgba(255,255,255,.18) !important;
+    box-shadow:0 14px 38px color-mix(in srgb,var(--hf-accent) 22%, transparent),0 0 28px color-mix(in srgb,var(--hf-accent) 10%, transparent) !important;
+}
+html[data-huella-theme="futurista-dorado"] .huella-floating-settings{
+    background:linear-gradient(135deg,#a97136,#efc67d) !important;
+    color:#120f0a !important;
+}
+html[data-huella-theme^="futurista"] .huella-floating-settings .material-symbols-outlined{color:inherit !important}
+
+html[data-huella-theme^="futurista"] .theme-choice.selected{
+    border-color:var(--hf-accent) !important;
+    box-shadow:0 0 0 4px color-mix(in srgb,var(--hf-accent) 10%, transparent),0 14px 38px rgba(0,0,0,.22) !important;
+}
+html[data-huella-theme="futurista-dorado"] .theme-choice.selected{border-color:var(--hf-gold) !important}
+
+/* Ajuste de proporciones para acercarse a los paneles de referencia */
+@media(min-width:1050px){
+  html[data-huella-theme^="futurista"] .sidebar{width:245px !important;padding-left:20px !important;padding-right:20px !important}
+  html[data-huella-theme^="futurista"] .main{margin-left:245px !important;width:calc(100% - 245px) !important}
+  html[data-huella-theme^="futurista"] .topbar{min-height:72px !important;height:auto !important}
+  html[data-huella-theme^="futurista"] .content{padding-top:26px !important}
+}
+
+/* Movimiento futurista, opcional */
+@keyframes huellaPulseBorder{0%,100%{box-shadow:0 14px 38px rgba(0,0,0,.18)}50%{box-shadow:0 16px 44px color-mix(in srgb,var(--hf-accent) 10%, transparent)}}
+html[data-huella-theme^="futurista"][data-huella-motion="on"] :is(.card,.stat,.panel,.module,.product,.service,.patient-card,.recipe,.membership-card,.commerce-card){
+    transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease !important;
+}
+html[data-huella-theme^="futurista"][data-huella-motion="on"] :is(.card,.stat,.panel,.module,.product,.service,.patient-card,.recipe,.membership-card,.commerce-card):hover{
+    transform:translateY(-3px);
+    border-color:var(--hf-line-strong) !important;
+    box-shadow:0 20px 50px rgba(0,0,0,.28),0 0 25px color-mix(in srgb,var(--hf-accent) 7%, transparent) !important;
+}
+
+/* =========================================================
+   V6 · Aplicación visual reforzada
+   Hace que el cambio de diseño sea evidente en TODOS los módulos.
+   ========================================================= */
+html.huella-theme-futurista,
+html.huella-theme-futurista-neon,
+html.huella-theme-futurista-dorado,
+html.huella-theme-personalizado{
+    color-scheme:dark;
+}
+
+html.huella-theme-futurista body,
+body.huella-theme-futurista{
+    background:radial-gradient(circle at 76% 12%,rgba(48,107,180,.34),transparent 28%),linear-gradient(145deg,#030914 0%,#071629 58%,#0b1830 100%) !important;
+    color:#edf5fb !important;
+}
+html.huella-theme-futurista-neon body,
+body.huella-theme-futurista-neon{
+    background:radial-gradient(circle at 74% 9%,rgba(0,177,255,.34),transparent 26%),radial-gradient(circle at 24% 84%,rgba(0,233,255,.12),transparent 28%),linear-gradient(145deg,#010918,#041b34 55%,#062850 100%) !important;
+    color:#effbff !important;
+}
+html.huella-theme-futurista-dorado body,
+body.huella-theme-futurista-dorado{
+    background:radial-gradient(circle at 78% 12%,rgba(236,178,89,.20),transparent 26%),radial-gradient(circle at 18% 90%,rgba(214,155,77,.08),transparent 30%),linear-gradient(145deg,#050607,#11110f 58%,#1a1510 100%) !important;
+    color:#f5f0e8 !important;
+}
+
+html.huella-theme-futurista :is(.sidebar,.topbar,.card,.panel,.stat,.module,.product,.service,.recipe,.membership-card,.commerce-card,.row,.theme-choice),
+html.huella-theme-futurista-neon :is(.sidebar,.topbar,.card,.panel,.stat,.module,.product,.service,.recipe,.membership-card,.commerce-card,.row,.theme-choice),
+html.huella-theme-futurista-dorado :is(.sidebar,.topbar,.card,.panel,.stat,.module,.product,.service,.recipe,.membership-card,.commerce-card,.row,.theme-choice){
+    transition:background .22s ease,color .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease !important;
+}
+
+/* Diseño personalizado: la imagen seleccionada por el usuario se aplica como fondo real. */
+html[data-huella-theme="personalizado"]{
+    --hf-bg:#04101a;
+    --hf-bg2:#0a1b28;
+    --hf-side:rgba(4,16,26,.94);
+    --hf-panel:rgba(8,28,40,.82);
+    --hf-panel2:rgba(16,40,52,.84);
+    --hf-line:rgba(255,255,255,.15);
+    --hf-line-strong:rgba(255,255,255,.30);
+    --hf-text:#f3fbff;
+    --hf-muted:#bdd0d7;
+    --hf-accent:var(--huella-custom-accent,#61d8ff);
+    --hf-accent2:#b8f5ff;
+    --hf-gold:#efd08a;
+}
+html[data-huella-theme="personalizado"] body{
+    background-image:linear-gradient(135deg,rgba(2,10,18,.88),rgba(4,24,36,.74)),var(--huella-custom-bg-image) !important;
+    background-size:cover !important;
+    background-position:center center !important;
+    background-attachment:fixed !important;
+    color:var(--hf-text) !important;
+}
+html[data-huella-theme="personalizado"] :is(.main,.content,.view,.section){background:transparent !important}
+html[data-huella-theme="personalizado"] .sidebar{
+    background:rgba(3,15,24,.88) !important;
+    border-color:var(--hf-line) !important;
+    backdrop-filter:blur(18px) saturate(125%);
+}
+html[data-huella-theme="personalizado"] .topbar{
+    background:rgba(4,17,27,.78) !important;
+    border-color:var(--hf-line) !important;
+    backdrop-filter:blur(18px) saturate(125%);
+}
+html[data-huella-theme="personalizado"] :is(h1,h2,h3,.title,.brand h2,strong,b,.price,.number,.value){color:var(--hf-text) !important}
+html[data-huella-theme="personalizado"] :is(p,label,small,.subtitle,.muted,.description,.detail,.privacy){color:var(--hf-muted) !important}
+html[data-huella-theme="personalizado"] :is(.card,.stat,.panel,.module,.quick,.quick-card,.service,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,.hero,.product,.patient-card,.appointment-card,.recipe,.metric,.overview-card,.product-card,.membership-card,.plan,.order-card,.table-wrap,.camera-box,.theme-choice,.row,.quick-links a,.commerce-card,.commerce-stat,.media-card){
+    background:linear-gradient(145deg,rgba(14,37,51,.84),rgba(5,22,34,.80)) !important;
+    border-color:var(--hf-line) !important;
+    color:var(--hf-text) !important;
+    box-shadow:0 16px 44px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.04) !important;
+    backdrop-filter:blur(16px) saturate(125%);
+}
+html[data-huella-theme="personalizado"] :is(input,select,textarea){background:rgba(2,14,23,.80) !important;color:var(--hf-text) !important;border-color:var(--hf-line-strong) !important}
+html[data-huella-theme="personalizado"] :is(.primary,.save,.new-button,.hero-primary,.add,.main-button){background:var(--hf-accent) !important;color:#031015 !important;border-color:transparent !important}
+html[data-huella-theme="personalizado"] :is(.secondary,.back,.back-button,.edit-button,.refresh,.filter-button,.icon-button,.notification,.cancel,.profile-button){background:rgba(255,255,255,.07) !important;color:var(--hf-text) !important;border-color:var(--hf-line) !important}
+html[data-huella-theme="personalizado"] .huella-floating-settings{background:var(--hf-accent) !important;color:#031015 !important}
+
+/* Temas oscuros: contraste reforzado en enlaces y menú. */
+html[data-huella-theme^="futurista"] a,
+html[data-huella-theme="personalizado"] a{color:inherit}
+html[data-huella-theme^="futurista"] .menu a,
+html[data-huella-theme="personalizado"] .menu a{color:var(--hf-muted) !important}
+html[data-huella-theme^="futurista"] .menu a:hover,
+html[data-huella-theme^="futurista"] .menu a.active,
+html[data-huella-theme="personalizado"] .menu a:hover,
+html[data-huella-theme="personalizado"] .menu a.active{color:var(--hf-text) !important;background:rgba(255,255,255,.07) !important}
+
+/* Sin movimiento cuando se desactiva. */
+html[data-huella-motion="off"] *,
+html[data-huella-motion="off"] *::before,
+html[data-huella-motion="off"] *::after{
+    animation:none !important;
+    transition:none !important;
+    scroll-behavior:auto !important;
+}
+
+/* =========================================================
+   V7 · DUEÑO/TUTOR — TEMA COMPLETO EN TODOS LOS MÓDULOS
+   Refuerzo específico para Vacunas, Citas, Telemedicina,
+   Estudios, GPS y Expediente. También cubre tarjetas creadas
+   dinámicamente por JavaScript.
+   ========================================================= */
+
+/* Superficies/bloques que antes conservaban el fondo claro */
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] :is(
+  .next-vaccine,.next-vaccine-icon,.vaccine-card,.vaccine-top,.vaccine-info,
+  .appointments,.appointment-card,.appointment-top,.appointment-main,.appointment-info,.date-box,.card-actions,
+  .telemedicine-hero,.notice,.consultation,.consultation-top,.consultation-left,.consultation-info,
+  .consultation-icon,.video-area,.video-box,.video-header,.video-avatar,.video-controls,
+  .studies,.study-card,.study-card-top,.study-main,.study-info,.study-icon,.study-types,.study-type,
+  .study-type-icon,.upload-area,.selected-file,.file-box,.result-box,.detail-row,
+  .status-grid,.status-card,.status-header,.tracking,.demo-panel,.demo-buttons,.tracking-layout,
+  .map-panel,.map-header,.map-footer,.map-actions,.side-panel,.location-info,.location-row,.geofence,
+  .geofence-header,.alert,.alert-icon,.coordinates,
+  .pet-header,.clinical-grid,.timeline,.timeline-item,.timeline-date,.health-status,.empty,
+  .form-grid,.form-group,.modal-actions,.panel-header
+){
+  background:linear-gradient(145deg,
+    color-mix(in srgb,var(--hf-panel2) 92%, transparent),
+    color-mix(in srgb,var(--hf-panel) 88%, transparent)) !important;
+  color:var(--hf-text) !important;
+  border-color:var(--hf-line) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 14px 38px rgba(0,0,0,.16) !important;
+}
+
+/* Los contenedores de cuadrícula solo deben ser transparentes */
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] :is(
+  .stats,.vaccine-grid,.appointments,.consultations,.studies,.status-grid,.tracking-layout,
+  .clinical-grid,.study-types,.demo-buttons,.map-actions,.video-controls,.form-grid
+){
+  background:transparent !important;
+  box-shadow:none !important;
+  border-color:transparent !important;
+}
+
+/* Tarjetas principales específicas */
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] :is(
+  .vaccine-card,.appointment-card,.consultation,.study-card,.status-card,.map-panel,.side-panel > .card,
+  .timeline-item,.next-vaccine,.telemedicine-hero,.notice,.demo-panel,.pet-header
+){
+  border:1px solid var(--hf-line) !important;
+  border-radius:18px !important;
+  backdrop-filter:blur(16px) saturate(125%);
+}
+
+/* Cabeceras y sub-bloques internos */
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] :is(
+  .vaccine-top,.appointment-top,.consultation-top,.study-card-top,.status-header,.map-header,.map-footer,
+  .geofence-header,.video-header,.panel-header
+){
+  background:color-mix(in srgb,var(--hf-panel2) 65%, transparent) !important;
+  border-color:var(--hf-line) !important;
+}
+
+/* Texto: evita que títulos y datos sigan oscuros sobre el tema */
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] :is(
+  .vaccine-card,.appointment-card,.consultation,.study-card,.status-card,.map-panel,.side-panel,
+  .timeline-item,.next-vaccine,.telemedicine-hero,.notice,.demo-panel,.pet-header,.panel
+) :is(h1,h2,h3,h4,strong,b,.value,.number,.location-address,.map-title,.card-title){
+  color:var(--hf-text) !important;
+}
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] :is(
+  .vaccine-card,.appointment-card,.consultation,.study-card,.status-card,.map-panel,.side-panel,
+  .timeline-item,.next-vaccine,.telemedicine-hero,.notice,.demo-panel,.pet-header,.panel
+) :is(p,small,span:not(.material-symbols-outlined),.info,.detail-row,.location-time,.coordinates){
+  color:var(--hf-muted) !important;
+}
+
+/* Iconos y bloques de fecha/estado */
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] :is(
+  .vaccine-icon,.next-vaccine-icon,.date-box,.consultation-icon,.study-icon,.study-type-icon,
+  .alert-icon,.pet-banner-icon,.pet-icon,.video-icon
+){
+  background:radial-gradient(circle at 35% 25%,color-mix(in srgb,var(--hf-accent) 27%, transparent),transparent 40%),
+             linear-gradient(145deg,#102942,#071522) !important;
+  color:var(--hf-accent2) !important;
+  border:1px solid var(--hf-line-strong) !important;
+  box-shadow:0 0 22px color-mix(in srgb,var(--hf-accent) 10%, transparent) !important;
+}
+
+/* Botones propios de esos módulos */
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] :is(
+  .request-button,.add-button,.action-button,.action,.join,.complete,.map-button,.demo-button,
+  .video-control,.study-type,.upload-area
+){
+  background:rgba(255,255,255,.06) !important;
+  color:var(--hf-text) !important;
+  border-color:var(--hf-line) !important;
+}
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] :is(
+  .request-button,.add-button,.join,.map-button.primary,.action-button.complete
+){
+  background:linear-gradient(135deg,var(--hf-accent),var(--hf-accent2)) !important;
+  color:#04111b !important;
+  border-color:transparent !important;
+  box-shadow:0 8px 24px color-mix(in srgb,var(--hf-accent) 16%, transparent) !important;
+}
+html[data-huella-role="dueno"][data-huella-theme="futurista-dorado"] :is(
+  .request-button,.add-button,.join,.map-button.primary,.action-button.complete
+){
+  background:linear-gradient(135deg,#a97136,#efc67d) !important;
+  color:#150f08 !important;
+}
+
+/* Estados, avisos y batería mantienen significado pero integrados al tema */
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] :is(.status,.pet-status,.health-status,.tracking,.live,.online){
+  background:color-mix(in srgb,var(--hf-accent) 12%, transparent) !important;
+  color:var(--hf-text) !important;
+  border-color:var(--hf-line) !important;
+}
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] .battery{
+  background:rgba(255,255,255,.10) !important;
+  border-color:var(--hf-line) !important;
+}
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] .battery > div{
+  background:linear-gradient(90deg,var(--hf-accent),var(--hf-accent2)) !important;
+}
+
+/* Mapa y multimedia */
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] .google-map{
+  border:1px solid var(--hf-line) !important;
+  filter:saturate(.86) contrast(1.05) brightness(.84);
+}
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] :is(.video-area,.video-box){
+  border:1px solid var(--hf-line) !important;
+  background:radial-gradient(circle at 50% 25%,color-mix(in srgb,var(--hf-accent) 16%, transparent),transparent 42%),
+             linear-gradient(145deg,#061221,#0b2035) !important;
+}
+
+/* Formularios/modales: todos sus bloques siguen el tema */
+html[data-huella-role="dueno"][data-huella-theme^="futurista"] :is(.modal-box,.form-group,.selected-file,.file-box,.result-box){
+  background:linear-gradient(145deg,color-mix(in srgb,var(--hf-panel2) 94%, transparent),color-mix(in srgb,var(--hf-panel) 92%, transparent)) !important;
+  border-color:var(--hf-line) !important;
+  color:var(--hf-text) !important;
+}
+
+/* El diseño personalizado recibe exactamente la misma cobertura de bloques. */
+html[data-huella-role="dueno"][data-huella-theme="personalizado"] :is(
+  .next-vaccine,.vaccine-card,.appointment-card,.telemedicine-hero,.notice,.consultation,.video-area,.video-box,
+  .study-card,.study-type,.upload-area,.selected-file,.file-box,.result-box,.status-card,.demo-panel,.map-panel,
+  .side-panel > .card,.geofence,.alert,.pet-header,.timeline-item,.health-status,.form-group,.modal-box
+){
+  background:linear-gradient(145deg,rgba(13,39,54,.86),rgba(5,22,34,.82)) !important;
+  color:var(--hf-text) !important;
+  border-color:var(--hf-line) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.03),0 16px 42px rgba(0,0,0,.24) !important;
+  backdrop-filter:blur(16px) saturate(125%);
+}
+html[data-huella-role="dueno"][data-huella-theme="personalizado"] :is(
+  .vaccine-card,.appointment-card,.consultation,.study-card,.status-card,.map-panel,.side-panel,.timeline-item,
+  .next-vaccine,.telemedicine-hero,.notice,.demo-panel,.pet-header,.panel
+) :is(h1,h2,h3,h4,strong,b,.value,.number,.location-address,.map-title,.card-title){color:var(--hf-text) !important}
+html[data-huella-role="dueno"][data-huella-theme="personalizado"] :is(
+  .vaccine-card,.appointment-card,.consultation,.study-card,.status-card,.map-panel,.side-panel,.timeline-item,
+  .next-vaccine,.telemedicine-hero,.notice,.demo-panel,.pet-header,.panel
+) :is(p,small,span:not(.material-symbols-outlined),.info,.detail-row,.location-time,.coordinates){color:var(--hf-muted) !important}
+
+/* Transiciones también para las nuevas superficies cuando Movimiento está activo */
+html[data-huella-role="dueno"][data-huella-motion="on"][data-huella-theme^="futurista"] :is(
+  .vaccine-card,.appointment-card,.consultation,.study-card,.status-card,.map-panel,.side-panel > .card,
+  .timeline-item,.next-vaccine,.telemedicine-hero,.notice,.demo-panel
+){
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease !important;
+}
+html[data-huella-role="dueno"][data-huella-motion="on"][data-huella-theme^="futurista"] :is(
+  .vaccine-card,.appointment-card,.consultation,.study-card,.status-card,.side-panel > .card,.timeline-item
+):hover{
+  transform:translateY(-3px);
+  border-color:var(--hf-line-strong) !important;
+  box-shadow:0 20px 48px rgba(0,0,0,.28),0 0 24px color-mix(in srgb,var(--hf-accent) 8%, transparent) !important;
+}
+
+
+/* =========================================================
+   V9 · CONTRASTE TOTAL EN TEMAS OSCUROS
+   Evita tarjetas blancas con texto claro y unifica todos los
+   módulos de Dueño, Veterinario, Proveedor y Administrador.
+   ========================================================= */
+html[data-huella-theme^="futurista"],
+html[data-huella-theme="personalizado"]{
+    --hf-card-solid:#091522;
+    --hf-card-solid-2:#0d1c2b;
+    --hf-black:#02060a;
+    --hf-white:#f6fbff;
+}
+
+/* Superficies principales: ninguna tarjeta blanca queda suelta en tema oscuro. */
+html[data-huella-theme^="futurista"] :is(
+  .table-card,.table-container,.table-wrapper,.inventory-table,.inventory-card,
+  .current-stock,.group,.modal-box,.modal-content,.empty,.list,.list-card,
+  .profile-card,.pet,.pet-body,.pet-top,.data-card,.service,.service-card,
+  .vaccine-card,.appointment-card,.consultation,.study-card,.status-card,
+  .map-panel,.side-panel,.location-card,.activity-card,.tracking-card,
+  .clinical-card,.clinical-item,.timeline-item,.record-card,.record-item,
+  .prescription-card,.recipe-card,.recipe,.order,.order-card,.product-card,
+  .product-row,.media-card,.membership-card,.plan,.plan-card,.payment-card,
+  .settings-card,.appearance-card,.preview-card,.form-card,.form-section,
+  .info-card,.info-panel,.summary-card,.summary-item,.overview-card,.metric,
+  .notification-card,.alert-card,.warehouse-card,.sales-card,.commerce-card,
+  .provider-card,.user-card,.vet-card,.patient-card,.report-card
+),
+html[data-huella-theme="personalizado"] :is(
+  .table-card,.table-container,.table-wrapper,.inventory-table,.inventory-card,
+  .current-stock,.group,.modal-box,.modal-content,.empty,.list,.list-card,
+  .profile-card,.pet,.pet-body,.pet-top,.data-card,.service,.service-card,
+  .vaccine-card,.appointment-card,.consultation,.study-card,.status-card,
+  .map-panel,.side-panel,.location-card,.activity-card,.tracking-card,
+  .clinical-card,.clinical-item,.timeline-item,.record-card,.record-item,
+  .prescription-card,.recipe-card,.recipe,.order,.order-card,.product-card,
+  .product-row,.media-card,.membership-card,.plan,.plan-card,.payment-card,
+  .settings-card,.appearance-card,.preview-card,.form-card,.form-section,
+  .info-card,.info-panel,.summary-card,.summary-item,.overview-card,.metric,
+  .notification-card,.alert-card,.warehouse-card,.sales-card,.commerce-card,
+  .provider-card,.user-card,.vet-card,.patient-card,.report-card
+){
+    background:linear-gradient(145deg,var(--hf-card-solid-2),var(--hf-card-solid)) !important;
+    color:var(--hf-white) !important;
+    border-color:var(--hf-line-strong) !important;
+    box-shadow:0 14px 36px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.035) !important;
+}
+
+/* Tablas e inventarios: filas oscuras y legibles. */
+html[data-huella-theme^="futurista"] :is(table,thead,tbody,tr),
+html[data-huella-theme="personalizado"] :is(table,thead,tbody,tr){
+    background:transparent !important;
+    color:var(--hf-white) !important;
+}
+html[data-huella-theme^="futurista"] thead tr,
+html[data-huella-theme="personalizado"] thead tr{
+    background:#050c13 !important;
+}
+html[data-huella-theme^="futurista"] tbody tr,
+html[data-huella-theme="personalizado"] tbody tr{
+    background:rgba(9,21,34,.96) !important;
+    border-color:var(--hf-line) !important;
+}
+html[data-huella-theme^="futurista"] tbody tr:nth-child(even),
+html[data-huella-theme="personalizado"] tbody tr:nth-child(even){
+    background:rgba(13,28,43,.96) !important;
+}
+html[data-huella-theme^="futurista"] :is(th,td,.stock-number,.product-info strong,.product-info b),
+html[data-huella-theme="personalizado"] :is(th,td,.stock-number,.product-info strong,.product-info b){
+    color:var(--hf-white) !important;
+}
+html[data-huella-theme^="futurista"] :is(.product-info small,td small,th small),
+html[data-huella-theme="personalizado"] :is(.product-info small,td small,th small){
+    color:var(--hf-muted) !important;
+}
+
+/* Chips claros deliberados: si el cuadro es claro, el texto se vuelve negro para máximo contraste. */
+html[data-huella-theme^="futurista"] :is(.good,.low,.out,.inactive,.add-stock,.remove-stock,.adjust,.success,.warning,.danger),
+html[data-huella-theme="personalizado"] :is(.good,.low,.out,.inactive,.add-stock,.remove-stock,.adjust,.success,.warning,.danger){
+    color:#071014 !important;
+    font-weight:800 !important;
+    text-shadow:none !important;
+}
+html[data-huella-theme^="futurista"] .good,
+html[data-huella-theme^="futurista"] .add-stock,
+html[data-huella-theme="personalizado"] .good,
+html[data-huella-theme="personalizado"] .add-stock{background:#bff1d4 !important}
+html[data-huella-theme^="futurista"] .low,
+html[data-huella-theme^="futurista"] .remove-stock,
+html[data-huella-theme="personalizado"] .low,
+html[data-huella-theme="personalizado"] .remove-stock{background:#ffe2a0 !important}
+html[data-huella-theme^="futurista"] .out,
+html[data-huella-theme="personalizado"] .out{background:#ffc4c4 !important}
+html[data-huella-theme^="futurista"] :is(.inactive,.adjust),
+html[data-huella-theme="personalizado"] :is(.inactive,.adjust){background:#dce5e8 !important}
+
+/* Botones oscuros y secundarios: borde visible para que no se pierdan sobre el fondo. */
+html[data-huella-theme^="futurista"] :is(button,.button,.btn):not(.primary):not(.save):not(.new-button):not(.hero-primary):not(.add):not(.main-button),
+html[data-huella-theme="personalizado"] :is(button,.button,.btn):not(.primary):not(.save):not(.new-button):not(.hero-primary):not(.add):not(.main-button){
+    border-color:var(--hf-line-strong) !important;
+}
+
+/* Mapas, iframes y contenido externo se conservan claro, pero quedan enmarcados en negro. */
+html[data-huella-theme^="futurista"] :is(iframe,.map-frame,.google-map,.map-embed),
+html[data-huella-theme="personalizado"] :is(iframe,.map-frame,.google-map,.map-embed){
+    background:#fff !important;
+    border:3px solid #02060a !important;
+    border-radius:14px !important;
+    box-shadow:0 0 0 1px var(--hf-line-strong),0 16px 36px rgba(0,0,0,.38) !important;
+}
+
+/* Inputs y select con contraste real. */
+html[data-huella-theme^="futurista"] :is(input,select,textarea),
+html[data-huella-theme="personalizado"] :is(input,select,textarea){
+    background:#050e17 !important;
+    color:#f7fbff !important;
+    border:1px solid var(--hf-line-strong) !important;
+}
+html[data-huella-theme^="futurista"] option,
+html[data-huella-theme="personalizado"] option{
+    background:#08131f !important;
+    color:#f7fbff !important;
+}
+
+/* Foto de mascota con aro visual que combina con el tema. */
+html[data-huella-theme^="futurista"] :is(.pet-photo,.pet-top),
+html[data-huella-theme="personalizado"] :is(.pet-photo,.pet-top){
+    border:2px solid var(--hf-accent) !important;
+    box-shadow:0 0 0 4px rgba(255,255,255,.025),0 0 28px color-mix(in srgb,var(--hf-accent) 18%, transparent) !important;
+}
+html[data-huella-theme^="futurista"] :is(.pet-photo,.pet-top) img,
+html[data-huella-theme="personalizado"] :is(.pet-photo,.pet-top) img{
+    filter:none !important;
+}
+
+/* Resalta encabezados de secciones con una línea de acento. */
+html[data-huella-theme^="futurista"] :is(.section-title,.panel-title,.card-title,h2,h3),
+html[data-huella-theme="personalizado"] :is(.section-title,.panel-title,.card-title,h2,h3){
+    text-shadow:0 1px 0 #000,0 0 18px color-mix(in srgb,var(--hf-accent) 10%, transparent);
+}
+
+
+/* =========================================================
+   V10 · NEGRO INTENSO + DISEÑO MANUAL
+   El negro debe notarse de forma clara en todos los perfiles.
+   El diseño personalizado puede crearse solo con colores,
+   sin necesidad de cargar una imagen.
+   ========================================================= */
+
+html[data-huella-theme="personalizado"]{
+    --hf-bg:var(--huella-custom-bg,#02060a) !important;
+    --hf-bg2:var(--huella-custom-bg,#02060a) !important;
+    --hf-side:color-mix(in srgb,var(--huella-custom-bg,#02060a) 92%,#000) !important;
+    --hf-panel:var(--huella-custom-panel,#070b10) !important;
+    --hf-panel2:color-mix(in srgb,var(--huella-custom-panel,#070b10) 82%,#111c25) !important;
+    --hf-text:var(--huella-custom-text,#f7fbff) !important;
+    --hf-muted:color-mix(in srgb,var(--huella-custom-text,#f7fbff) 72%,#71808b) !important;
+    --hf-accent:var(--huella-custom-accent,#61d8ff) !important;
+    --hf-line:color-mix(in srgb,var(--huella-custom-accent,#61d8ff) 24%,transparent) !important;
+    --hf-line-strong:color-mix(in srgb,var(--huella-custom-accent,#61d8ff) 48%,transparent) !important;
+}
+html[data-huella-theme="personalizado"] body{
+    background-color:var(--huella-custom-bg,#02060a) !important;
+    background-image:
+        linear-gradient(rgba(0,0,0,var(--huella-custom-black-alpha,.82)),rgba(0,0,0,var(--huella-custom-black-alpha,.82))),
+        var(--huella-custom-bg-image) !important;
+    background-size:cover !important;
+    background-position:center center !important;
+    background-attachment:fixed !important;
+}
+html[data-huella-theme="personalizado"] :is(
+  .sidebar,.topbar,.card,.panel,.stat,.module,.quick,.quick-card,.service,.data-card,.stat-card,
+  .summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,
+  .search-box,.hero,.product,.patient-card,.appointment-card,.recipe,.metric,.overview-card,.product-card,
+  .membership-card,.plan,.order-card,.table-wrap,.table-card,.table-container,.table-wrapper,.inventory-table,
+  .inventory-card,.camera-box,.theme-choice,.row,.quick-links a,.commerce-card,.commerce-stat,.media-card,
+  .vaccine-card,.consultation,.study-card,.status-card,.map-panel,.side-panel,.location-card,.activity-card,
+  .tracking-card,.clinical-card,.clinical-item,.timeline-item,.record-card,.record-item,.prescription-card,
+  .provider-card,.user-card,.vet-card,.patient-card,.report-card,.form-card,.form-section,.modal-box,.modal-content
+){
+    background:linear-gradient(145deg,
+        color-mix(in srgb,var(--huella-custom-panel,#070b10) 95%,#000),
+        color-mix(in srgb,var(--huella-custom-panel,#070b10) 78%,var(--huella-custom-bg,#02060a))
+    ) !important;
+    color:var(--huella-custom-text,#f7fbff) !important;
+    border-color:var(--hf-line-strong) !important;
+    box-shadow:0 16px 42px rgba(0,0,0,.50),inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+
+/* Negro mucho más visible en los temas predefinidos */
+html[data-huella-theme^="futurista"]{
+    --huella-deep-black:#010307;
+    --huella-card-black:#05080d;
+    --huella-card-black-2:#0a0f16;
+}
+html[data-huella-theme^="futurista"] body{
+    background-color:var(--huella-deep-black) !important;
+}
+html[data-huella-theme^="futurista"] :is(
+  .table-card,.table-container,.table-wrapper,.inventory-table,.inventory-card,
+  .current-stock,.group,.modal-box,.modal-content,.empty,.list,.list-card,
+  .profile-card,.pet,.pet-body,.pet-top,.data-card,.service,.service-card,
+  .vaccine-card,.appointment-card,.consultation,.study-card,.status-card,
+  .map-panel,.side-panel,.location-card,.activity-card,.tracking-card,
+  .clinical-card,.clinical-item,.timeline-item,.record-card,.record-item,
+  .prescription-card,.recipe-card,.recipe,.order,.order-card,.product-card,
+  .product-row,.media-card,.membership-card,.plan,.plan-card,.payment-card,
+  .settings-card,.appearance-card,.preview-card,.form-card,.form-section,
+  .info-card,.info-panel,.summary-card,.summary-item,.overview-card,.metric,
+  .notification-card,.alert-card,.warehouse-card,.sales-card,.commerce-card,
+  .provider-card,.user-card,.vet-card,.patient-card,.report-card,.card,.panel,.stat,.module
+){
+    background:linear-gradient(145deg,var(--huella-card-black-2),var(--huella-card-black)) !important;
+    border-color:var(--hf-line-strong) !important;
+    box-shadow:0 16px 40px rgba(0,0,0,.52), inset 0 1px 0 rgba(255,255,255,.035) !important;
+}
+
+/* Captura también bloques blancos definidos con estilo inline. */
+html[data-huella-theme^="futurista"] :is(div,section,article,aside)[style*="background:#fff"],
+html[data-huella-theme^="futurista"] :is(div,section,article,aside)[style*="background: #fff"],
+html[data-huella-theme^="futurista"] :is(div,section,article,aside)[style*="background:white"],
+html[data-huella-theme="personalizado"] :is(div,section,article,aside)[style*="background:#fff"],
+html[data-huella-theme="personalizado"] :is(div,section,article,aside)[style*="background: #fff"],
+html[data-huella-theme="personalizado"] :is(div,section,article,aside)[style*="background:white"]{
+    background:var(--huella-card-black,#05080d) !important;
+    color:var(--hf-text,#f7fbff) !important;
+    border-color:var(--hf-line-strong) !important;
+}
+
+/* Texto claramente legible sobre negro. */
+html[data-huella-theme^="futurista"] :is(.card,.panel,.table-card,.inventory-table,.product-card,.profile-card,.form-card,.modal-box) :is(h1,h2,h3,h4,strong,b,.value,.number,.price),
+html[data-huella-theme="personalizado"] :is(.card,.panel,.table-card,.inventory-table,.product-card,.profile-card,.form-card,.modal-box) :is(h1,h2,h3,h4,strong,b,.value,.number,.price){
+    color:#ffffff !important;
+}
+html[data-huella-theme^="futurista"] :is(.card,.panel,.table-card,.inventory-table,.product-card,.profile-card,.form-card,.modal-box) :is(p,small,label,.muted,.description),
+html[data-huella-theme="personalizado"] :is(.card,.panel,.table-card,.inventory-table,.product-card,.profile-card,.form-card,.modal-box) :is(p,small,label,.muted,.description){
+    color:#c8d3dc !important;
+}
+
+/* Líneas y bordes negros visibles alrededor de superficies claras externas, como mapas. */
+html[data-huella-theme^="futurista"] :is(iframe,.map-frame,.google-map,.map-embed),
+html[data-huella-theme="personalizado"] :is(iframe,.map-frame,.google-map,.map-embed){
+    outline:4px solid #000 !important;
+    outline-offset:0 !important;
+}
+
+/* Ajustes: el editor manual también adopta el tema. */
+html[data-huella-theme^="futurista"] :is(.custom-box,.manual-field,.black-demo),
+html[data-huella-theme="personalizado"] :is(.custom-box,.manual-field,.black-demo){
+    background:#030507 !important;
+    color:#fff !important;
+    border-color:var(--hf-line-strong) !important;
+}
+html[data-huella-theme^="futurista"] .manual-field label,
+html[data-huella-theme="personalizado"] .manual-field label{color:#d5e0e8 !important}
+
+
+/* ===== HUELLA V11 · PALETAS NATURALES DEL USUARIO ===== */
+html[data-huella-theme="minimal-pastel"]{
+  --hp-bg:#4c5064;--hp-bg2:#3e4150;--hp-panel:#5b6078;--hp-panel2:#51566b;
+  --hp-text:#fbfbff;--hp-muted:#d7d7f1;--hp-accent:#91d2e9;--hp-accent2:#cfb4eb;
+  --hp-deep:#343746;--hp-line:rgba(232,232,255,.22);--hp-sidebar:#414556;--hp-topbar:#555a70;--hp-btntext:#252937;
+}
+html[data-huella-theme="oceano-turquesa"]{
+  --hp-bg:#041b2f;--hp-bg2:#062b40;--hp-panel:#073d54;--hp-panel2:#07536b;
+  --hp-text:#f2f5f6;--hp-muted:#a7d1d8;--hp-accent:#11b0c5;--hp-accent2:#66c5d2;
+  --hp-deep:#021522;--hp-line:rgba(102,197,210,.25);--hp-sidebar:#031522;--hp-topbar:#05283b;--hp-btntext:#032532;
+}
+html[data-huella-theme="costa-natural"]{
+  --hp-bg:#eef2f3;--hp-bg2:#f6f6f4;--hp-panel:#ffffff;--hp-panel2:#f2f4f3;
+  --hp-text:#2a200d;--hp-muted:#6c6357;--hp-accent:#6599bf;--hp-accent2:#7e9000;
+  --hp-deep:#587792;--hp-line:rgba(88,119,146,.24);--hp-sidebar:#dfe9ee;--hp-topbar:#ffffff;--hp-btntext:#ffffff;--hp-gold:#927a3d;
+}
+html[data-huella-theme="bosque-verde"]{
+  --hp-bg:#d8e5e6;--hp-bg2:#edf3f0;--hp-panel:#f8fbf8;--hp-panel2:#eef5ef;
+  --hp-text:#192d17;--hp-muted:#536e5c;--hp-accent:#476e35;--hp-accent2:#95b163;
+  --hp-deep:#192d17;--hp-line:rgba(52,82,41,.24);--hp-sidebar:#192d17;--hp-topbar:#f8fbf8;--hp-btntext:#ffffff;
+}
+
+html[data-huella-theme="minimal-pastel"] body,
+html[data-huella-theme="oceano-turquesa"] body,
+html[data-huella-theme="costa-natural"] body,
+html[data-huella-theme="bosque-verde"] body{
+  background:linear-gradient(145deg,var(--hp-bg),var(--hp-bg2)) fixed !important;color:var(--hp-text) !important;
+}
+html[data-huella-theme="minimal-pastel"] :is(.main,.content,.view,.section),
+html[data-huella-theme="oceano-turquesa"] :is(.main,.content,.view,.section),
+html[data-huella-theme="costa-natural"] :is(.main,.content,.view,.section),
+html[data-huella-theme="bosque-verde"] :is(.main,.content,.view,.section){background:transparent !important;color:var(--hp-text) !important}
+
+html[data-huella-theme="minimal-pastel"] .sidebar,
+html[data-huella-theme="oceano-turquesa"] .sidebar,
+html[data-huella-theme="costa-natural"] .sidebar,
+html[data-huella-theme="bosque-verde"] .sidebar{
+  background:var(--hp-sidebar) !important;border-color:var(--hp-line) !important;box-shadow:14px 0 34px rgba(0,0,0,.12) !important;
+}
+html[data-huella-theme="minimal-pastel"] .topbar,
+html[data-huella-theme="oceano-turquesa"] .topbar,
+html[data-huella-theme="costa-natural"] .topbar,
+html[data-huella-theme="bosque-verde"] .topbar{
+  background:var(--hp-topbar) !important;border-color:var(--hp-line) !important;box-shadow:0 8px 25px rgba(0,0,0,.06) !important;
+}
+
+/* títulos y textos */
+html[data-huella-theme="minimal-pastel"] :is(h1,h2,h3,h4,.title,.card-title,.panel-title,strong,b),
+html[data-huella-theme="oceano-turquesa"] :is(h1,h2,h3,h4,.title,.card-title,.panel-title,strong,b),
+html[data-huella-theme="costa-natural"] :is(h1,h2,h3,h4,.title,.card-title,.panel-title,strong,b),
+html[data-huella-theme="bosque-verde"] :is(h1,h2,h3,h4,.title,.card-title,.panel-title,strong,b){color:var(--hp-text) !important}
+html[data-huella-theme="minimal-pastel"] :is(p,small,label,.subtitle,.muted,.info-row,.data,.description),
+html[data-huella-theme="oceano-turquesa"] :is(p,small,label,.subtitle,.muted,.info-row,.data,.description),
+html[data-huella-theme="costa-natural"] :is(p,small,label,.subtitle,.muted,.info-row,.data,.description),
+html[data-huella-theme="bosque-verde"] :is(p,small,label,.subtitle,.muted,.info-row,.data,.description){color:var(--hp-muted) !important}
+
+/* tarjetas y bloques: cubre módulos con nombres de clase diferentes */
+html[data-huella-theme="minimal-pastel"] .content :is(.card,.panel,.box,.stat,.module,.quick,.quick-card,.service,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,[class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="product"],[class*="inventory"],[class*="order"]),
+html[data-huella-theme="oceano-turquesa"] .content :is(.card,.panel,.box,.stat,.module,.quick,.quick-card,.service,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,[class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="product"],[class*="inventory"],[class*="order"]),
+html[data-huella-theme="costa-natural"] .content :is(.card,.panel,.box,.stat,.module,.quick,.quick-card,.service,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,[class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="product"],[class*="inventory"],[class*="order"]),
+html[data-huella-theme="bosque-verde"] .content :is(.card,.panel,.box,.stat,.module,.quick,.quick-card,.service,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,[class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="product"],[class*="inventory"],[class*="order"]){
+  background:linear-gradient(145deg,var(--hp-panel),var(--hp-panel2)) !important;color:var(--hp-text) !important;border-color:var(--hp-line) !important;box-shadow:0 12px 30px rgba(0,0,0,.09) !important;
+}
+/* no pintar contenedores de rejilla vacíos */
+html[data-huella-theme="minimal-pastel"] .content :is(.grid,.stats,.cards,.vaccine-grid,.appointments,.consultations,.studies,.study-types,.status-grid,.form-grid,.products-grid,.inventory-grid),
+html[data-huella-theme="oceano-turquesa"] .content :is(.grid,.stats,.cards,.vaccine-grid,.appointments,.consultations,.studies,.study-types,.status-grid,.form-grid,.products-grid,.inventory-grid),
+html[data-huella-theme="costa-natural"] .content :is(.grid,.stats,.cards,.vaccine-grid,.appointments,.consultations,.studies,.study-types,.status-grid,.form-grid,.products-grid,.inventory-grid),
+html[data-huella-theme="bosque-verde"] .content :is(.grid,.stats,.cards,.vaccine-grid,.appointments,.consultations,.studies,.study-types,.status-grid,.form-grid,.products-grid,.inventory-grid){background:transparent !important;box-shadow:none !important;border-color:transparent !important}
+
+/* menú */
+html[data-huella-theme="minimal-pastel"] .menu a,html[data-huella-theme="minimal-pastel"] .menu button,html[data-huella-theme="minimal-pastel"] .huella-settings-trigger,
+html[data-huella-theme="oceano-turquesa"] .menu a,html[data-huella-theme="oceano-turquesa"] .menu button,html[data-huella-theme="oceano-turquesa"] .huella-settings-trigger{color:var(--hp-muted) !important;background:transparent !important}
+html[data-huella-theme="minimal-pastel"] .menu a:is(:hover,.active),html[data-huella-theme="minimal-pastel"] .menu button:is(:hover,.active),
+html[data-huella-theme="oceano-turquesa"] .menu a:is(:hover,.active),html[data-huella-theme="oceano-turquesa"] .menu button:is(:hover,.active){background:rgba(255,255,255,.10) !important;color:#fff !important;border-color:var(--hp-line) !important}
+html[data-huella-theme="costa-natural"] .menu a,html[data-huella-theme="costa-natural"] .menu button,html[data-huella-theme="costa-natural"] .huella-settings-trigger{color:#587080 !important;background:transparent !important}
+html[data-huella-theme="costa-natural"] .menu a:is(:hover,.active),html[data-huella-theme="costa-natural"] .menu button:is(:hover,.active){background:#fff !important;color:#2a200d !important;box-shadow:0 7px 20px rgba(88,119,146,.12) !important}
+html[data-huella-theme="bosque-verde"] .menu a,html[data-huella-theme="bosque-verde"] .menu button,html[data-huella-theme="bosque-verde"] .huella-settings-trigger{color:#cfe0d0 !important;background:transparent !important}
+html[data-huella-theme="bosque-verde"] .menu a:is(:hover,.active),html[data-huella-theme="bosque-verde"] .menu button:is(:hover,.active){background:rgba(149,177,99,.16) !important;color:#fff !important}
+html[data-huella-theme="bosque-verde"] .sidebar :is(.brand h2,.brand b){color:#f2f7f2 !important}
+html[data-huella-theme="bosque-verde"] .sidebar :is(.brand small,.menu-title){color:#b9cf9b !important}
+
+/* formularios / tablas */
+html[data-huella-theme="minimal-pastel"] :is(input,select,textarea),
+html[data-huella-theme="oceano-turquesa"] :is(input,select,textarea){background:var(--hp-deep) !important;color:var(--hp-text) !important;border-color:var(--hp-line) !important}
+html[data-huella-theme="costa-natural"] :is(input,select,textarea),
+html[data-huella-theme="bosque-verde"] :is(input,select,textarea){background:#fff !important;color:var(--hp-text) !important;border-color:var(--hp-line) !important}
+html[data-huella-theme="minimal-pastel"] :is(table,thead,tbody,tr,th,td),
+html[data-huella-theme="oceano-turquesa"] :is(table,thead,tbody,tr,th,td),
+html[data-huella-theme="costa-natural"] :is(table,thead,tbody,tr,th,td),
+html[data-huella-theme="bosque-verde"] :is(table,thead,tbody,tr,th,td){border-color:var(--hp-line) !important;color:var(--hp-text) !important}
+html[data-huella-theme="minimal-pastel"] :is(table,tbody,tr),html[data-huella-theme="oceano-turquesa"] :is(table,tbody,tr){background:var(--hp-panel) !important}
+html[data-huella-theme="costa-natural"] :is(table,tbody,tr),html[data-huella-theme="bosque-verde"] :is(table,tbody,tr){background:var(--hp-panel) !important}
+html[data-huella-theme="minimal-pastel"] thead,html[data-huella-theme="oceano-turquesa"] thead,html[data-huella-theme="costa-natural"] thead,html[data-huella-theme="bosque-verde"] thead{background:var(--hp-deep) !important}
+html[data-huella-theme="costa-natural"] thead{color:#fff !important} html[data-huella-theme="costa-natural"] thead *{color:#fff !important}
+html[data-huella-theme="bosque-verde"] thead{color:#fff !important} html[data-huella-theme="bosque-verde"] thead *{color:#fff !important}
+
+/* botones */
+html[data-huella-theme="minimal-pastel"] :is(.primary,.save,.new-button,.add-button,.request-button,.btn.primary),
+html[data-huella-theme="oceano-turquesa"] :is(.primary,.save,.new-button,.add-button,.request-button,.btn.primary),
+html[data-huella-theme="costa-natural"] :is(.primary,.save,.new-button,.add-button,.request-button,.btn.primary),
+html[data-huella-theme="bosque-verde"] :is(.primary,.save,.new-button,.add-button,.request-button,.btn.primary){background:linear-gradient(135deg,var(--hp-accent),var(--hp-accent2)) !important;color:var(--hp-btntext) !important;border-color:transparent !important;box-shadow:0 8px 20px rgba(0,0,0,.10) !important}
+html[data-huella-theme="minimal-pastel"] :is(.secondary,.back,.back-button,.edit-button,.refresh,.filter-button,.icon-button,.notification),
+html[data-huella-theme="oceano-turquesa"] :is(.secondary,.back,.back-button,.edit-button,.refresh,.filter-button,.icon-button,.notification),
+html[data-huella-theme="costa-natural"] :is(.secondary,.back,.back-button,.edit-button,.refresh,.filter-button,.icon-button,.notification),
+html[data-huella-theme="bosque-verde"] :is(.secondary,.back,.back-button,.edit-button,.refresh,.filter-button,.icon-button,.notification){background:var(--hp-panel2) !important;color:var(--hp-text) !important;border-color:var(--hp-line) !important}
+
+/* insignias e iconos */
+html[data-huella-theme="minimal-pastel"] :is(.role,.eyebrow,.badge,.brand-logo,.avatar,.pet-icon,.card-icon),
+html[data-huella-theme="oceano-turquesa"] :is(.role,.eyebrow,.badge,.brand-logo,.avatar,.pet-icon,.card-icon),
+html[data-huella-theme="costa-natural"] :is(.role,.eyebrow,.badge,.brand-logo,.avatar,.pet-icon,.card-icon),
+html[data-huella-theme="bosque-verde"] :is(.role,.eyebrow,.badge,.brand-logo,.avatar,.pet-icon,.card-icon){background:var(--hp-deep) !important;color:#fff !important;border-color:var(--hp-line) !important}
+html[data-huella-theme="minimal-pastel"] a{color:#d8eff8} html[data-huella-theme="oceano-turquesa"] a{color:#7fe0ea}
+html[data-huella-theme="costa-natural"] a{color:#587792} html[data-huella-theme="bosque-verde"] a{color:#476e35}
+
+/* mapas e imágenes conservan lectura, pero se integran con borde */
+html[data-huella-theme="minimal-pastel"] :is(.google-map,.map-panel,iframe),
+html[data-huella-theme="oceano-turquesa"] :is(.google-map,.map-panel,iframe),
+html[data-huella-theme="costa-natural"] :is(.google-map,.map-panel,iframe),
+html[data-huella-theme="bosque-verde"] :is(.google-map,.map-panel,iframe){border-color:var(--hp-line) !important;outline:1px solid var(--hp-line)}
+html[data-huella-theme="oceano-turquesa"] .google-map{filter:saturate(.90) brightness(.88) contrast(1.04)}
+html[data-huella-theme="minimal-pastel"] .google-map{filter:saturate(.78) brightness(.90)}
+html[data-huella-theme="bosque-verde"] .google-map{filter:saturate(.82) sepia(.05)}
+
+/* Ajustes también refleja la paleta seleccionada */
+html[data-huella-theme="minimal-pastel"] :is(.theme-choice,.row,.custom-box,.camera-box,.quick-links a,.current-theme),
+html[data-huella-theme="oceano-turquesa"] :is(.theme-choice,.row,.custom-box,.camera-box,.quick-links a,.current-theme),
+html[data-huella-theme="costa-natural"] :is(.theme-choice,.row,.custom-box,.camera-box,.quick-links a,.current-theme),
+html[data-huella-theme="bosque-verde"] :is(.theme-choice,.row,.custom-box,.camera-box,.quick-links a,.current-theme){background:var(--hp-panel2) !important;color:var(--hp-text) !important;border-color:var(--hp-line) !important}
+html[data-huella-theme="minimal-pastel"] .theme-choice.selected,
+html[data-huella-theme="oceano-turquesa"] .theme-choice.selected,
+html[data-huella-theme="costa-natural"] .theme-choice.selected,
+html[data-huella-theme="bosque-verde"] .theme-choice.selected{border-color:var(--hp-accent) !important;box-shadow:0 0 0 4px color-mix(in srgb,var(--hp-accent) 18%,transparent) !important}
+
+html[data-huella-motion="on"][data-huella-theme="minimal-pastel"] .content :is([class*="card"],[class*="panel"],[class*="box"]),
+html[data-huella-motion="on"][data-huella-theme="oceano-turquesa"] .content :is([class*="card"],[class*="panel"],[class*="box"]),
+html[data-huella-motion="on"][data-huella-theme="costa-natural"] .content :is([class*="card"],[class*="panel"],[class*="box"]),
+html[data-huella-motion="on"][data-huella-theme="bosque-verde"] .content :is([class*="card"],[class*="panel"],[class*="box"]){transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease !important}
+html[data-huella-motion="on"][data-huella-theme="minimal-pastel"] .content :is([class*="card"],[class*="panel"]):hover,
+html[data-huella-motion="on"][data-huella-theme="oceano-turquesa"] .content :is([class*="card"],[class*="panel"]):hover,
+html[data-huella-motion="on"][data-huella-theme="costa-natural"] .content :is([class*="card"],[class*="panel"]):hover,
+html[data-huella-motion="on"][data-huella-theme="bosque-verde"] .content :is([class*="card"],[class*="panel"]):hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.13) !important}
+
+
+/* =========================================================
+   HUELLA V12 · Brote Oliva
+   Paleta oliva + mostaza + beige con fondo azul profundo.
+   También elimina los cuadros marcados del menú lateral.
+   ========================================================= */
+html[data-huella-theme="brote-oliva"]{
+    color-scheme:dark;
+    --ho-bg:#031224;
+    --ho-bg2:#071b31;
+    --ho-side:#041120;
+    --ho-panel:rgba(8,24,42,.88);
+    --ho-panel2:rgba(14,31,51,.90);
+    --ho-line:rgba(147,169,0,.20);
+    --ho-line-strong:rgba(205,211,7,.34);
+    --ho-text:#eef5fb;
+    --ho-muted:#b7c4d1;
+    --ho-accent:#98ae00;
+    --ho-accent2:#ced308;
+    --ho-beige:#d3bf8f;
+    --ho-brown:#8c6f1c;
+    --ho-btntext:#101924;
+}
+html[data-huella-theme="brote-oliva"] body{
+    background:
+      radial-gradient(circle at 16% 8%,rgba(152,174,0,.10),transparent 18%),
+      radial-gradient(circle at 84% 26%,rgba(211,191,143,.08),transparent 20%),
+      linear-gradient(145deg,var(--ho-bg),var(--ho-bg2) 58%,#04111f) !important;
+    color:var(--ho-text) !important;
+}
+html[data-huella-theme="brote-oliva"] :is(.main,.content,.view,.section){background:transparent !important;color:var(--ho-text) !important}
+html[data-huella-theme="brote-oliva"] .sidebar{
+    background:linear-gradient(180deg,rgba(2,14,28,.98),rgba(4,18,35,.96)) !important;
+    border-right:1px solid rgba(95,131,188,.18) !important;
+    box-shadow:14px 0 40px rgba(0,0,0,.25);
+}
+html[data-huella-theme="brote-oliva"] .topbar{
+    background:rgba(4,17,31,.84) !important;
+    border-color:rgba(95,131,188,.18) !important;
+    backdrop-filter:blur(16px);
+}
+html[data-huella-theme="brote-oliva"] :is(.brand h2,.brand b,.title,h1,h2,h3,h4,.card-title,.panel-title,strong,b){color:var(--ho-text) !important}
+html[data-huella-theme="brote-oliva"] :is(.brand small,.menu-title){color:var(--ho-beige) !important}
+html[data-huella-theme="brote-oliva"] :is(p,small,label,.subtitle,.muted,.info-row,.data,.description){color:var(--ho-muted) !important}
+html[data-huella-theme="brote-oliva"] .content :is(.card,.panel,.box,.stat,.module,.quick,.quick-card,.service,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,[class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="product"],[class*="inventory"],[class*="order"]){
+    background:linear-gradient(145deg,var(--ho-panel2),var(--ho-panel)) !important;
+    color:var(--ho-text) !important;
+    border-color:rgba(95,131,188,.18) !important;
+    box-shadow:0 14px 36px rgba(0,0,0,.16) !important;
+}
+html[data-huella-theme="brote-oliva"] .content :is(.grid,.stats,.cards,.vaccine-grid,.appointments,.consultations,.studies,.study-types,.status-grid,.form-grid,.products-grid,.inventory-grid){background:transparent !important;box-shadow:none !important;border-color:transparent !important}
+html[data-huella-theme="brote-oliva"] :is(input,select,textarea){background:#081829 !important;color:var(--ho-text) !important;border-color:rgba(95,131,188,.22) !important}
+html[data-huella-theme="brote-oliva"] :is(table,thead,tbody,tr,th,td){border-color:rgba(95,131,188,.18) !important;color:var(--ho-text) !important}
+html[data-huella-theme="brote-oliva"] thead{background:#081829 !important}
+html[data-huella-theme="brote-oliva"] tbody tr{background:rgba(8,24,42,.82) !important}
+html[data-huella-theme="brote-oliva"] :is(.primary,.save,.new-button,.add-button,.request-button,.btn.primary,.hero-primary,.main-button){background:linear-gradient(135deg,var(--ho-accent),var(--ho-accent2)) !important;color:var(--ho-btntext) !important;border-color:transparent !important;box-shadow:0 8px 20px rgba(152,174,0,.18) !important}
+html[data-huella-theme="brote-oliva"] :is(.secondary,.back,.back-button,.edit-button,.refresh,.filter-button,.icon-button,.notification,.cancel,.profile-button){background:rgba(255,255,255,.06) !important;color:var(--ho-text) !important;border-color:rgba(95,131,188,.18) !important}
+html[data-huella-theme="brote-oliva"] :is(.role,.eyebrow,.badge,.brand-logo,.avatar,.pet-icon,.card-icon){background:#081829 !important;color:var(--ho-beige) !important;border-color:rgba(95,131,188,.18) !important}
+html[data-huella-theme="brote-oliva"] a{color:#d5dd8a}
+html[data-huella-theme="brote-oliva"] :is(.google-map,.map-panel,iframe){border-color:rgba(95,131,188,.24) !important;outline:1px solid rgba(95,131,188,.24)}
+html[data-huella-theme="brote-oliva"] .google-map{filter:saturate(.84) brightness(.88) contrast(1.02)}
+html[data-huella-theme="brote-oliva"] :is(.theme-choice,.row,.custom-box,.camera-box,.quick-links a,.current-theme){background:linear-gradient(145deg,var(--ho-panel2),var(--ho-panel)) !important;border-color:rgba(95,131,188,.18) !important;color:var(--ho-text) !important}
+html[data-huella-theme="brote-oliva"] .preview.ref-olive{background-image:linear-gradient(rgba(3,18,36,.06),rgba(3,18,36,.06)),url('tema-brote-oliva.png');background-size:cover;background-position:center}
+
+/* Menú lateral más limpio: sin cuadros marcados */
+html[data-huella-theme="brote-oliva"] .sidebar .menu :is(a,button,.huella-settings-trigger){
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    outline:none !important;
+    border-radius:14px !important;
+    color:var(--ho-muted) !important;
+    padding:12px 14px !important;
+}
+html[data-huella-theme="brote-oliva"] .sidebar .menu :is(a,button,.huella-settings-trigger):hover,
+html[data-huella-theme="brote-oliva"] .sidebar .menu :is(a.active,button.active,.huella-settings-trigger.active){
+    background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(95,131,188,.10)) !important;
+    color:#ffffff !important;
+    box-shadow:inset 0 0 0 1px rgba(132,162,210,.18), 0 10px 26px rgba(0,0,0,.14) !important;
+}
+
+/* Refuerzo global para temas oscuros/paletas: quita cuadros del menú */
+html[data-huella-theme]:not([data-huella-theme="normal"]) .sidebar .menu :is(a,button,.huella-settings-trigger){
+    border:0 !important;
+    box-shadow:none !important;
+    outline:none !important;
+}
+html[data-huella-theme]:not([data-huella-theme="normal"]) .sidebar .menu :is(a.active,button.active,.huella-settings-trigger.active){
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.08), 0 10px 24px rgba(0,0,0,.12) !important;
+}
+
+
+/* =========================================================
+   HUELLA V13 · COBERTURA GLOBAL DE TEMAS FUTURISTAS
+   Aplica Azul profundo, Neón biométrico, Dorado nocturno
+   y Personalizado en TODOS los módulos y perfiles.
+   ========================================================= */
+html[data-huella-theme="futurista"]{
+  --hg-bg:#051326;--hg-bg2:#0a2440;--hg-panel:rgba(9,25,43,.90);--hg-panel2:rgba(18,42,69,.95);
+  --hg-text:#eef6ff;--hg-muted:#b8c8da;--hg-line:rgba(93,181,255,.22);--hg-line-strong:rgba(93,181,255,.38);
+  --hg-accent:#5db5ff;--hg-accent2:#e4c17f;--hg-btntext:#05111b;--hg-link:#8ed8ff;
+}
+html[data-huella-theme="futurista-neon"]{
+  --hg-bg:#03101e;--hg-bg2:#09243d;--hg-panel:rgba(7,28,50,.92);--hg-panel2:rgba(12,48,81,.96);
+  --hg-text:#effaff;--hg-muted:#b7d7e6;--hg-line:rgba(63,211,255,.24);--hg-line-strong:rgba(63,211,255,.45);
+  --hg-accent:#35d2ff;--hg-accent2:#7be8ff;--hg-btntext:#03121d;--hg-link:#92f1ff;
+}
+html[data-huella-theme="futurista-dorado"]{
+  --hg-bg:#120f0b;--hg-bg2:#211912;--hg-panel:rgba(30,24,18,.93);--hg-panel2:rgba(48,41,33,.97);
+  --hg-text:#f8f1e7;--hg-muted:#d7c9b3;--hg-line:rgba(214,170,92,.22);--hg-line-strong:rgba(230,188,112,.40);
+  --hg-accent:#c99349;--hg-accent2:#f0cf86;--hg-btntext:#171108;--hg-link:#f4d28a;
+}
+html[data-huella-theme="personalizado"]{
+  --hg-bg:var(--huella-custom-bg,#02060a);--hg-bg2:var(--huella-custom-panel,#070b10);--hg-panel:rgba(5,19,31,.92);--hg-panel2:rgba(13,39,54,.95);
+  --hg-text:var(--huella-custom-text,#f4fbff);--hg-muted:#bfd4dc;--hg-line:rgba(255,255,255,.17);--hg-line-strong:rgba(255,255,255,.28);
+  --hg-accent:var(--huella-custom-accent,#61d8ff);--hg-accent2:#d8fbff;--hg-btntext:#041018;--hg-link:#9fe8ff;
+}
+
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) body{
+  background:
+    radial-gradient(circle at 14% 10%, color-mix(in srgb,var(--hg-accent) 12%, transparent), transparent 19%),
+    radial-gradient(circle at 84% 22%, color-mix(in srgb,var(--hg-accent2) 10%, transparent), transparent 22%),
+    linear-gradient(145deg,var(--hg-bg),var(--hg-bg2) 58%, #04101d) fixed !important;
+  color:var(--hg-text) !important;
+}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) :is(.main,.content,.view,.section,.main-content,.dashboard,.dashboard-content,.page-content,.workspace){
+  background:transparent !important;color:var(--hg-text) !important;
+}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .sidebar{
+  background:linear-gradient(180deg,rgba(3,14,27,.98),rgba(5,18,34,.96)) !important;
+  border-right:1px solid var(--hg-line) !important;box-shadow:16px 0 42px rgba(0,0,0,.26) !important;
+}
+html[data-huella-theme="futurista-dorado"] .sidebar{background:linear-gradient(180deg,rgba(18,13,9,.98),rgba(28,21,16,.97)) !important}
+html[data-huella-theme="personalizado"] .sidebar{background:linear-gradient(180deg,color-mix(in srgb,var(--huella-custom-bg,#02060a) 85%, #000 15%),color-mix(in srgb,var(--huella-custom-panel,#070b10) 82%, #000 18%)) !important}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .topbar{
+  background:rgba(4,17,31,.86) !important;border-color:var(--hg-line) !important;backdrop-filter:blur(16px);
+}
+html[data-huella-theme="futurista-dorado"] .topbar{background:rgba(21,16,12,.86) !important}
+
+/* Menú y textos */
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) :is(.brand h2,.brand b,.title,h1,h2,h3,h4,.card-title,.panel-title,strong,b){color:var(--hg-text) !important}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) :is(.brand small,.menu-title){color:var(--hg-accent2) !important;opacity:.86}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) :is(p,small,label,.subtitle,.muted,.info-row,.data,.description,.helper,.meta,.hint){color:var(--hg-muted) !important}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .menu a,
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .menu button,
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .huella-settings-trigger{
+  color:var(--hg-muted) !important;background:transparent !important;border-color:transparent !important;box-shadow:none !important;
+}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .menu a:is(:hover,.active),
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .menu button:is(:hover,.active),
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .huella-settings-trigger:is(:hover,.active){
+  background:linear-gradient(90deg, color-mix(in srgb,var(--hg-accent) 18%, transparent), color-mix(in srgb,var(--hg-accent2) 12%, transparent)) !important;
+  color:#fff !important;border-color:var(--hg-line) !important;box-shadow:inset 0 0 0 1px var(--hg-line), 0 10px 18px rgba(0,0,0,.18) !important;
+}
+
+/* Cobertura masiva para módulos */
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .content :is(
+  .card,.panel,.box,.stat,.module,.quick,.quick-card,.service,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,.hero,.hero-card,.profile-card,.record,.record-card,.widget,.metric,.metric-card,
+  [class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="product"],[class*="inventory"],[class*="order"],[class*="recipe"],[class*="membership"],[class*="telemed"],[class*="pet-header"],[class*="pet-profile"],[class*="health"],[class*="form-group"],[class*="summary"],[class*="metric"],[class*="widget"]
+){
+  background:linear-gradient(145deg,var(--hg-panel2),var(--hg-panel)) !important;
+  color:var(--hg-text) !important;border-color:var(--hg-line) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 14px 36px rgba(0,0,0,.22) !important;
+}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .content :is(.grid,.stats,.cards,.vaccine-grid,.appointments,.consultations,.studies,.study-types,.status-grid,.form-grid,.products-grid,.inventory-grid,.tracking-layout,.clinical-grid,.demo-buttons,.map-actions,.video-controls,.side-panel,.layout,.columns,.rows){
+  background:transparent !important;box-shadow:none !important;border-color:transparent !important;
+}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .content :is(.panel-header,.vaccine-top,.appointment-top,.consultation-top,.study-card-top,.status-header,.map-header,.map-footer,.geofence-header,.video-header,.section-header,.toolbar){
+  background:rgba(255,255,255,.035) !important;border-color:var(--hg-line) !important;color:var(--hg-text) !important;
+}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .content :is(h1,h2,h3,h4,strong,b,.value,.number,.location-address,.map-title,.panel-title,.card-title,.item-title,.section-title,.count,.big-number){color:var(--hg-text) !important}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .content :is(p,small,label,.subtitle,.info-row,.location-time,.coordinates,.modal-description,.meta,.desc,.caption,.field-help){color:var(--hg-muted) !important}
+
+/* Tablas, formularios, modales */
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) :is(input,select,textarea){background:rgba(4,17,30,.88) !important;color:var(--hg-text) !important;border-color:var(--hg-line-strong) !important}
+html[data-huella-theme="futurista-dorado"] :is(input,select,textarea){background:rgba(23,18,13,.92) !important}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) :is(input,textarea)::placeholder{color:color-mix(in srgb,var(--hg-muted) 78%, transparent) !important}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) :is(table,thead,tbody,tr,th,td){border-color:var(--hg-line) !important;color:var(--hg-text) !important}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) thead{background:rgba(255,255,255,.04) !important}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) tbody tr{background:transparent !important}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .modal{background:rgba(0,5,12,.78) !important;backdrop-filter:blur(8px)}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) :is(.modal-box,.modal-content,.dialog,.popup,.dropdown-menu){background:linear-gradient(145deg,var(--hg-panel2),var(--hg-panel)) !important;color:var(--hg-text) !important;border:1px solid var(--hg-line-strong) !important}
+
+/* Botones */
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) :is(.primary,.save,.new-button,.add-button,.request-button,.btn.primary,.hero-primary,.main-button,.map-button.primary){background:linear-gradient(135deg,var(--hg-accent),var(--hg-accent2)) !important;color:var(--hg-btntext) !important;border-color:transparent !important;box-shadow:0 8px 22px rgba(0,0,0,.15) !important}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) :is(.secondary,.back,.back-button,.edit-button,.refresh,.filter-button,.icon-button,.notification,.cancel,.profile-button,.map-button:not(.primary),button:not(.primary):not(.btn.primary):not(.main-button):not(.hero-primary):not(.add-button):not(.request-button):not(.save):not(.new-button)){
+  background:rgba(255,255,255,.06) !important;color:var(--hg-text) !important;border-color:var(--hg-line) !important;
+}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) :is(.role,.eyebrow,.badge,.brand-logo,.avatar,.pet-icon,.card-icon,.chip,.tag){background:rgba(255,255,255,.06) !important;color:var(--hg-accent2) !important;border-color:var(--hg-line) !important}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) a{color:var(--hg-link) !important}
+
+/* Mapas y multimedia */
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) :is(.google-map,.map-panel,iframe,video,img.preview-image){border-color:var(--hg-line) !important;outline:1px solid var(--hg-line)}
+html[data-huella-theme="futurista"] .google-map{filter:saturate(.82) brightness(.82) contrast(1.08)}
+html[data-huella-theme="futurista-neon"] .google-map{filter:saturate(.86) brightness(.76) contrast(1.10) hue-rotate(8deg)}
+html[data-huella-theme="futurista-dorado"] .google-map{filter:saturate(.72) sepia(.14) brightness(.76) contrast(1.08)}
+html[data-huella-theme="personalizado"] .google-map{filter:saturate(.82) brightness(.82) contrast(1.06)}
+
+/* Ajustes y animación */
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) :is(.theme-choice,.row,.custom-box,.camera-box,.quick-links a,.current-theme,.manual-field,.black-demo){background:linear-gradient(145deg,var(--hg-panel2),var(--hg-panel)) !important;color:var(--hg-text) !important;border-color:var(--hg-line) !important}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .theme-choice.selected{border-color:var(--hg-accent) !important;box-shadow:0 0 0 4px color-mix(in srgb,var(--hg-accent) 18%, transparent) !important}
+html[data-huella-motion="on"]:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .content :is([class*="card"],[class*="panel"],[class*="box"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="product"],[class*="inventory"],[class*="recipe"],.card,.panel,.box){transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease !important}
+html[data-huella-motion="on"]:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .content :is([class*="card"],[class*="panel"],[class*="box"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="product"],[class*="inventory"],[class*="recipe"],.card,.panel,.box):hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.25) !important;border-color:var(--hg-line-strong) !important}
+
+
+/* =========================================================
+   HUELLA V15 · SKIN GLOBAL PARA TODAS LAS PALETAS
+   Hace que Minimal Pastel, Océano Turquesa, Costa Natural,
+   Bosque Verde y Brote Oliva se apliquen igual que los
+   temas futuristas en TODOS los módulos y perfiles.
+   ========================================================= */
+
+html[data-huella-theme="minimal-pastel"]{
+  --gx-bg:#45495b; --gx-bg2:#575c72; --gx-panel:#5f6479; --gx-panel2:#505568;
+  --gx-sidebar:#3e4355; --gx-top:#51566a; --gx-text:#fbfbff; --gx-muted:#d8d8ea;
+  --gx-accent:#8fd1e8; --gx-accent2:#c7a8e8; --gx-line:rgba(237,237,255,.24); --gx-btn:#232837;
+}
+html[data-huella-theme="oceano-turquesa"]{
+  --gx-bg:#031827; --gx-bg2:#07364b; --gx-panel:#073d54; --gx-panel2:#07566d;
+  --gx-sidebar:#021522; --gx-top:#052a3c; --gx-text:#f4fbfc; --gx-muted:#b4dbe1;
+  --gx-accent:#0fa9bd; --gx-accent2:#75d8e2; --gx-line:rgba(103,213,226,.25); --gx-btn:#022532;
+}
+html[data-huella-theme="costa-natural"]{
+  --gx-bg:#edf2f3; --gx-bg2:#f7f5ef; --gx-panel:#ffffff; --gx-panel2:#eef1ed;
+  --gx-sidebar:#dde8ed; --gx-top:#ffffff; --gx-text:#2c2418; --gx-muted:#6a6359;
+  --gx-accent:#659ac2; --gx-accent2:#8c7900; --gx-line:rgba(74,111,139,.25); --gx-btn:#ffffff;
+}
+html[data-huella-theme="bosque-verde"]{
+  --gx-bg:#d7e3e2; --gx-bg2:#edf3ef; --gx-panel:#f8fbf8; --gx-panel2:#edf4ee;
+  --gx-sidebar:#172b18; --gx-top:#f8fbf8; --gx-text:#183018; --gx-muted:#526e59;
+  --gx-accent:#44763b; --gx-accent2:#9ab563; --gx-line:rgba(52,83,43,.25); --gx-btn:#ffffff;
+}
+html[data-huella-theme="brote-oliva"]{
+  --gx-bg:#061522; --gx-bg2:#0a2133; --gx-panel:#0c2134; --gx-panel2:#122b42;
+  --gx-sidebar:#04111f; --gx-top:#071827; --gx-text:#f5f6ef; --gx-muted:#c6c9b8;
+  --gx-accent:#91aa00; --gx-accent2:#d3d600; --gx-line:rgba(210,214,69,.24); --gx-btn:#152000;
+}
+
+/* Fondo general y contenedores principales */
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) body{
+  background:linear-gradient(145deg,var(--gx-bg),var(--gx-bg2)) fixed !important;
+  color:var(--gx-text) !important;
+}
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) :is(main,.main,.content,.main-content,.page-content,.dashboard,.dashboard-content,.workspace,.view,.section){
+  background:transparent !important;color:var(--gx-text) !important;
+}
+
+/* Sidebar y barra superior */
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) .sidebar{
+  background:var(--gx-sidebar) !important;border-color:var(--gx-line) !important;box-shadow:14px 0 36px rgba(0,0,0,.14) !important;
+}
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) .topbar{
+  background:var(--gx-top) !important;border-color:var(--gx-line) !important;box-shadow:0 8px 24px rgba(0,0,0,.07) !important;
+}
+
+/* Tipografía */
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) :is(h1,h2,h3,h4,h5,.title,.card-title,.panel-title,.section-title,strong,b,.value,.number,.count,.big-number){color:var(--gx-text) !important}
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) :is(p,small,label,.subtitle,.muted,.description,.meta,.helper,.hint,.info-row,.data,.caption){color:var(--gx-muted) !important}
+
+/* Bloques y tarjetas de TODOS los módulos. Se limita a elementos de bloque
+   para no convertir títulos con clase *-card-title en tarjetas. */
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) :is(
+  div.card,section.card,article.card,
+  div.panel,section.panel,article.panel,
+  div.box,section.box,article.box,
+  div.stat,section.stat,article.stat,
+  div.module,section.module,article.module,
+  div.quick-card,section.quick-card,article.quick-card,
+  div.service,section.service,article.service,
+  div.data-card,section.data-card,article.data-card,
+  div.stat-card,section.stat-card,article.stat-card,
+  div.summary-box,section.summary-box,article.summary-box,
+  div.info-box,section.info-box,article.info-box,
+  div.pet-banner,section.pet-banner,article.pet-banner,
+  div.toolbar,section.toolbar,
+  div.search-box,section.search-box,
+  div[class*="card"],section[class*="card"],article[class*="card"],
+  div[class*="panel"],section[class*="panel"],article[class*="panel"],
+  div[class*="box"],section[class*="box"],article[class*="box"],
+  div[class*="banner"],section[class*="banner"],article[class*="banner"],
+  div[class*="notice"],section[class*="notice"],article[class*="notice"],
+  div[class*="alert"],section[class*="alert"],article[class*="alert"],
+  div[class*="vaccine"],section[class*="vaccine"],article[class*="vaccine"],
+  div[class*="appointment"],section[class*="appointment"],article[class*="appointment"],
+  div[class*="consultation"],section[class*="consultation"],article[class*="consultation"],
+  div[class*="study"],section[class*="study"],article[class*="study"],
+  div[class*="timeline"],section[class*="timeline"],article[class*="timeline"],
+  div[class*="geofence"],section[class*="geofence"],article[class*="geofence"],
+  div[class*="status"],section[class*="status"],article[class*="status"],
+  div[class*="location"],section[class*="location"],article[class*="location"],
+  div[class*="tracking"],section[class*="tracking"],article[class*="tracking"],
+  div[class*="product"],section[class*="product"],article[class*="product"],
+  div[class*="inventory"],section[class*="inventory"],article[class*="inventory"],
+  div[class*="order"],section[class*="order"],article[class*="order"],
+  div[class*="recipe"],section[class*="recipe"],article[class*="recipe"],
+  div[class*="membership"],section[class*="membership"],article[class*="membership"],
+  div[class*="telemed"],section[class*="telemed"],article[class*="telemed"],
+  div[class*="health"],section[class*="health"],article[class*="health"],
+  div[class*="profile"],section[class*="profile"],article[class*="profile"]
+){
+  background:linear-gradient(145deg,var(--gx-panel),var(--gx-panel2)) !important;
+  color:var(--gx-text) !important;border-color:var(--gx-line) !important;
+  box-shadow:0 12px 30px rgba(0,0,0,.10) !important;
+}
+
+/* Contenedores de layout que no deben convertirse en tarjetas */
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) :is(.grid,.stats,.cards,.vaccine-grid,.appointments,.consultations,.studies,.study-types,.status-grid,.form-grid,.products-grid,.inventory-grid,.tracking-layout,.clinical-grid,.map-actions,.video-controls,.columns,.rows,.layout){
+  background:transparent !important;box-shadow:none !important;border-color:transparent !important;
+}
+
+/* Menú */
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="brote-oliva"]) .menu :is(a,button),
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="brote-oliva"]) .huella-settings-trigger{
+  color:var(--gx-muted) !important;background:transparent !important;border-color:transparent !important;box-shadow:none !important;
+}
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="brote-oliva"]) .menu :is(a,button):is(:hover,.active),
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="brote-oliva"]) .huella-settings-trigger:is(:hover,.active){
+  background:color-mix(in srgb,var(--gx-accent) 15%, transparent) !important;color:#fff !important;border-color:var(--gx-line) !important;
+}
+html:is([data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"]) .menu :is(a,button),
+html:is([data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"]) .huella-settings-trigger{color:var(--gx-muted) !important;background:transparent !important;border-color:transparent !important}
+html:is([data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"]) .menu :is(a,button):is(:hover,.active),
+html:is([data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"]) .huella-settings-trigger:is(:hover,.active){background:color-mix(in srgb,var(--gx-accent) 16%, #fff 84%) !important;color:var(--gx-text) !important;border-color:var(--gx-line) !important}
+html[data-huella-theme="bosque-verde"] .sidebar :is(.brand h2,.brand b){color:#f2f7f2 !important}
+html[data-huella-theme="bosque-verde"] .sidebar :is(.brand small,.menu-title){color:#bed49f !important}
+
+/* Formularios y tablas */
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="brote-oliva"]) :is(input,select,textarea){background:color-mix(in srgb,var(--gx-bg) 88%,#000 12%) !important;color:var(--gx-text) !important;border-color:var(--gx-line) !important}
+html:is([data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"]) :is(input,select,textarea){background:#fff !important;color:var(--gx-text) !important;border-color:var(--gx-line) !important}
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) :is(table,thead,tbody,tr,th,td){border-color:var(--gx-line) !important;color:var(--gx-text) !important}
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="brote-oliva"]) thead{background:color-mix(in srgb,var(--gx-panel2) 90%,#000 10%) !important}
+html:is([data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"]) thead{background:var(--gx-panel2) !important}
+
+/* Botones */
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) :is(.primary,.save,.new-button,.add-button,.request-button,.btn.primary,.hero-primary,.main-button,.map-button.primary){
+  background:linear-gradient(135deg,var(--gx-accent),var(--gx-accent2)) !important;color:var(--gx-btn) !important;border-color:transparent !important;
+}
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) :is(.secondary,.back,.back-button,.edit-button,.refresh,.filter-button,.icon-button,.notification,.cancel,.profile-button,.map-button:not(.primary)){
+  background:var(--gx-panel2) !important;color:var(--gx-text) !important;border-color:var(--gx-line) !important;
+}
+
+/* GPS y multimedia */
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) :is(.map-panel,.google-map,iframe,video){border-color:var(--gx-line) !important;outline:1px solid var(--gx-line)}
+html[data-huella-theme="minimal-pastel"] .google-map{filter:saturate(.78) brightness(.90)}
+html[data-huella-theme="oceano-turquesa"] .google-map{filter:saturate(.90) brightness(.86) contrast(1.05)}
+html[data-huella-theme="bosque-verde"] .google-map{filter:saturate(.82) sepia(.06)}
+html[data-huella-theme="brote-oliva"] .google-map{filter:saturate(.78) brightness(.82) sepia(.12)}
+
+/* Ajustes */
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) :is(.theme-choice,.row,.custom-box,.camera-box,.quick-links a,.current-theme,.manual-field,.black-demo){
+  background:linear-gradient(145deg,var(--gx-panel),var(--gx-panel2)) !important;color:var(--gx-text) !important;border-color:var(--gx-line) !important;
+}
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) .theme-choice.selected{border-color:var(--gx-accent) !important;box-shadow:0 0 0 4px color-mix(in srgb,var(--gx-accent) 18%,transparent) !important}
+
+
+/* =========================================================
+   HUELLA V19 · NEGRO PROFUNDO
+   Tema global para TODOS los perfiles y módulos.
+   ========================================================= */
+html[data-huella-theme="negro-profundo"]{
+  color-scheme:dark;
+  --nb-bg:#020304;--nb-bg2:#07090b;--nb-side:#020507;--nb-top:#050709;
+  --nb-panel:#0c0f12;--nb-panel2:#14181c;--nb-text:#f4f7f9;--nb-muted:#9aa8b3;
+  --nb-line:#27333c;--nb-line2:#3d4a54;--nb-accent:#d9dee2;--nb-accent2:#ffffff;--nb-link:#c4d1da;
+}
+html[data-huella-theme="negro-profundo"] body{
+  background:radial-gradient(circle at 24% 7%,rgba(255,255,255,.035),transparent 24%),linear-gradient(145deg,var(--nb-bg),var(--nb-bg2)) fixed !important;
+  color:var(--nb-text) !important;
+}
+html[data-huella-theme="negro-profundo"] :is(.main,.content,.view,.section,.main-content,.dashboard,.dashboard-content,.page-content,.workspace){background:transparent !important;color:var(--nb-text) !important}
+html[data-huella-theme="negro-profundo"] .sidebar{background:linear-gradient(180deg,#020507,#05090d) !important;border-right:1px solid var(--nb-line) !important;box-shadow:14px 0 38px rgba(0,0,0,.55) !important}
+html[data-huella-theme="negro-profundo"] .topbar{background:rgba(5,7,9,.96) !important;border-color:var(--nb-line) !important;color:var(--nb-text) !important;backdrop-filter:blur(14px)}
+html[data-huella-theme="negro-profundo"] :is(.brand h2,.brand b,h1,h2,h3,h4,h5,.title,.card-title,.panel-title,strong,b,.value,.number,.count,.big-number){color:var(--nb-text) !important}
+html[data-huella-theme="negro-profundo"] :is(.brand small,.menu-title){color:#b3bec6 !important}
+html[data-huella-theme="negro-profundo"] :is(p,small,label,.subtitle,.muted,.description,.info-row,.meta,.helper,.hint,.data,.caption){color:var(--nb-muted) !important}
+html[data-huella-theme="negro-profundo"] .menu :is(a,button),
+html[data-huella-theme="negro-profundo"] .huella-settings-trigger{background:transparent !important;color:#9eabb6 !important;border-color:transparent !important;box-shadow:none !important}
+html[data-huella-theme="negro-profundo"] .menu :is(a,button):is(:hover,.active),
+html[data-huella-theme="negro-profundo"] .huella-settings-trigger:is(:hover,.active){background:linear-gradient(90deg,#151a20,#0a0d10) !important;color:#fff !important;border-color:#35434f !important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.025),0 8px 20px rgba(0,0,0,.35) !important}
+html[data-huella-theme="negro-profundo"] .content :is(
+  .card,.panel,.box,.stat,.module,.quick,.quick-card,.service,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,.hero,.profile-card,.record,.widget,.metric,
+  [class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="health"],[class*="product"],[class*="inventory"],[class*="order"],[class*="recipe"],[class*="membership"],[class*="telemed"],[class*="form-group"]
+){background:linear-gradient(145deg,var(--nb-panel2),var(--nb-panel)) !important;color:var(--nb-text) !important;border-color:var(--nb-line) !important;box-shadow:0 14px 32px rgba(0,0,0,.38) !important}
+html[data-huella-theme="negro-profundo"] .content :is(.grid,.stats,.cards,.vaccine-grid,.appointments,.consultations,.studies,.study-types,.status-grid,.form-grid,.products-grid,.inventory-grid,.tracking-layout,.clinical-grid,.map-actions,.video-controls,.columns,.rows,.layout){background:transparent !important;border-color:transparent !important;box-shadow:none !important}
+html[data-huella-theme="negro-profundo"] :is(input,select,textarea){background:#090d10 !important;color:#fff !important;border-color:#303a43 !important}
+html[data-huella-theme="negro-profundo"] :is(input,textarea)::placeholder{color:#778590 !important}
+html[data-huella-theme="negro-profundo"] :is(table,thead,tbody,tr,th,td){color:var(--nb-text) !important;border-color:var(--nb-line) !important}
+html[data-huella-theme="negro-profundo"] thead{background:#090c0f !important}
+html[data-huella-theme="negro-profundo"] tbody tr{background:#0e1216 !important}
+html[data-huella-theme="negro-profundo"] :is(.primary,.save,.new-button,.add-button,.request-button,.btn.primary,.main-button,.hero-primary,.map-button.primary){background:linear-gradient(135deg,#e9edf0,#9eaab2) !important;color:#050607 !important;border-color:transparent !important;box-shadow:0 8px 18px rgba(0,0,0,.35) !important}
+html[data-huella-theme="negro-profundo"] :is(.secondary,.back,.back-button,.edit-button,.filter-button,.icon-button,.notification,.refresh,.cancel,.profile-button,.map-button:not(.primary)){background:#11161b !important;color:#f4f7f9 !important;border-color:#303a43 !important}
+html[data-huella-theme="negro-profundo"] :is(.role,.eyebrow,.badge,.brand-logo,.avatar,.pet-icon,.card-icon,.chip,.tag){background:#0d1115 !important;color:#e8edf0 !important;border-color:#303a43 !important}
+html[data-huella-theme="negro-profundo"] a{color:var(--nb-link) !important}
+html[data-huella-theme="negro-profundo"] :is(.map-panel,.google-map,iframe){border-color:#303a43 !important;outline:1px solid #303a43}
+html[data-huella-theme="negro-profundo"] .google-map{filter:saturate(.60) brightness(.72) contrast(1.13)}
+html[data-huella-theme="negro-profundo"] .modal{background:rgba(0,0,0,.82) !important}
+html[data-huella-theme="negro-profundo"] :is(.modal-box,.modal-content,.dialog,.popup,.dropdown-menu){background:#0c1014 !important;color:#fff !important;border:1px solid #303a43 !important}
+html[data-huella-theme="negro-profundo"] :is(.theme-choice,.row,.custom-box,.camera-box,.current-theme,.quick-links a,.manual-field,.black-demo){background:#101419 !important;color:#fff !important;border-color:#303a43 !important}
+html[data-huella-theme="negro-profundo"] .theme-choice.selected{border-color:#d9dee2 !important;box-shadow:0 0 0 4px rgba(217,222,226,.12) !important}
+
+
+/* =========================================================
+   HUELLA V21 · MENÚ SIN CUADROS (como antes)
+   Quita los recuadros en el sidebar para los temas oscuros.
+   ========================================================= */
+html[data-huella-theme]:not([data-huella-theme="normal"]) .sidebar .menu{
+  gap:2px !important;
+}
+html[data-huella-theme]:not([data-huella-theme="normal"]) .sidebar .menu-title{
+  margin:18px 0 8px !important;
+  letter-spacing:.08em !important;
+}
+html[data-huella-theme]:not([data-huella-theme="normal"]) .sidebar .menu :is(a,button,.huella-settings-trigger){
+  position:relative;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  outline:none !important;
+  border-radius:12px !important;
+  padding:11px 14px !important;
+  min-height:42px !important;
+}
+html[data-huella-theme]:not([data-huella-theme="normal"]) .sidebar .menu :is(a,button,.huella-settings-trigger):hover,
+html[data-huella-theme]:not([data-huella-theme="normal"]) .sidebar .menu :is(a.active,button.active,.huella-settings-trigger.active){
+  box-shadow:none !important;
+  border:0 !important;
+}
+html[data-huella-theme]:not([data-huella-theme="normal"]) .sidebar .menu :is(a,button,.huella-settings-trigger)::before{
+  content:"";
+  position:absolute;
+  left:2px;
+  top:9px;
+  bottom:9px;
+  width:3px;
+  border-radius:99px;
+  background:transparent;
+  opacity:0;
+  transition:opacity .18s ease, background .18s ease;
+}
+html[data-huella-theme]:not([data-huella-theme="normal"]) .sidebar .menu :is(a.active,button.active,.huella-settings-trigger.active)::before,
+html[data-huella-theme]:not([data-huella-theme="normal"]) .sidebar .menu :is(a,button,.huella-settings-trigger):hover::before{
+  opacity:1;
+}
+
+/* Futuristas y personalizado */
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .sidebar .menu :is(a,button,.huella-settings-trigger){
+  color:var(--hg-muted) !important;
+}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .sidebar .menu :is(a,button,.huella-settings-trigger):hover,
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .sidebar .menu :is(a.active,button.active,.huella-settings-trigger.active){
+  background:linear-gradient(90deg, color-mix(in srgb,var(--hg-accent) 14%, transparent), color-mix(in srgb,var(--hg-accent2) 9%, transparent)) !important;
+  color:#fff !important;
+}
+html:is([data-huella-theme="futurista"],[data-huella-theme="futurista-neon"],[data-huella-theme="futurista-dorado"],[data-huella-theme="personalizado"]) .sidebar .menu :is(a,button,.huella-settings-trigger)::before{
+  background:var(--hg-accent) !important;
+}
+
+/* Paletas visuales */
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) .sidebar .menu :is(a,button,.huella-settings-trigger){
+  color:var(--gx-muted) !important;
+}
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) .sidebar .menu :is(a,button,.huella-settings-trigger):hover,
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) .sidebar .menu :is(a.active,button.active,.huella-settings-trigger.active){
+  background:rgba(255,255,255,.07) !important;
+  color:#fff !important;
+}
+html[data-huella-theme="costa-natural"] .sidebar .menu :is(a,button,.huella-settings-trigger){
+  color:#587080 !important;
+}
+html[data-huella-theme="costa-natural"] .sidebar .menu :is(a,button,.huella-settings-trigger):hover,
+html[data-huella-theme="costa-natural"] .sidebar .menu :is(a.active,button.active,.huella-settings-trigger.active){
+  background:rgba(255,255,255,.72) !important;
+  color:#2d2615 !important;
+}
+html:is([data-huella-theme="minimal-pastel"],[data-huella-theme="oceano-turquesa"],[data-huella-theme="costa-natural"],[data-huella-theme="bosque-verde"],[data-huella-theme="brote-oliva"]) .sidebar .menu :is(a,button,.huella-settings-trigger)::before{
+  background:var(--gx-accent) !important;
+}
+
+/* Negro profundo */
+html[data-huella-theme="negro-profundo"] .sidebar .menu :is(a,button,.huella-settings-trigger){
+  color:#aab5bd !important;
+}
+html[data-huella-theme="negro-profundo"] .sidebar .menu :is(a,button,.huella-settings-trigger):hover,
+html[data-huella-theme="negro-profundo"] .sidebar .menu :is(a.active,button.active,.huella-settings-trigger.active){
+  background:linear-gradient(90deg, rgba(255,255,255,.06), rgba(255,255,255,.02)) !important;
+  color:#fff !important;
+}
+html[data-huella-theme="negro-profundo"] .sidebar .menu :is(a,button,.huella-settings-trigger)::before{
+  background:#dfe4e7 !important;
+}
+
+
+/* =========================================================
+   HUELLA V22 · CÓSMICO CRISTAL
+   Fondo galáctico + glassmorphism con negro de alto contraste.
+   ========================================================= */
+html[data-huella-theme="cosmico-cristal"]{
+  color-scheme:dark;
+  --cc-bg:#02050b;
+  --cc-panel:rgba(4,8,16,.72);
+  --cc-panel-strong:rgba(2,5,10,.88);
+  --cc-panel-soft:rgba(255,255,255,.12);
+  --cc-line:rgba(190,225,255,.28);
+  --cc-line-strong:rgba(224,242,255,.48);
+  --cc-text:#f6fbff;
+  --cc-muted:#c4d3e3;
+  --cc-accent:#77d9ff;
+  --cc-accent2:#b9c5ff;
+  --cc-gold:#efd58a;
+}
+html[data-huella-theme="cosmico-cristal"] body{
+  background:
+    linear-gradient(rgba(0,3,9,.34),rgba(0,3,9,.48)),
+    url('fondo-cosmico-cristal.png') center/cover fixed no-repeat !important;
+  color:var(--cc-text) !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(.main,.content,.view,.section,.main-content,.dashboard,.dashboard-content,.page-content,.workspace){
+  background:transparent !important;color:var(--cc-text) !important;
+}
+html[data-huella-theme="cosmico-cristal"] .sidebar{
+  background:rgba(2,7,15,.62) !important;
+  -webkit-backdrop-filter:blur(26px) saturate(115%);backdrop-filter:blur(26px) saturate(115%);
+  border-right:1px solid var(--cc-line) !important;
+  box-shadow:12px 0 38px rgba(0,0,0,.48) !important;
+}
+html[data-huella-theme="cosmico-cristal"] .topbar{
+  background:rgba(3,8,18,.48) !important;
+  -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);
+  border-color:var(--cc-line) !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(.brand h2,.brand b,h1,h2,h3,h4,h5,.title,.card-title,.panel-title,strong,b,.value,.number,.count,.big-number){color:var(--cc-text) !important}
+html[data-huella-theme="cosmico-cristal"] :is(.brand small,.menu-title){color:var(--cc-gold) !important}
+html[data-huella-theme="cosmico-cristal"] :is(p,small,label,.subtitle,.muted,.description,.info-row,.meta,.helper,.hint,.data,.caption){color:var(--cc-muted) !important}
+
+/* Menú sin cuadros, sólo resaltado suave del activo */
+html[data-huella-theme="cosmico-cristal"] .sidebar .menu :is(a,button,.huella-settings-trigger){
+  background:transparent !important;border:0 !important;box-shadow:none !important;color:#c5d2e1 !important;
+}
+html[data-huella-theme="cosmico-cristal"] .sidebar .menu :is(a,button,.huella-settings-trigger):hover,
+html[data-huella-theme="cosmico-cristal"] .sidebar .menu :is(a.active,button.active,.huella-settings-trigger.active){
+  background:rgba(0,0,0,.38) !important;color:#fff !important;box-shadow:none !important;
+}
+html[data-huella-theme="cosmico-cristal"] .sidebar .menu :is(a,button,.huella-settings-trigger)::before{background:var(--cc-accent) !important}
+
+/* Paneles de cristal con base negra marcada */
+html[data-huella-theme="cosmico-cristal"] .content :is(
+  .card,.panel,.box,.stat,.module,.quick,.quick-card,.service,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,.hero,.profile-card,.record,.widget,.metric,
+  [class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="product"],[class*="inventory"],[class*="order"],[class*="recipe"],[class*="membership"],[class*="telemed"],[class*="pet-header"],[class*="health"],[class*="form-group"],[class*="summary"],[class*="metric"],[class*="widget"]
+){
+  background:linear-gradient(145deg,rgba(4,8,16,.82),rgba(8,15,29,.68)) !important;
+  -webkit-backdrop-filter:blur(22px) saturate(118%);backdrop-filter:blur(22px) saturate(118%);
+  color:var(--cc-text) !important;
+  border:1px solid var(--cc-line) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 16px 38px rgba(0,0,0,.42) !important;
+}
+html[data-huella-theme="cosmico-cristal"] .content :is(.grid,.stats,.cards,.vaccine-grid,.appointments,.consultations,.studies,.study-types,.status-grid,.form-grid,.products-grid,.inventory-grid,.tracking-layout,.clinical-grid,.map-actions,.video-controls,.columns,.rows,.layout){
+  background:transparent !important;border-color:transparent !important;box-shadow:none !important;backdrop-filter:none !important;
+}
+
+/* Negro reforzado en membresías y módulos de comercio */
+html[data-huella-theme="negro-profundo"] .content :is(.membership-card,[class*="membership"],.plan-card,[class*="plan"],.product-card,[class*="product"],.inventory-card,[class*="inventory"]){
+  background:linear-gradient(155deg,#030405,#0a0d10) !important;
+  border-color:#37434c !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 18px 34px rgba(0,0,0,.58) !important;
+}
+html[data-huella-theme="negro-profundo"] .content :is(.membership-card,[class*="membership"],.plan-card,[class*="plan"]) :is(h2,h3,strong,.price,.amount,.value){color:#fff !important}
+html[data-huella-theme="negro-profundo"] .content :is(.membership-card,[class*="membership"],.plan-card,[class*="plan"]) :is(p,small,li,.muted,.description){color:#b8c2c9 !important}
+
+/* Membresías en Cósmico Cristal: negro vidrio para resaltar sobre la galaxia */
+html[data-huella-theme="cosmico-cristal"] .content :is(.membership-card,[class*="membership"],.plan-card,[class*="plan"]){
+  background:linear-gradient(155deg,rgba(0,0,0,.88),rgba(5,11,20,.76)) !important;
+  border-color:rgba(203,229,255,.34) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 18px 38px rgba(0,0,0,.48) !important;
+}
+html[data-huella-theme="cosmico-cristal"] .content :is(.membership-card,[class*="membership"],.plan-card,[class*="plan"]) :is(h2,h3,strong,.price,.amount,.value){color:#fff !important}
+html[data-huella-theme="cosmico-cristal"] .content :is(.membership-card,[class*="membership"],.plan-card,[class*="plan"]) :is(p,small,li,.muted,.description){color:#c8d6e6 !important}
+
+html[data-huella-theme="cosmico-cristal"] :is(input,select,textarea){background:rgba(0,0,0,.58) !important;color:#fff !important;border-color:var(--cc-line-strong) !important}
+html[data-huella-theme="cosmico-cristal"] :is(table,thead,tbody,tr,th,td){color:var(--cc-text) !important;border-color:var(--cc-line) !important}
+html[data-huella-theme="cosmico-cristal"] thead{background:rgba(0,0,0,.55) !important}
+html[data-huella-theme="cosmico-cristal"] tbody tr{background:rgba(0,0,0,.24) !important}
+html[data-huella-theme="cosmico-cristal"] :is(.primary,.save,.new-button,.add-button,.request-button,.btn.primary,.main-button,.hero-primary,.map-button.primary){
+  background:linear-gradient(135deg,#9ee7ff,#c8ceff) !important;color:#06101b !important;border-color:transparent !important;box-shadow:0 8px 24px rgba(78,187,255,.26) !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(.secondary,.back,.back-button,.edit-button,.filter-button,.icon-button,.notification,.refresh,.cancel,.profile-button,.map-button:not(.primary)){
+  background:rgba(0,0,0,.45) !important;color:#f7fbff !important;border-color:var(--cc-line) !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(.role,.eyebrow,.badge,.brand-logo,.avatar,.pet-icon,.card-icon,.chip,.tag){background:rgba(0,0,0,.52) !important;color:var(--cc-accent) !important;border-color:var(--cc-line) !important}
+html[data-huella-theme="cosmico-cristal"] a{color:#9ee7ff !important}
+html[data-huella-theme="cosmico-cristal"] :is(.map-panel,.google-map,iframe){border-color:var(--cc-line) !important;outline:1px solid var(--cc-line)}
+html[data-huella-theme="cosmico-cristal"] .google-map{filter:saturate(.78) brightness(.78) contrast(1.08)}
+html[data-huella-theme="cosmico-cristal"] .modal{background:rgba(0,0,0,.78) !important;backdrop-filter:blur(8px)}
+html[data-huella-theme="cosmico-cristal"] :is(.modal-box,.modal-content,.dialog,.popup,.dropdown-menu){background:rgba(2,6,13,.90) !important;color:#fff !important;border:1px solid var(--cc-line-strong) !important;backdrop-filter:blur(22px)}
+html[data-huella-theme="cosmico-cristal"] :is(.theme-choice,.row,.custom-box,.camera-box,.current-theme,.quick-links a,.manual-field,.black-demo){background:rgba(0,0,0,.44) !important;color:#fff !important;border-color:var(--cc-line) !important;backdrop-filter:blur(18px)}
+html[data-huella-theme="cosmico-cristal"] .theme-choice.selected{border-color:var(--cc-accent) !important;box-shadow:0 0 0 4px rgba(119,217,255,.16),0 10px 30px rgba(0,0,0,.28) !important}
+
+.preview.ref-cosmic{background-image:url('tema-cosmico-cristal.png') !important;background-size:cover !important;background-position:center !important}
+
+
+/* =========================================================
+   HUELLA V23 · CÓSMICO CRISTAL CLARO
+   Ajuste para que se vea blanco como la segunda referencia.
+   ========================================================= */
+html[data-huella-theme="cosmico-cristal"]{
+  color-scheme:light;
+  --cc-bg:#f6f9ff;
+  --cc-panel:rgba(255,255,255,.56);
+  --cc-panel-strong:rgba(255,255,255,.70);
+  --cc-panel-soft:rgba(255,255,255,.42);
+  --cc-line:rgba(255,255,255,.42);
+  --cc-line-strong:rgba(255,255,255,.72);
+  --cc-text:#1f2937;
+  --cc-muted:#526174;
+  --cc-accent:#55b8ff;
+  --cc-accent2:#9faefb;
+  --cc-gold:#9d8245;
+}
+html[data-huella-theme="cosmico-cristal"] body{
+  background:
+    linear-gradient(rgba(245,248,255,.26),rgba(237,243,255,.40)),
+    url('fondo-cosmico-cristal.png') center/cover fixed no-repeat !important;
+  color:var(--cc-text) !important;
+}
+html[data-huella-theme="cosmico-cristal"] .sidebar{
+  background:rgba(255,255,255,.26) !important;
+  -webkit-backdrop-filter:blur(28px) saturate(118%);backdrop-filter:blur(28px) saturate(118%);
+  border-right:1px solid rgba(255,255,255,.42) !important;
+  box-shadow:10px 0 28px rgba(23,34,61,.10) !important;
+}
+html[data-huella-theme="cosmico-cristal"] .topbar{
+  background:rgba(255,255,255,.22) !important;
+  -webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);
+  border-color:rgba(255,255,255,.40) !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(.brand h2,.brand b,h1,h2,h3,h4,h5,.title,.card-title,.panel-title,strong,b,.value,.number,.count,.big-number){color:#1f2937 !important}
+html[data-huella-theme="cosmico-cristal"] :is(.brand small,.menu-title){color:#7a7f93 !important}
+html[data-huella-theme="cosmico-cristal"] :is(p,small,label,.subtitle,.muted,.description,.info-row,.meta,.helper,.hint,.data,.caption){color:#5d6b7d !important}
+html[data-huella-theme="cosmico-cristal"] .sidebar .menu :is(a,button,.huella-settings-trigger){
+  color:#445467 !important;
+}
+html[data-huella-theme="cosmico-cristal"] .sidebar .menu :is(a,button,.huella-settings-trigger):hover,
+html[data-huella-theme="cosmico-cristal"] .sidebar .menu :is(a.active,button.active,.huella-settings-trigger.active){
+  background:rgba(255,255,255,.42) !important;
+  color:#1f2937 !important;
+}
+html[data-huella-theme="cosmico-cristal"] .sidebar .menu :is(a,button,.huella-settings-trigger)::before{background:#73cfff !important}
+html[data-huella-theme="cosmico-cristal"] .content :is(
+  .card,.panel,.box,.stat,.module,.quick,.quick-card,.service,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,.hero,.profile-card,.record,.widget,.metric,
+  [class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="product"],[class*="inventory"],[class*="order"],[class*="recipe"],[class*="membership"],[class*="telemed"],[class*="pet-header"],[class*="health"],[class*="form-group"],[class*="summary"],[class*="metric"],[class*="widget"]
+){
+  background:linear-gradient(145deg,rgba(255,255,255,.42),rgba(255,255,255,.26)) !important;
+  -webkit-backdrop-filter:blur(24px) saturate(110%);backdrop-filter:blur(24px) saturate(110%);
+  color:#1f2937 !important;
+  border:1px solid rgba(255,255,255,.44) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.78),0 16px 32px rgba(23,34,61,.12) !important;
+}
+html[data-huella-theme="cosmico-cristal"] .content :is(.membership-card,[class*="membership"],.plan-card,[class*="plan"]){
+  background:linear-gradient(145deg,rgba(255,255,255,.50),rgba(255,255,255,.32)) !important;
+  border-color:rgba(255,255,255,.48) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.84),0 18px 34px rgba(23,34,61,.12) !important;
+}
+html[data-huella-theme="cosmico-cristal"] .content :is(.membership-card,[class*="membership"],.plan-card,[class*="plan"]) :is(h2,h3,strong,.price,.amount,.value){color:#0f3550 !important}
+html[data-huella-theme="cosmico-cristal"] .content :is(.membership-card,[class*="membership"],.plan-card,[class*="plan"]) :is(p,small,li,.muted,.description){color:#566678 !important}
+html[data-huella-theme="cosmico-cristal"] :is(input,select,textarea){background:rgba(255,255,255,.48) !important;color:#1f2937 !important;border-color:rgba(255,255,255,.52) !important}
+html[data-huella-theme="cosmico-cristal"] :is(table,thead,tbody,tr,th,td){color:#1f2937 !important;border-color:rgba(255,255,255,.45) !important}
+html[data-huella-theme="cosmico-cristal"] thead{background:rgba(255,255,255,.48) !important}
+html[data-huella-theme="cosmico-cristal"] tbody tr{background:rgba(255,255,255,.18) !important}
+html[data-huella-theme="cosmico-cristal"] :is(.primary,.save,.new-button,.add-button,.request-button,.btn.primary,.main-button,.hero-primary,.map-button.primary){
+  background:linear-gradient(135deg,#8fd7ff,#c8d4ff) !important;color:#12243a !important;border-color:transparent !important;box-shadow:0 8px 18px rgba(84,171,255,.22) !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(.secondary,.back,.back-button,.edit-button,.filter-button,.icon-button,.notification,.refresh,.cancel,.profile-button,.map-button:not(.primary)){
+  background:rgba(255,255,255,.44) !important;color:#223245 !important;border-color:rgba(255,255,255,.44) !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(.role,.eyebrow,.badge,.brand-logo,.avatar,.pet-icon,.card-icon,.chip,.tag){background:rgba(255,255,255,.42) !important;color:#1f7fb7 !important;border-color:rgba(255,255,255,.44) !important}
+html[data-huella-theme="cosmico-cristal"] a{color:#266d9b !important}
+html[data-huella-theme="cosmico-cristal"] :is(.map-panel,.google-map,iframe){border-color:rgba(255,255,255,.44) !important;outline:1px solid rgba(255,255,255,.40)}
+html[data-huella-theme="cosmico-cristal"] .google-map{filter:saturate(.90) brightness(.94) contrast(1.01)}
+html[data-huella-theme="cosmico-cristal"] .modal{background:rgba(44,60,92,.24) !important;backdrop-filter:blur(10px)}
+html[data-huella-theme="cosmico-cristal"] :is(.modal-box,.modal-content,.dialog,.popup,.dropdown-menu){background:rgba(255,255,255,.64) !important;color:#1f2937 !important;border:1px solid rgba(255,255,255,.54) !important;backdrop-filter:blur(24px)}
+html[data-huella-theme="cosmico-cristal"] :is(.theme-choice,.row,.custom-box,.camera-box,.current-theme,.quick-links a,.manual-field,.black-demo){background:rgba(255,255,255,.28) !important;color:#1f2937 !important;border-color:rgba(255,255,255,.42) !important;backdrop-filter:blur(20px)}
+html[data-huella-theme="cosmico-cristal"] .theme-choice.selected{border-color:#74d2ff !important;box-shadow:0 0 0 4px rgba(116,210,255,.18),0 10px 24px rgba(23,34,61,.12) !important}
+
+
+/* =========================================================
+   HUELLA V24 · CÓSMICO CRISTAL BLANCO TOTAL
+   Fuerza todos los bloques a blanco translúcido.
+   ========================================================= */
+html[data-huella-theme="cosmico-cristal"] .content,
+html[data-huella-theme="cosmico-cristal"] .workspace,
+html[data-huella-theme="cosmico-cristal"] .dashboard,
+html[data-huella-theme="cosmico-cristal"] .dashboard-content,
+html[data-huella-theme="cosmico-cristal"] .page-content,
+html[data-huella-theme="cosmico-cristal"] .main-content{background:transparent !important}
+
+html[data-huella-theme="cosmico-cristal"] .content :is(
+  .card,.panel,.box,.stat,.module,.quick,.quick-card,.service,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,.hero,.profile-card,.record,.widget,.metric,.modal-box,.modal-content,.dialog,.popup,.dropdown-menu,
+  [class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="product"],[class*="inventory"],[class*="order"],[class*="recipe"],[class*="membership"],[class*="telemed"],[class*="pet-header"],[class*="health"],[class*="form-group"],[class*="summary"],[class*="metric"],[class*="widget"],[class*="upload"],[class*="selected-file"],[class*="file-box"],[class*="result-box"],[class*="date-box"],[class*="location-info"],[class*="side-panel"]
+){
+  background:linear-gradient(145deg,rgba(255,255,255,.60),rgba(255,255,255,.34)) !important;
+  -webkit-backdrop-filter:blur(26px) saturate(112%);backdrop-filter:blur(26px) saturate(112%);
+  color:#1e293b !important;
+  border:1px solid rgba(255,255,255,.56) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.90),0 16px 34px rgba(30,41,59,.11) !important;
+}
+html[data-huella-theme="cosmico-cristal"] .content :is(.grid,.stats,.cards,.vaccine-grid,.appointments,.consultations,.studies,.study-types,.status-grid,.form-grid,.products-grid,.inventory-grid,.tracking-layout,.clinical-grid,.map-actions,.video-controls,.columns,.rows,.layout,.demo-buttons){
+  background:transparent !important;border-color:transparent !important;box-shadow:none !important;backdrop-filter:none !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(.theme-choice,.row,.custom-box,.camera-box,.current-theme,.quick-links a,.manual-field,.black-demo,.theme-grid > *, .theme-gallery > *){
+  background:linear-gradient(145deg,rgba(255,255,255,.52),rgba(255,255,255,.28)) !important;
+  color:#1f2937 !important;
+  border-color:rgba(255,255,255,.54) !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(input,select,textarea){
+  background:rgba(255,255,255,.58) !important;
+  color:#1f2937 !important;
+  border-color:rgba(255,255,255,.62) !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(input,textarea)::placeholder{color:#66758a !important}
+html[data-huella-theme="cosmico-cristal"] thead{background:rgba(255,255,255,.52) !important}
+html[data-huella-theme="cosmico-cristal"] tbody tr{background:rgba(255,255,255,.26) !important}
+html[data-huella-theme="cosmico-cristal"] .sidebar .menu :is(a,button,.huella-settings-trigger):hover,
+html[data-huella-theme="cosmico-cristal"] .sidebar .menu :is(a.active,button.active,.huella-settings-trigger.active){
+  background:rgba(255,255,255,.48) !important;
+  color:#162231 !important;
+}
+
+
+/* =========================================================
+   HUELLA V25 · CÓSMICO CRISTAL · como la imagen
+   Más suave, más blanco, más translúcido y difuminado.
+   ========================================================= */
+html[data-huella-theme="cosmico-cristal"]{
+  color-scheme: light;
+}
+html[data-huella-theme="cosmico-cristal"] body{
+  background:
+    linear-gradient(rgba(248,250,255,.36), rgba(242,246,255,.46)),
+    url('fondo-cosmico-cristal.png') center/cover fixed no-repeat !important;
+}
+html[data-huella-theme="cosmico-cristal"] .sidebar,
+html[data-huella-theme="cosmico-cristal"] .topbar{
+  background:rgba(255,255,255,.18) !important;
+  -webkit-backdrop-filter:blur(30px) saturate(112%) !important;
+  backdrop-filter:blur(30px) saturate(112%) !important;
+  border-color:rgba(255,255,255,.32) !important;
+  box-shadow:0 10px 32px rgba(43,53,88,.08) !important;
+}
+html[data-huella-theme="cosmico-cristal"] .content :is(
+  .card,.panel,.box,.stat,.module,.quick,.quick-card,.service,.data-card,.stat-card,.summary-box,.summary-item,.info-box,.info,.setting,.option,.pet-banner,.toolbar,.filter,.filters,.search-box,.hero,.profile-card,.record,.widget,.metric,.modal-box,.modal-content,.dialog,.popup,.dropdown-menu,
+  [class*="card"],[class*="panel"],[class*="box"],[class*="banner"],[class*="notice"],[class*="alert"],[class*="vaccine"],[class*="appointment"],[class*="consultation"],[class*="study"],[class*="timeline"],[class*="geofence"],[class*="status"],[class*="location"],[class*="tracking"],[class*="product"],[class*="inventory"],[class*="order"],[class*="recipe"],[class*="membership"],[class*="telemed"],[class*="pet-header"],[class*="health"],[class*="form-group"],[class*="summary"],[class*="metric"],[class*="widget"],[class*="upload"],[class*="selected-file"],[class*="file-box"],[class*="result-box"],[class*="date-box"],[class*="location-info"],[class*="side-panel"]
+){
+  background:linear-gradient(145deg, rgba(255,255,255,.46), rgba(255,255,255,.24)) !important;
+  border:1px solid rgba(255,255,255,.36) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.78), 0 14px 34px rgba(43,53,88,.10) !important;
+  -webkit-backdrop-filter:blur(28px) saturate(108%) !important;
+  backdrop-filter:blur(28px) saturate(108%) !important;
+  border-radius:22px !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(.theme-choice,.row,.custom-box,.camera-box,.current-theme,.quick-links a,.manual-field,.black-demo,.theme-grid > *, .theme-gallery > *){
+  background:linear-gradient(145deg, rgba(255,255,255,.44), rgba(255,255,255,.20)) !important;
+  border:1px solid rgba(255,255,255,.34) !important;
+  border-radius:20px !important;
+  -webkit-backdrop-filter:blur(26px) saturate(108%) !important;
+  backdrop-filter:blur(26px) saturate(108%) !important;
+}
+html[data-huella-theme="cosmico-cristal"] .sidebar .menu :is(a,button,.huella-settings-trigger){
+  color:#49566a !important;
+}
+html[data-huella-theme="cosmico-cristal"] .sidebar .menu :is(a.active,button.active,.huella-settings-trigger.active),
+html[data-huella-theme="cosmico-cristal"] .sidebar .menu :is(a,button,.huella-settings-trigger):hover{
+  background:linear-gradient(145deg, rgba(255,255,255,.44), rgba(255,255,255,.22)) !important;
+  border:1px solid rgba(255,255,255,.32) !important;
+  color:#1f2937 !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(h1,h2,h3,h4,h5,.title,.card-title,.panel-title,strong,b,.value,.number,.count,.big-number){
+  color:#1f2937 !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(p,small,label,.subtitle,.muted,.description,.info-row,.meta,.helper,.hint,.data,.caption){
+  color:#64748b !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(input,select,textarea){
+  background:rgba(255,255,255,.44) !important;
+  border-color:rgba(255,255,255,.38) !important;
+  border-radius:14px !important;
+}
+html[data-huella-theme="cosmico-cristal"] :is(.primary,.save,.new-button,.add-button,.request-button,.btn.primary,.main-button,.hero-primary,.map-button.primary){
+  background:linear-gradient(135deg,#7fd1ff,#bfd0ff) !important;
+  color:#11273b !important;
+  box-shadow:0 8px 20px rgba(90,176,255,.18) !important;
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Huella · Abriendo panel</title>
+
+    <!-- Apariencia global Huella: Normal / Futurista -->
+    <link rel="stylesheet" href="assets/huella-ui.css?v=26">
+    <script src="assets/huella-ui.js?v=26"></script>
+</head>
+<body>
+<script>
+(function(){
+    let sesion = null;
+    try {
+        sesion = JSON.parse(localStorage.getItem("huella_sesion") || localStorage.getItem("huella_usuario_actual") || "null");
+    } catch(e) {}
+
+    if(!sesion){
+        window.location.replace("index.html");
+        return;
+    }
+
+    let rol = String(sesion.rol || sesion.role || "").toLowerCase();
+    if(["tutor","dueño","dueno","propietario"].includes(rol)) rol = "dueno";
+    if(rol === "admin") rol = "administrador";
+
+    const rutas = {
+        dueno:"perfiles/dueno.html",
+        veterinario:"perfiles/veterinario.html",
+        proveedor:"perfiles/proveedor.html",
+        administrador:"perfiles/administrador.html"
+    };
+
+    window.location.replace(rutas[rol] || "index.html");
+})();
+</script>
+</body>
+</html>
