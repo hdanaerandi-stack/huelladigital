@@ -18,6 +18,6 @@ RUN mkdir -p /app/uploads/mascotas \
 
 WORKDIR /app/backend
 
-EXPOSE 30000
+EXPOSE 3000
 
-CMD ["gunicorn", "--worker-class", "gthread", "--workers", "1", "--threads", "4", "--bind", "0.0.0.0:30000", "app:app"]
+CMD ["gunicorn", "--worker-class", "gthread", "--workers", "1", "--threads", "4", "--bind", "0.0.0.0:3000", "app:app"]
