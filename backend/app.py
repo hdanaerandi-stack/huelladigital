@@ -303,59 +303,31 @@ google = oauth.register(
 # ============================================================
 
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY") or os.urandom(32)
-
-
 # ============================================================
-# BASE DE DATOS
+# BASE DE DATOS MYSQL
 # ============================================================
 
-DATABASE_PATH = Path(
-    os.environ.get(
-        "HUELLA_DATABASE_PATH",
-        str(BASE_DIR / "huella.db")
+DATABASE_URL = os.environ.get("DATABASE_URL", "").strip()
+
+if not DATABASE_URL:
+    raise RuntimeError(
+        "No se configuró la variable DATABASE_URL."
     )
-).expanduser()
 
-DATABASE_PATH.parent.mkdir(
-    parents=True,
-    exist_ok=True
-)
+if DATABASE_URL.startswith("mysql://"):
+    DATABASE_URL = DATABASE_URL.replace(
+        "mysql://",
+        "mysql+pymysql://",
+        1
+    )
 
-app.config["SQLALCHEMY_DATABASE_URI"] = (
-    f"sqlite:///{DATABASE_PATH.as_posix()}"
-)
+app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-app.config[
-    "SQLALCHEMY_TRACK_MODIFICATIONS"
-] = False
+app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024
 
-
-app.config[
-    "MAX_CONTENT_LENGTH"
-] = (
-    8
-    *
-    1024
-    *
-    1024
-)
-
-
-db.init_app(
-    app
-)
-
-
-# ============================================================
-# CREAR TABLAS
-# ============================================================
-
-with app.app_context():
-
-    db.create_all()
-
-
+db.init_app(app)
 # ============================================================
 # NORMALIZAR TELÃ‰FONO MÃ‰XICO
 # ============================================================
