@@ -308,8 +308,8 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY") or os.urandom(32)
 # BASE DE DATOS SQLITE
 # ============================================================
 
-DATABASE_PATH = BASE_DIR / "huella.db"
-
+DATABASE_PATH = BASE_DIR / "data" / "huella.db"
+DATABASE_PATH.parent.mkdir(parents=True, exist_ok=True)
 app.config["SQLALCHEMY_DATABASE_URI"] = (
     f"sqlite:///{DATABASE_PATH.as_posix()}"
 )
