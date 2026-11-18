@@ -10,3 +10,4 @@ stripe
 requests
 simple-websocket
 gunicorn
+PyMySQL
