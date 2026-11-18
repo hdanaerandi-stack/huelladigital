@@ -303,31 +303,23 @@ google = oauth.register(
 # ============================================================
 
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY") or os.urandom(32)
+
 # ============================================================
-# BASE DE DATOS MYSQL
+# BASE DE DATOS SQLITE
 # ============================================================
 
-DATABASE_URL = os.environ.get("DATABASE_URL", "").strip()
+DATABASE_PATH = BASE_DIR / "huella.db"
 
-if not DATABASE_URL:
-    raise RuntimeError(
-        "No se configuró la variable DATABASE_URL."
-    )
-
-if DATABASE_URL.startswith("mysql://"):
-    DATABASE_URL = DATABASE_URL.replace(
-        "mysql://",
-        "mysql+pymysql://",
-        1
-    )
-
-app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
+app.config["SQLALCHEMY_DATABASE_URI"] = (
+    f"sqlite:///{DATABASE_PATH.as_posix()}"
+)
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024
 
 db.init_app(app)
+
 # ============================================================
 # NORMALIZAR TELÃ‰FONO MÃ‰XICO
 # ============================================================

@@ -52,3 +52,5 @@ backend/prueba_video_ia.py
 
 # Version anterior del dashboard
 dashboard_original.html
+
+huella.db
